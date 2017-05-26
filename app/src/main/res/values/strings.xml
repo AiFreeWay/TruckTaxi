@@ -11,4 +11,10 @@
         For more information, see https://support.google.com/admob/answer/3052638
     <!- -->
     <string name="interstitial_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="app_title"><![CDATA[Gruz&Taxi]]></string>
+    <string name="title_on_auth_screen">Для входа в личный кабинет введите присвоенный вам ID и пароль</string>
+    <string name="id">ID</string>
+    <string name="password">Пароль</string>
+    <string name="show_password">Показать пароль</string>
+    <string name="input">Войти</string>
 </resources>

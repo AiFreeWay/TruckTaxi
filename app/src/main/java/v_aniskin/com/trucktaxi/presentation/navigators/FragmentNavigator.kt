@@ -15,6 +15,10 @@ import v_aniskin.com.trucktaxi.presentation.factories.MainFragmentFactory
  */
 class FragmentNavigator(private val mActivity: Activity, private val mFactory: MainFragmentFactory, fragmentManager: FragmentManager, containerId: Int) : SupportFragmentNavigator(fragmentManager, containerId) {
 
+    companion object {
+        const val EMPTY_DATA: Int = 0
+    }
+
     init {
         Logger.testLog("FragmentNavigator Create")
     }

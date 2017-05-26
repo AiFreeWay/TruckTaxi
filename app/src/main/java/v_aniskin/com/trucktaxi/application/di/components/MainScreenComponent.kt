@@ -4,7 +4,7 @@ import dagger.Component
 import v_aniskin.com.trucktaxi.application.di.modules.MainScreenModule
 import v_aniskin.com.trucktaxi.application.di.scopes.PerMainScreen
 import v_aniskin.com.trucktaxi.presentation.factories.MainFragmentFactory
-import v_aniskin.com.trucktaxi.presentation.screens.main.activities.MainActivity
+import v_aniskin.com.trucktaxi.presentation.screens.main.view_controllers.AcMainVC
 
 /**
  * Created by root on 25.05.17.
@@ -13,7 +13,7 @@ import v_aniskin.com.trucktaxi.presentation.screens.main.activities.MainActivity
 @Component(modules = arrayOf(MainScreenModule::class), dependencies = arrayOf(ScreenComponent::class))
 interface MainScreenComponent {
 
-    fun inject(activity : MainActivity)
+    fun inject(viewController : AcMainVC)
 
     fun provideMainFragmentFactory() : MainFragmentFactory
 }

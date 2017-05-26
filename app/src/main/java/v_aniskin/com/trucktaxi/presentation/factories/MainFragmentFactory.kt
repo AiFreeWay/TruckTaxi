@@ -1,16 +1,18 @@
 package v_aniskin.com.trucktaxi.presentation.factories
 
-import v_aniskin.com.trucktaxi.presentation.screens.common.BaseFragment
+import android.support.v4.app.Fragment
 import v_aniskin.com.trucktaxi.presentation.screens.main.fragments.AuthFragment
+import v_aniskin.com.trucktaxi.presentation.screens.main.fragments.MainFragment
 
 /**
  * Created by root on 25.05.17.
  */
-class MainFragmentFactory : BaseFactory<BaseFragment> {
+class MainFragmentFactory : BaseFactory<Fragment> {
 
-    override fun createInstanse(key: String): BaseFragment {
+    override fun createInstanse(key: String): Fragment {
         when(key) {
             AuthFragment.AUTH_FRAGMENT_ID -> return AuthFragment()
+            MainFragment.MAIN_FRAGMENT_ID -> return MainFragment()
             else -> throw RuntimeException("Unknown fragment key")
         }
     }

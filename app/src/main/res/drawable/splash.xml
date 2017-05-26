@@ -1,0 +1,11 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@color/white"/>
+
+    <item android:scaleGravity="center">
+        <bitmap
+            android:gravity="center"
+            android:tileMode="disabled"
+            android:src="@drawable/ic_truck"/>
+    </item>
+</layer-list>
