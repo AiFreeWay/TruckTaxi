@@ -1,6 +1,5 @@
 package v_aniskin.com.trucktaxi.presentation.screens.main.view_controllers
 
-import v_aniskin.com.trucktaxi.presentation.navigators.FragmentNavigator.Companion.EMPTY_DATA
 import v_aniskin.com.trucktaxi.presentation.screens.common.BaseViewController
 import v_aniskin.com.trucktaxi.presentation.screens.main.activities.MainActivity
 import v_aniskin.com.trucktaxi.presentation.screens.main.fragments.AuthFragment
@@ -19,7 +18,6 @@ class FmtAuthVC(fragment: AuthFragment) : BaseViewController<AuthFragment>(fragm
 
     fun auth() {
         getAcMainVC()
-                ?.getRouter()
-                ?.newRootScreen(HOME_FRAGMENT_ID, EMPTY_DATA)
+                ?.showNewScreenChain(HOME_FRAGMENT_ID)
     }
 }

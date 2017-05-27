@@ -20,16 +20,16 @@ import v_aniskin.com.trucktaxi.presentation.screens.main.view_controllers.FmtAut
  */
 class AuthFragment: BaseParentFragment<FmtAuthVC>() {
 
+    companion object {
+        val AUTH_FRAGMENT_ID: String = "main.auth_fragment"
+    }
+
     @BindView(R.id.fmt_auth_swt_show_password)
     lateinit var mSwtShowPassword: SwitchCompat
     @BindView(R.id.fmt_auth_btn_enter)
     lateinit var mBtnEnter: AppCompatButton
     @BindView(R.id.fmt_auth_et_password)
     lateinit var mEtPassword: EditText
-
-    companion object {
-        val AUTH_FRAGMENT_ID: String = "main.auth_fragment"
-    }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view: View = inflater!!.inflate(R.layout.fmt_auth, container, false)

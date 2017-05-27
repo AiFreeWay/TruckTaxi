@@ -6,28 +6,18 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/v_notification_tv_order_text"
-        style="@style/Text"
+        android:id="@+id/v_order_header_tv_order_text"
+        style="@style/BoldText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/external_padding"
         android:layout_marginRight="@dimen/external_padding"
         android:layout_marginTop="@dimen/external_padding" />
 
-    <TextView
-        android:id="@+id/v_notification_tv_order_action"
-        style="@style/SmallBoldText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/external_padding"
-        android:layout_marginRight="@dimen/external_padding"
-        android:layout_marginTop="@dimen/internal_padding"
-        android:layout_marginBottom="@dimen/internal_padding" />
-
     <View
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:layout_marginTop="@dimen/internal_padding"
+        android:layout_marginTop="@dimen/external_padding"
         android:background="@drawable/drop_shadow_gray"
         android:paddingBottom="@dimen/internal_padding" />
 

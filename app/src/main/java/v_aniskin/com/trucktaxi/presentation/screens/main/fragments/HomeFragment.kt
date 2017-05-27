@@ -15,21 +15,20 @@ import v_aniskin.com.trucktaxi.presentation.models.NotificationPresent
 import v_aniskin.com.trucktaxi.presentation.screens.common.BaseActivity
 import v_aniskin.com.trucktaxi.presentation.screens.common.BaseParentFragment
 import v_aniskin.com.trucktaxi.presentation.screens.main.view_controllers.FmtHomeVC
-import java.util.*
 
 /**
  * Created by root on 26.05.17.
  */
 class HomeFragment : BaseParentFragment<FmtHomeVC>() {
 
+    companion object {
+        val HOME_FRAGMENT_ID: String = "main.home_fragment"
+    }
+
     @BindView(R.id.fmt_home_iv_avatar)
     lateinit var mIvAvatar: CircleImageView
     @BindView(R.id.fmt_home_ll_notifications)
     lateinit var mLlNotifications: LinearLayout
-
-    companion object {
-        val HOME_FRAGMENT_ID: String = "main.home_fragment"
-    }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view: View = inflater!!.inflate(R.layout.fmt_home, container, false)

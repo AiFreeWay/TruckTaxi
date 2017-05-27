@@ -27,6 +27,7 @@ class AcMainVC(activity: MainActivity) : BaseViewController<MainActivity>(activi
 
     private var mMainScreenComponent: MainScreenComponent? = null
     private var isCiceroneInit = false
+    private var mLastScreenKey: String? = null
 
     init {
         Logger.testLog("AcMainVC Create")
@@ -34,7 +35,7 @@ class AcMainVC(activity: MainActivity) : BaseViewController<MainActivity>(activi
     }
 
     override fun start() {
-        mRouter.newRootScreen(AuthFragment.AUTH_FRAGMENT_ID, EMPTY_DATA)
+        showNewScreenChain(AuthFragment.AUTH_FRAGMENT_ID)
     }
 
     override fun resume() {
@@ -54,6 +55,15 @@ class AcMainVC(activity: MainActivity) : BaseViewController<MainActivity>(activi
                 .mainScreenModule(MainScreenModule(mView))
                 .build()
         mMainScreenComponent?.inject(this)
+    }
+
+    fun getLastScreenKey(): String? {
+        return mLastScreenKey
+    }
+
+    fun showNewScreenChain(key: String) {
+        mRouter.newRootScreen(key, EMPTY_DATA)
+        mLastScreenKey = key
     }
 
     private fun initCicerone() {

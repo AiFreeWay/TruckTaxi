@@ -6,8 +6,8 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/v_notification_tv_order_text"
-        style="@style/Text"
+        android:id="@+id/v_order_holder_tv_order"
+        style="@style/BoldText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/external_padding"
@@ -15,14 +15,32 @@
         android:layout_marginTop="@dimen/external_padding" />
 
     <TextView
-        android:id="@+id/v_notification_tv_order_action"
-        style="@style/SmallBoldText"
+        android:id="@+id/v_order_holder_tv_time"
+        style="@style/Text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/internal_padding"
         android:layout_marginLeft="@dimen/external_padding"
         android:layout_marginRight="@dimen/external_padding"
-        android:layout_marginTop="@dimen/internal_padding"
-        android:layout_marginBottom="@dimen/internal_padding" />
+        android:layout_marginTop="@dimen/internal_padding" />
+
+    <TextView
+        android:id="@+id/v_order_holder_tv_address"
+        style="@style/Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/internal_padding"
+        android:layout_marginLeft="@dimen/external_padding"
+        android:layout_marginRight="@dimen/external_padding" />
+
+    <TextView
+        android:id="@+id/v_order_holder_tv_work_time"
+        style="@style/Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/internal_padding"
+        android:layout_marginLeft="@dimen/external_padding"
+        android:layout_marginRight="@dimen/external_padding" />
 
     <View
         android:layout_width="match_parent"
