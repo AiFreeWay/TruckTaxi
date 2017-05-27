@@ -6,13 +6,22 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/v_order_header_tv_order_text"
+        android:id="@+id/v_payment_header_tv_order_text"
         style="@style/TitleText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/external_padding"
         android:layout_marginRight="@dimen/external_padding"
         android:layout_marginTop="@dimen/external_padding" />
+    
+    <TextView
+        android:id="@+id/v_payment_header_tv_order_sum"
+        style="@style/Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/external_padding"
+        android:layout_marginRight="@dimen/external_padding"
+        android:layout_marginTop="@dimen/internal_padding" />
 
     <View
         android:layout_width="match_parent"

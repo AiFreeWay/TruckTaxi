@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/v_payment_holder_tv_order"
+        style="@style/BoldText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/external_padding"
+        android:layout_marginRight="@dimen/external_padding"
+        android:layout_marginTop="@dimen/external_padding" />
+
+    <TextView
+        android:id="@+id/v_payment_holder_tv_time"
+        style="@style/Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/internal_padding"
+        android:layout_marginLeft="@dimen/external_padding"
+        android:layout_marginRight="@dimen/external_padding"
+        android:layout_marginTop="@dimen/internal_padding" />
+
+    <TextView
+        android:id="@+id/v_payment_holder_tv_sum"
+        style="@style/Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/internal_padding"
+        android:layout_marginLeft="@dimen/external_padding"
+        android:layout_marginRight="@dimen/external_padding" />
+
+    <TextView
+        android:id="@+id/v_payment_holder_tv_state"
+        style="@style/Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/internal_padding"
+        android:layout_marginLeft="@dimen/external_padding"
+        android:layout_marginRight="@dimen/external_padding" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginTop="@dimen/internal_padding"
+        android:background="@drawable/drop_shadow_gray"
+        android:paddingBottom="@dimen/internal_padding" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/mercury" />
+</LinearLayout>
