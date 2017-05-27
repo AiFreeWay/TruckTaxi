@@ -13,4 +13,21 @@
         <item name="android:fontFamily">sans-serif-regular</item>
         <item name="android:textColor">@color/mineShaft</item>
     </style>
+
+    <style name="BoldText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/mineShaft</item>
+    </style>
+
+    <style name="TitleText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/mineShaft</item>
+    </style>
+
+    <style name="customRatingBar" parent="android:style/Widget.Material.RatingBar.Small">
+        <item name="colorControlNormal">@color/mercury</item>
+        <item name="colorControlActivated">@color/doveGray</item>
+    </style>
 </resources>

@@ -17,8 +17,8 @@
         android:id="@+id/ac_main_fl_fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.9"
-        android:background="@color/white" />
+        android:background="@color/white"
+        android:layout_weight="0.9"/>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/ac_main_bottom_navigation"

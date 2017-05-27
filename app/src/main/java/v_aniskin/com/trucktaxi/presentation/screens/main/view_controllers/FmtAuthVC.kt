@@ -4,7 +4,7 @@ import v_aniskin.com.trucktaxi.presentation.navigators.FragmentNavigator.Compani
 import v_aniskin.com.trucktaxi.presentation.screens.common.BaseViewController
 import v_aniskin.com.trucktaxi.presentation.screens.main.activities.MainActivity
 import v_aniskin.com.trucktaxi.presentation.screens.main.fragments.AuthFragment
-import v_aniskin.com.trucktaxi.presentation.screens.main.fragments.MainFragment.Companion.MAIN_FRAGMENT_ID
+import v_aniskin.com.trucktaxi.presentation.screens.main.fragments.HomeFragment.Companion.HOME_FRAGMENT_ID
 
 /**
  * Created by root on 26.05.17.
@@ -20,6 +20,6 @@ class FmtAuthVC(fragment: AuthFragment) : BaseViewController<AuthFragment>(fragm
     fun auth() {
         getAcMainVC()
                 ?.getRouter()
-                ?.newRootScreen(MAIN_FRAGMENT_ID, EMPTY_DATA)
+                ?.newRootScreen(HOME_FRAGMENT_ID, EMPTY_DATA)
     }
 }

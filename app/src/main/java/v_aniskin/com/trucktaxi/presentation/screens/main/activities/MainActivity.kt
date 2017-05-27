@@ -2,6 +2,7 @@ package v_aniskin.com.trucktaxi.presentation.screens.main.activities
 
 
 import android.os.Bundle
+import android.support.design.widget.BottomNavigationView
 import android.support.v7.widget.Toolbar
 import butterknife.BindView
 import butterknife.ButterKnife
@@ -13,6 +14,8 @@ class MainActivity : BaseActivity<AcMainVC>() {
 
     @BindView(R.id.ac_main_toolbar)
     lateinit var mToolbar: Toolbar
+    @BindView(R.id.ac_main_bottom_navigation)
+    lateinit var mBottomNavigation: BottomNavigationView
 
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +27,10 @@ class MainActivity : BaseActivity<AcMainVC>() {
 
     override fun getToolbar(): Toolbar {
         return mToolbar
+    }
+
+    override fun getBottomNavigation(): BottomNavigationView {
+        return mBottomNavigation
     }
 
     override fun onResume() {
@@ -39,6 +46,6 @@ class MainActivity : BaseActivity<AcMainVC>() {
 
     //Getters and Setters
     fun getContainerId(): Int {
-        return R.id.ac_main_fl_fragment_container;
+        return R.id.ac_main_fl_fragment_container
     }
 }

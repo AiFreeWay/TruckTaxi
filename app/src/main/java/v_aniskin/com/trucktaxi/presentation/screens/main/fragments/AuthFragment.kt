@@ -11,6 +11,7 @@ import android.widget.EditText
 import butterknife.BindView
 import butterknife.ButterKnife
 import v_aniskin.com.trucktaxi.R
+import v_aniskin.com.trucktaxi.presentation.screens.common.BaseActivity
 import v_aniskin.com.trucktaxi.presentation.screens.common.BaseParentFragment
 import v_aniskin.com.trucktaxi.presentation.screens.main.view_controllers.FmtAuthVC
 
@@ -31,8 +32,8 @@ class AuthFragment: BaseParentFragment<FmtAuthVC>() {
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view: View = inflater!!.inflate(R.layout.fmt_auth, container, false);
-        ButterKnife.bind(this, view);
+        val view: View = inflater!!.inflate(R.layout.fmt_auth, container, false)
+        ButterKnife.bind(this, view)
         return view;
     }
 
@@ -50,5 +51,10 @@ class AuthFragment: BaseParentFragment<FmtAuthVC>() {
         }
 
         mBtnEnter.setOnClickListener { mViewController?.auth() }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getBaseActivity<BaseActivity<*>>().getBottomNavigation().visibility = View.GONE
     }
 }

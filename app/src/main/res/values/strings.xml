@@ -17,4 +17,14 @@
     <string name="password">Пароль</string>
     <string name="show_password">Показать пароль</string>
     <string name="input">Войти</string>
+    <string name="to_home">Домашний</string>
+    <string name="orders">Заказы</string>
+    <string name="payments">Платежи</string>
+    <string name="chat">Чат</string>
+    <string name="settings">Настройки</string>
+    <string name="test_rating">Рэйтинг 34</string>
+    <string name="test_name">Кузнецов Ф.Г.</string>
+    <string name="test_date_of_execution">Оформлен с 22.05.2017</string>
+    <string name="working">Работаю</string>
+    <string name="test_notifications_titile">Новых уведомлений: 3</string>
 </resources>

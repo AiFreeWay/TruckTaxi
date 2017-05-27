@@ -1,9 +1,9 @@
 package v_aniskin.com.trucktaxi.presentation.screens.common
 
 import android.os.Bundle
+import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
-import butterknife.ButterKnife
 import v_aniskin.com.trucktaxi.application.TruckTaxiApp
 import v_aniskin.com.trucktaxi.application.di.components.DaggerScreenComponent
 import v_aniskin.com.trucktaxi.application.di.components.ScreenComponent
@@ -39,5 +39,6 @@ abstract class BaseActivity<VC> : AppCompatActivity(), Screen {
         return mViewController
     }
 
-    abstract public fun getToolbar(): Toolbar;
+    abstract fun getToolbar(): Toolbar
+    abstract fun getBottomNavigation(): BottomNavigationView
 }

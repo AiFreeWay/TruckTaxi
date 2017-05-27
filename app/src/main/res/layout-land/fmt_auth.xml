@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mercury"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/fmt_auth_v_shadow"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@drawable/drop_shadow_gray" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/fmt_auth_tv_title"
+                style="@style/Text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="@dimen/internal_padding"
+                android:paddingLeft="@dimen/external_padding"
+                android:paddingRight="@dimen/external_padding"
+                android:paddingTop="@dimen/external_padding"
+                android:text="@string/title_on_auth_screen" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/fmt_auth_til_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="@dimen/internal_padding"
+                android:paddingLeft="@dimen/external_padding"
+                android:paddingRight="@dimen/external_padding">
+
+                <EditText
+                    android:id="@+id/fmt_auth_et_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/id" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/fmt_auth_til_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="@dimen/internal_padding"
+                android:paddingLeft="@dimen/external_padding"
+                android:paddingRight="@dimen/external_padding">
+
+                <EditText
+                    android:id="@+id/fmt_auth_et_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/password"
+                    android:inputType="textPassword" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/fmt_auth_swt_show_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:checked="false"
+                android:padding="@dimen/external_padding"
+                android:text="@string/show_password" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/fmt_auth_btn_enter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="@dimen/external_padding"
+                android:text="@string/input" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
