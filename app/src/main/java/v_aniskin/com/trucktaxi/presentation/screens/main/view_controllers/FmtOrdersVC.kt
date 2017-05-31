@@ -14,4 +14,9 @@ class FmtOrdersVC(fragment: OrdersFragment): BaseViewController<OrdersFragment>(
                 ?.getBaseActivity<MainActivity>()
                 ?.getViewController()
     }
+
+    fun showOrderDetailScreen() {
+        getAcMainVC()?.showNewActivityScreen();
+    }
+
 }

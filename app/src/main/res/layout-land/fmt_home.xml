@@ -1,263 +1,259 @@
-<LinearLayout
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
-    <View
-        android:id="@+id/fmt_home_v_shadow"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:background="@drawable/drop_shadow" />
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        tools:context="v_aniskin.com.trucktaxi.presentation.screens.main.activities.MainActivity">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/fmt_home_iv_avatar"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginEnd="@dimen/external_padding"
+            android:layout_marginRight="@dimen/external_padding"
+            android:layout_marginTop="@dimen/external_padding"
+            app:civ_border_color="@color/doveGray"
+            app:civ_border_width="1dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/fmt_home_tv_name"
+            style="@style/TitleText"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            tools:context="v_aniskin.com.trucktaxi.presentation.screens.main.activities.MainActivity">
+            android:layout_marginEnd="@dimen/internal_padding"
+            android:layout_marginLeft="@dimen/external_padding"
+            android:layout_marginRight="@dimen/internal_padding"
+            android:layout_marginStart="@dimen/external_padding"
+            android:layout_marginTop="@dimen/external_padding"
+            android:text="@string/test_name"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/fmt_home_iv_avatar"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/fmt_home_iv_avatar"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
-                android:layout_marginEnd="@dimen/external_padding"
-                android:layout_marginRight="@dimen/external_padding"
-                android:layout_marginTop="@dimen/external_padding"
-                app:civ_border_color="@color/mineShaft"
-                app:civ_border_width="1dp"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/fmt_home_tv_rate"
+            style="@style/Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/internal_padding"
+            android:layout_marginLeft="@dimen/external_padding"
+            android:layout_marginRight="@dimen/internal_padding"
+            android:layout_marginStart="@dimen/external_padding"
+            android:layout_marginTop="@dimen/internal_padding"
+            android:text="@string/test_rating"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/fmt_home_iv_avatar"
+            app:layout_constraintTop_toBottomOf="@+id/fmt_home_tv_name" />
+
+        <RatingBar
+            android:id="@+id/fmt_home_rb_rate"
+            style="@style/customRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/internal_padding"
+            android:layout_marginLeft="@dimen/external_padding"
+            android:layout_marginRight="@dimen/internal_padding"
+            android:layout_marginStart="@dimen/external_padding"
+            android:layout_marginTop="@dimen/internal_padding"
+            android:numStars="5"
+            android:rating="3.5"
+            android:stepSize="0.5"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toRightOf="@+id/fmt_home_tv_rate"
+            app:layout_constraintRight_toLeftOf="@+id/fmt_home_iv_avatar"
+            app:layout_constraintTop_toBottomOf="@+id/fmt_home_tv_name"/>
+
+        <TextView
+            android:id="@+id/fmt_home_tv_date_of_execution"
+            style="@style/Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/internal_padding"
+            android:layout_marginLeft="@dimen/external_padding"
+            android:layout_marginRight="@dimen/internal_padding"
+            android:layout_marginStart="@dimen/external_padding"
+            android:layout_marginTop="@dimen/internal_padding"
+            android:text="@string/test_date_of_execution"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/fmt_home_iv_avatar"
+            app:layout_constraintTop_toBottomOf="@+id/fmt_home_tv_rate" />
+
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/fmt_home_swt_on_work"
+            style="@style/BoldText"
+            android:layout_width="wrap_content"
+            android:minWidth="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/external_padding"
+            android:layout_marginLeft="@dimen/external_padding"
+            android:layout_marginRight="@dimen/external_padding"
+            android:layout_marginStart="@dimen/external_padding"
+            android:layout_marginTop="@dimen/external_padding"
+            android:checked="false"
+            android:text="@string/working"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/fmt_home_iv_avatar"
+            app:layout_constraintTop_toBottomOf="@+id/fmt_home_tv_date_of_execution"
+            app:layout_constraintHorizontal_bias="0.0" />
+
+        <View
+            android:id="@+id/fmt_home_v_devider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/external_padding"
+            android:background="@color/mercury"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fmt_home_iv_avatar" />
+
+        <LinearLayout
+            android:id="@+id/fmt_home_ll_car_description_titles"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/external_padding"
+            android:layout_marginLeft="@dimen/external_padding"
+            android:layout_marginRight="@dimen/external_padding"
+            android:layout_marginStart="@dimen/external_padding"
+            android:layout_marginTop="@dimen/external_padding"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fmt_home_v_devider">
 
             <TextView
-                android:id="@+id/fmt_home_tv_name"
-                style="@style/TitleText"
-                android:layout_width="0dp"
+                style="@style/BoldText"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/internal_padding"
-                android:layout_marginLeft="@dimen/external_padding"
-                android:layout_marginRight="@dimen/internal_padding"
-                android:layout_marginStart="@dimen/external_padding"
-                android:layout_marginTop="@dimen/external_padding"
-                android:text="@string/test_name"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@+id/fmt_home_iv_avatar"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_weight="0.3"
+                android:gravity="center"
+                android:text="Модель"
+                android:textAllCaps="true" />
 
             <TextView
-                android:id="@+id/fmt_home_tv_rate"
+                style="@style/BoldText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:gravity="center"
+                android:text="Тип кузова"
+                android:textAllCaps="true" />
+
+            <TextView
+                style="@style/BoldText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:gravity="center"
+                android:text="Номер"
+                android:textAllCaps="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fmt_home_ll_car_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/external_padding"
+            android:layout_marginLeft="@dimen/external_padding"
+            android:layout_marginRight="@dimen/external_padding"
+            android:layout_marginStart="@dimen/external_padding"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fmt_home_ll_car_description_titles">
+
+            <TextView
                 style="@style/Text"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/internal_padding"
-                android:layout_marginLeft="@dimen/external_padding"
-                android:layout_marginRight="@dimen/internal_padding"
-                android:layout_marginStart="@dimen/external_padding"
-                android:layout_marginTop="@dimen/internal_padding"
-                android:text="@string/test_rating"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@+id/fmt_home_iv_avatar"
-                app:layout_constraintTop_toBottomOf="@+id/fmt_home_tv_name" />
-
-            <RatingBar
-                android:id="@+id/fmt_home_rb_rate"
-                style="@style/customRatingBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/internal_padding"
-                android:layout_marginLeft="@dimen/external_padding"
-                android:layout_marginRight="@dimen/internal_padding"
-                android:layout_marginStart="@dimen/external_padding"
-                android:layout_marginTop="@dimen/internal_padding"
-                android:numStars="5"
-                android:rating="3.5"
-                android:stepSize="0.5"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintLeft_toRightOf="@+id/fmt_home_tv_rate"
-                app:layout_constraintRight_toLeftOf="@+id/fmt_home_iv_avatar"
-                app:layout_constraintTop_toBottomOf="@+id/fmt_home_tv_name"/>
+                android:layout_weight="0.3"
+                android:gravity="center"
+                android:text="Hundai Solaris" />
 
             <TextView
-                android:id="@+id/fmt_home_tv_date_of_execution"
                 style="@style/Text"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/internal_padding"
-                android:layout_marginLeft="@dimen/external_padding"
-                android:layout_marginRight="@dimen/internal_padding"
-                android:layout_marginStart="@dimen/external_padding"
-                android:layout_marginTop="@dimen/internal_padding"
-                android:text="@string/test_date_of_execution"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@+id/fmt_home_iv_avatar"
-                app:layout_constraintTop_toBottomOf="@+id/fmt_home_tv_rate" />
-
-            <android.support.v7.widget.SwitchCompat
-                android:id="@+id/fmt_home_swt_on_work"
-                style="@style/BoldText"
-                android:layout_width="wrap_content"
-                android:minWidth="130dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/external_padding"
-                android:layout_marginLeft="@dimen/external_padding"
-                android:layout_marginRight="@dimen/external_padding"
-                android:layout_marginStart="@dimen/external_padding"
-                android:layout_marginTop="@dimen/external_padding"
-                android:checked="false"
-                android:text="@string/working"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@+id/fmt_home_iv_avatar"
-                app:layout_constraintTop_toBottomOf="@+id/fmt_home_tv_date_of_execution"
-                app:layout_constraintHorizontal_bias="0.0" />
-
-            <View
-                android:id="@+id/fmt_home_v_devider"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="@dimen/external_padding"
-                android:background="@color/mercury"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fmt_home_iv_avatar" />
-
-            <LinearLayout
-                android:id="@+id/fmt_home_ll_car_description_titles"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/external_padding"
-                android:layout_marginLeft="@dimen/external_padding"
-                android:layout_marginRight="@dimen/external_padding"
-                android:layout_marginStart="@dimen/external_padding"
-                android:layout_marginTop="@dimen/external_padding"
-                android:orientation="horizontal"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fmt_home_v_devider">
-                <TextView
-                    style="@style/BoldText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.3"
-                    android:gravity="center"
-                    android:text="Модель"
-                    android:textAllCaps="true" />
-                <TextView
-                    style="@style/BoldText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.3"
-                    android:gravity="center"
-                    android:text="Тип кузова"
-                    android:textAllCaps="true" />
-                <TextView
-                    style="@style/BoldText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.3"
-                    android:gravity="center"
-                    android:text="Номер"
-                    android:textAllCaps="true" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/fmt_home_ll_car_description"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/external_padding"
-                android:layout_marginLeft="@dimen/external_padding"
-                android:layout_marginRight="@dimen/external_padding"
-                android:layout_marginStart="@dimen/external_padding"
-                android:orientation="horizontal"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fmt_home_ll_car_description_titles">
-                <TextView
-                    style="@style/Text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.3"
-                    android:gravity="center"
-                    android:text="Hundai Solaris" />
-                <TextView
-                    style="@style/Text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.3"
-                    android:gravity="center"
-                    android:text="Sedan" />
-                <TextView
-                    style="@style/Text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.3"
-                    android:gravity="center"
-                    android:text="b555mk" />
-            </LinearLayout>
-
-            <View
-                android:id="@+id/fmt_home_v_shadow_two"
-                android:layout_width="0dp"
-                android:layout_height="3dp"
-                android:layout_marginTop="@dimen/external_padding"
-                android:background="@drawable/drop_shadow_gray"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fmt_home_ll_car_description" />
-
-            <View
-                android:id="@+id/fmt_home_v_devider_two"
-                android:layout_width="0dp"
-                android:layout_height="5dp"
-                android:background="@color/mercury"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fmt_home_v_shadow_two" />
+                android:layout_weight="0.3"
+                android:gravity="center"
+                android:text="Sedan" />
 
             <TextView
-                android:id="@+id/fmt_home_tv_notification"
-                style="@style/BoldText"
-                android:layout_width="0dp"
+                style="@style/Text"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/external_padding"
-                android:layout_marginLeft="@dimen/external_padding"
-                android:layout_marginRight="@dimen/external_padding"
-                android:layout_marginStart="@dimen/external_padding"
-                android:layout_marginTop="@dimen/external_padding"
-                android:text="@string/test_notifications_titile"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fmt_home_v_devider_two" />
+                android:layout_weight="0.3"
+                android:gravity="center"
+                android:text="b555mk" />
+        </LinearLayout>
 
-            <View
-                android:id="@+id/fmt_home_v_devider_three"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="@dimen/external_padding"
-                android:background="@color/mercury"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fmt_home_tv_notification" />
+        <View
+            android:id="@+id/fmt_home_v_shadow_two"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="@dimen/external_padding"
+            android:background="@drawable/drop_shadow_gray"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fmt_home_ll_car_description" />
 
-            <LinearLayout
-                android:id="@+id/fmt_home_ll_notifications"
-                style="@style/BoldText"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@color/mercury"
-                android:checked="false"
-                android:orientation="vertical"
-                android:text="@string/working"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fmt_home_v_devider_three" />
-        </android.support.constraint.ConstraintLayout>
-    </ScrollView>
-</LinearLayout>
+        <View
+            android:id="@+id/fmt_home_v_devider_two"
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:background="@color/mercury"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fmt_home_v_shadow_two" />
+
+        <TextView
+            android:id="@+id/fmt_home_tv_notification"
+            style="@style/BoldText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/external_padding"
+            android:layout_marginLeft="@dimen/external_padding"
+            android:layout_marginRight="@dimen/external_padding"
+            android:layout_marginStart="@dimen/external_padding"
+            android:layout_marginTop="@dimen/external_padding"
+            android:text="@string/test_notifications_titile"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fmt_home_v_devider_two" />
+
+        <View
+            android:id="@+id/fmt_home_v_devider_three"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/external_padding"
+            android:background="@color/mercury"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fmt_home_tv_notification" />
+
+        <LinearLayout
+            android:id="@+id/fmt_home_ll_notifications"
+            style="@style/BoldText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@color/mercury"
+            android:checked="false"
+            android:orientation="vertical"
+            android:text="@string/working"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fmt_home_v_devider_three" />
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

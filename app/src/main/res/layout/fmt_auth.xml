@@ -5,12 +5,6 @@
     android:background="@color/mercury"
     android:orientation="vertical">
 
-    <View
-        android:id="@+id/fmt_auth_v_shadow"
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:background="@drawable/drop_shadow_gray" />
-
     <TextView
         android:id="@+id/fmt_auth_tv_title"
         style="@style/Text"

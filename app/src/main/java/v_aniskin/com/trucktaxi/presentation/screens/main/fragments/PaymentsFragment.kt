@@ -55,6 +55,11 @@ class PaymentsFragment : BaseParentFragment<FmtPaymentsVC>() {
         test()
     }
 
+    override fun onResume() {
+        super.onResume()
+        getToolbar().setTitle(getString(R.string.payments))
+    }
+
     fun test() {
         val data: ArrayList<AdapterItemContainer<PaymentPresent>> = ArrayList()
         data.add(AdapterItemContainer(MultyRvAdapter.VIEW_TYPE_HEADER, PaymentPresent("Предстоящие", "Итого к выплате: 2.000 руб.")))

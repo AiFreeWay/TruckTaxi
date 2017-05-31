@@ -39,6 +39,9 @@ abstract class BaseActivity<VC> : AppCompatActivity(), Screen {
         return mViewController
     }
 
+    open fun getBottomNavigation(): BottomNavigationView? {
+        return null
+    }
+
     abstract fun getToolbar(): Toolbar
-    abstract fun getBottomNavigation(): BottomNavigationView
 }

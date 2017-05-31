@@ -54,6 +54,11 @@ class OrdersFragment : BaseParentFragment<FmtOrdersVC>() {
         test()
     }
 
+    override fun onResume() {
+        super.onResume()
+        getToolbar().setTitle(getString(R.string.orders))
+    }
+
     fun test() {
         val data: ArrayList<AdapterItemContainer<OrderPresent>> = ArrayList()
         data.add(AdapterItemContainer(MultyRvAdapter.VIEW_TYPE_HEADER, OrderPresent("Текущие")))

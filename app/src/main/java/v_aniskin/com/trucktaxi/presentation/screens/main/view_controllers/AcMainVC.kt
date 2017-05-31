@@ -1,5 +1,6 @@
 package v_aniskin.com.trucktaxi.presentation.screens.main.view_controllers
 
+import android.content.Intent
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
 import v_aniskin.com.trucktaxi.application.di.components.DaggerMainScreenComponent
@@ -11,6 +12,7 @@ import v_aniskin.com.trucktaxi.presentation.navigators.FragmentNavigator.Compani
 import v_aniskin.com.trucktaxi.presentation.screens.common.BaseViewController
 import v_aniskin.com.trucktaxi.presentation.screens.main.activities.MainActivity
 import v_aniskin.com.trucktaxi.presentation.screens.main.fragments.AuthFragment
+import v_aniskin.com.trucktaxi.presentation.screens.order_detail.activities.MapOrderDetailActivity
 import javax.inject.Inject
 
 /**
@@ -64,6 +66,10 @@ class AcMainVC(activity: MainActivity) : BaseViewController<MainActivity>(activi
     fun showNewScreenChain(key: String) {
         mRouter.newRootScreen(key, EMPTY_DATA)
         mLastScreenKey = key
+    }
+
+    fun showNewActivityScreen() {
+        mView.startActivity(Intent(mView, MapOrderDetailActivity::class.java))
     }
 
     private fun initCicerone() {

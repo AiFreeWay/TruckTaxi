@@ -36,4 +36,9 @@
         <item name="colorControlNormal">@color/mercury</item>
         <item name="colorControlActivated">@color/doveGray</item>
     </style>
+
+    <style name="YellowButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:textColor">@color/white</item>
+        <item name="colorButtonNormal">@color/colorAccent</item>
+    </style>
 </resources>

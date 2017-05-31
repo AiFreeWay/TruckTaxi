@@ -44,7 +44,8 @@ class HomeFragment : BaseParentFragment<FmtHomeVC>() {
 
     override fun onResume() {
         super.onResume()
-        getBaseActivity<BaseActivity<*>>().getBottomNavigation().visibility = View.VISIBLE
+        getBaseActivity<BaseActivity<*>>().getBottomNavigation()?.visibility = View.VISIBLE
+        getToolbar().setTitle(getString(R.string.to_home))
     }
 
     fun test() {

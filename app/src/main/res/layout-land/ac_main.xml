@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,11 +8,17 @@
     android:orientation="vertical"
     tools:context="v_aniskin.com.trucktaxi.presentation.screens.main.activities.MainActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/ac_main_toolbar"
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/ac_map_order_detail_app_bar_layout"
         android:layout_width="match_parent"
-        android:layout_height="?android:actionBarSize"
-        android:background="@color/white" />
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/ac_main_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:actionBarSize"
+            android:background="@color/colorAccent" />
+    </android.support.design.widget.AppBarLayout>
 
     <FrameLayout
         android:id="@+id/ac_main_fl_fragment_container"

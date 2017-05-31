@@ -17,6 +17,7 @@
     <string name="password">Пароль</string>
     <string name="show_password">Показать пароль</string>
     <string name="input">Войти</string>
+    <string name="autorization">Авторизация</string>
     <string name="to_home">Домашний</string>
     <string name="orders">Заказы</string>
     <string name="payments">Платежи</string>
@@ -27,4 +28,16 @@
     <string name="test_date_of_execution">Оформлен с 22.05.2017</string>
     <string name="working">Работаю</string>
     <string name="test_notifications_titile">Новых уведомлений: 3</string>
+    <string name="model">Модель</string>
+    <string name="number">Номер</string>
+    <string name="body_type">Тип кузова</string>
+    <string name="information">Информация</string>
+    <string name="routes">Маршруты</string>
+    <string name="test_order_number">Заказ №1</string>
+    <string name="test_address_from">ул. Профсоюзная, д.2</string>
+    <string name="from_address">Адрес вызова:</string>
+    <string name="test_address_to">ул. Моховая, д. 21, к.2</string>
+    <string name="address_to">Адрес назначения</string>
+    <string name="test_phone_from">+79027773901</string>
+    <string name="test_phone_to">+79641256803</string>
 </resources>

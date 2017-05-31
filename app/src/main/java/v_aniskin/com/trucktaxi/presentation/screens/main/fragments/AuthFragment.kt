@@ -40,7 +40,7 @@ class AuthFragment: BaseParentFragment<FmtAuthVC>() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         mViewController = FmtAuthVC(this)
-        getToolbar().setTitle(getString(R.string.app_title))
+        getToolbar().setTitle(getString(R.string.autorization))
 
         mSwtShowPassword.setOnCheckedChangeListener { compoundButton, isChecked ->
             if (isChecked)
@@ -55,6 +55,6 @@ class AuthFragment: BaseParentFragment<FmtAuthVC>() {
 
     override fun onResume() {
         super.onResume()
-        getBaseActivity<BaseActivity<*>>().getBottomNavigation().visibility = View.GONE
+        getBaseActivity<BaseActivity<*>>().getBottomNavigation()?.visibility = View.GONE
     }
 }
