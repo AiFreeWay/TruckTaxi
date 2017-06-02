@@ -41,5 +41,6 @@ class PaymentHolder : BaseHolder<PaymentPresent, FmtPaymentsVC> {
         mTvTime.setText(dataModel.time)
         mTvSum.setText(dataModel.sum)
         mTvState.setText(dataModel.state)
+        mView.setOnClickListener { mViewController?.showPaymentDetailScreen() }
     }
 }

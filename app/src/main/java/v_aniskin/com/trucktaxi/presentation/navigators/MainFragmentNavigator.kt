@@ -6,21 +6,20 @@ import android.support.v4.app.FragmentManager
 import android.widget.Toast
 
 import ru.terrakok.cicerone.android.SupportFragmentNavigator
-import ru.terrakok.cicerone.commands.Command
 import v_aniskin.com.trucktaxi.application.utils.Logger
 import v_aniskin.com.trucktaxi.presentation.factories.MainFragmentFactory
 
 /**
  * Created by root on 25.05.17.
  */
-class FragmentNavigator(private val mActivity: Activity, private val mFactory: MainFragmentFactory, fragmentManager: FragmentManager, containerId: Int) : SupportFragmentNavigator(fragmentManager, containerId) {
+class MainFragmentNavigator(private val mActivity: Activity, private val mFactory: MainFragmentFactory, fragmentManager: FragmentManager, containerId: Int) : SupportFragmentNavigator(fragmentManager, containerId) {
 
     companion object {
         const val EMPTY_DATA: Int = 0
     }
 
     init {
-        Logger.testLog("FragmentNavigator Create")
+        Logger.testLog("MainFragmentNavigator Create")
     }
 
     override fun createFragment(screenKey: String, data: Any): Fragment {
@@ -32,7 +31,7 @@ class FragmentNavigator(private val mActivity: Activity, private val mFactory: M
     }
 
     override fun exit() {
-        Logger.testLog("FragmentNavigator Exit")
+        Logger.testLog("MainFragmentNavigator Exit")
         mActivity.finish()
     }
 }

@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:map="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
 
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/mercury">
+        android:background="@color/mercury"
+        android:orientation="vertical">
 
         <android.support.design.widget.AppBarLayout
             android:id="@+id/ac_order_details_app_bar_layout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/ac_order_details_toolbar"
@@ -27,20 +24,22 @@
                 android:background="@color/colorAccent" />
         </android.support.design.widget.AppBarLayout>
 
+        <v_aniskin.com.trucktaxi.presentation.screens.order_detail.views.CustomMapView
+            android:id="@+id/ac_order_details_mv_map"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@color/mercury"
+            android:visibility="gone"
+            map:uiCompass="true" />
+
         <LinearLayout
-            android:id="@+id/ac_order_details_ll_routes"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:orientation="vertical"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ac_order_details_app_bar_layout">
+            android:orientation="vertical">
 
             <TextView
                 style="@style/TitleText"
-                android:drawableLeft="@drawable/ic_location"
-                android:drawablePadding="@dimen/internal_padding"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/external_padding"
@@ -52,8 +51,10 @@
                 style="@style/BoldText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/left_text_height"
+                android:paddingEnd="@dimen/external_padding"
+                android:paddingLeft="@dimen/external_padding"
                 android:paddingRight="@dimen/external_padding"
+                android:paddingStart="@dimen/external_padding"
                 android:paddingTop="@dimen/external_padding"
                 android:text="@string/from_address" />
 
@@ -62,8 +63,10 @@
                 style="@style/Text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/left_text_height"
+                android:paddingEnd="@dimen/external_padding"
+                android:paddingLeft="@dimen/external_padding"
                 android:paddingRight="@dimen/external_padding"
+                android:paddingStart="@dimen/external_padding"
                 android:paddingTop="@dimen/internal_padding"
                 android:text="@string/test_address_from" />
 
@@ -72,8 +75,10 @@
                 style="@style/Text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/left_text_height"
+                android:paddingEnd="@dimen/external_padding"
+                android:paddingLeft="@dimen/external_padding"
                 android:paddingRight="@dimen/external_padding"
+                android:paddingStart="@dimen/external_padding"
                 android:paddingTop="@dimen/internal_padding"
                 android:text="@string/test_phone_from" />
 
@@ -81,8 +86,10 @@
                 style="@style/BoldText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/left_text_height"
+                android:paddingEnd="@dimen/external_padding"
+                android:paddingLeft="@dimen/external_padding"
                 android:paddingRight="@dimen/external_padding"
+                android:paddingStart="@dimen/external_padding"
                 android:paddingTop="@dimen/external_padding"
                 android:text="@string/address_to" />
 
@@ -91,8 +98,10 @@
                 style="@style/Text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/left_text_height"
+                android:paddingEnd="@dimen/external_padding"
+                android:paddingLeft="@dimen/external_padding"
                 android:paddingRight="@dimen/external_padding"
+                android:paddingStart="@dimen/external_padding"
                 android:paddingTop="@dimen/internal_padding"
                 android:text="@string/test_address_to" />
 
@@ -101,8 +110,10 @@
                 style="@style/Text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/left_text_height"
+                android:paddingEnd="@dimen/external_padding"
+                android:paddingLeft="@dimen/external_padding"
                 android:paddingRight="@dimen/external_padding"
+                android:paddingStart="@dimen/external_padding"
                 android:paddingTop="@dimen/internal_padding"
                 android:text="@string/test_phone_to" />
 
@@ -120,19 +131,13 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ac_order_details_ll_payments"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:orientation="vertical"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ac_order_details_ll_routes">
+            android:orientation="vertical">
 
             <TextView
                 style="@style/TitleText"
-                android:drawableLeft="@drawable/ic_payments_two"
-                android:drawablePadding="@dimen/internal_padding"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/external_padding"
@@ -145,20 +150,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                app:tabIndicatorColor="@color/colorAccent"
-                app:tabSelectedTextColor="@color/colorAccent"
-                app:tabTextColor="@color/mineShaft"
-                android:paddingLeft="@dimen/left_text_height"
+                android:paddingEnd="@dimen/external_padding"
+                android:paddingLeft="@dimen/external_padding"
                 android:paddingRight="@dimen/external_padding"
-                android:paddingTop="@dimen/internal_padding"/>
+                android:paddingStart="@dimen/external_padding"
+                android:paddingTop="@dimen/internal_padding"
+                app:tabIndicatorColor="@color/colorAccent"
+                app:tabSelectedTextColor="@color/mineShaft"
+                app:tabTextColor="@color/doveGray" />
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/ac_order_details_vp_payments"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingLeft="@dimen/left_text_height"
+                android:layout_height="360dp"
+                android:paddingBottom="@dimen/internal_padding"
+                android:paddingEnd="@dimen/external_padding"
+                android:paddingLeft="@dimen/external_padding"
                 android:paddingRight="@dimen/external_padding"
-                android:paddingTop="@dimen/internal_padding"/>
+                android:paddingStart="@dimen/external_padding" />
 
             <View
                 android:layout_width="match_parent"
@@ -172,5 +181,5 @@
                 android:layout_height="5dp"
                 android:background="@color/mercury" />
         </LinearLayout>
-    </android.support.constraint.ConstraintLayout>
-</ScrollView>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

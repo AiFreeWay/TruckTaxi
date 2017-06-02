@@ -10,7 +10,7 @@ import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
 import v_aniskin.com.trucktaxi.R
-import v_aniskin.com.trucktaxi.presentation.adapters.MultyRvAdapter
+import v_aniskin.com.trucktaxi.presentation.adapters.MultyHeaderRvAdapter
 import v_aniskin.com.trucktaxi.presentation.adapters.holders.OrderHolder
 import v_aniskin.com.trucktaxi.presentation.adapters.holders.SubsidaryBinder
 import v_aniskin.com.trucktaxi.presentation.adapters.holders.SubsidaryHolder
@@ -32,7 +32,7 @@ class OrdersFragment : BaseParentFragment<FmtOrdersVC>() {
     @BindView(R.id.fmt_list_rv_data)
     lateinit var mRvData: RecyclerView
 
-    private var mAdapter: MultyRvAdapter<OrderPresent, FmtOrdersVC>? = null
+    private var mAdapterHeader: MultyHeaderRvAdapter<OrderPresent, FmtOrdersVC>? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view: View = inflater!!.inflate(R.layout.fmt_list, container, false)
@@ -49,8 +49,8 @@ class OrdersFragment : BaseParentFragment<FmtOrdersVC>() {
                 (view.findViewById(R.id.v_order_header_tv_order_text) as TextView).setText(data.desc)
             }
         }
-        mAdapter = MultyRvAdapter(SubsidaryHolder(context, R.layout.v_order_header, headerBinder), OrderHolder(context, mViewController))
-        mRvData.adapter = mAdapter
+        mAdapterHeader = MultyHeaderRvAdapter(SubsidaryHolder(context, R.layout.v_order_header, headerBinder), OrderHolder(context, mViewController))
+        mRvData.adapter = mAdapterHeader
         test()
     }
 
@@ -61,12 +61,14 @@ class OrdersFragment : BaseParentFragment<FmtOrdersVC>() {
 
     fun test() {
         val data: ArrayList<AdapterItemContainer<OrderPresent>> = ArrayList()
-        data.add(AdapterItemContainer(MultyRvAdapter.VIEW_TYPE_HEADER, OrderPresent("Текущие")))
-        data.add(AdapterItemContainer(MultyRvAdapter.VIEW_TYPE_HOLDER, OrderPresent("Заказ №0", "на 22.05.2017 в 12:00", "ул. Профсоюзная - ул. Моховая", "c 14:00 до 15:00")))
-        data.add(AdapterItemContainer(MultyRvAdapter.VIEW_TYPE_HEADER, OrderPresent("Предстоящие")))
-        data.add(AdapterItemContainer(MultyRvAdapter.VIEW_TYPE_HOLDER, OrderPresent("Заказ №1", "на 22.05.2017 в 14:00", "ул. Профсоюзная - ул. Моховая", "c 14:00 до 15:00")))
-        data.add(AdapterItemContainer(MultyRvAdapter.VIEW_TYPE_HOLDER, OrderPresent("Заказ №2", "на 22.05.2017 в 16:00", "ул. Комсомольская - ул. Набережная", "c 16:00 до 17:00")))
-        data.add(AdapterItemContainer(MultyRvAdapter.VIEW_TYPE_HOLDER, OrderPresent("Заказ №3", "на 22.05.2017 в 18:00", "ул. Демократическая - ул. Новоселова", "c 18:00 до 20:00")))
-        mAdapter?.loadData(data)
+        data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HEADER, OrderPresent("Текущие")))
+        data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HOLDER, OrderPresent("Заказ №0", "на 22.05.2017 в 12:00", "ул. Профсоюзная - ул. Моховая", "c 14:00 до 15:00", OrderPresent.STATE_CURRENT)))
+        data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HEADER, OrderPresent("Предстоящие")))
+        data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HOLDER, OrderPresent("Заказ №1", "на 22.05.2017 в 14:00", "ул. Профсоюзная - ул. Моховая", "c 14:00 до 15:00", OrderPresent.STATE_NEW)))
+        data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HOLDER, OrderPresent("Заказ №2", "на 22.05.2017 в 16:00", "ул. Комсомольская - ул. Набережная", "c 16:00 до 17:00", OrderPresent.STATE_NEW)))
+        data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HOLDER, OrderPresent("Заказ №3", "на 22.05.2017 в 18:00", "ул. Демократическая - ул. Новоселова", "c 18:00 до 20:00", OrderPresent.STATE_NEW)))
+        data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HEADER, OrderPresent("История")))
+        data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HOLDER, OrderPresent("Заказ №7", "на 22.05.2017 в 12:00", "ул. Дальняя - ул. Невская", "c 14:00 до 15:00", OrderPresent.STATE_HISTORY)))
+        mAdapterHeader?.loadData(data)
     }
 }

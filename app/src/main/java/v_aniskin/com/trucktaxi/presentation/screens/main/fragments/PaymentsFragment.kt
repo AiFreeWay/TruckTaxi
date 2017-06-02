@@ -10,7 +10,7 @@ import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
 import v_aniskin.com.trucktaxi.R
-import v_aniskin.com.trucktaxi.presentation.adapters.MultyRvAdapter
+import v_aniskin.com.trucktaxi.presentation.adapters.MultyHeaderRvAdapter
 import v_aniskin.com.trucktaxi.presentation.adapters.holders.PaymentHolder
 import v_aniskin.com.trucktaxi.presentation.adapters.holders.SubsidaryBinder
 import v_aniskin.com.trucktaxi.presentation.adapters.holders.SubsidaryHolder
@@ -32,7 +32,7 @@ class PaymentsFragment : BaseParentFragment<FmtPaymentsVC>() {
     @BindView(R.id.fmt_list_rv_data)
     lateinit var mRvData: RecyclerView
 
-    private var mAdapter: MultyRvAdapter<PaymentPresent, FmtPaymentsVC>? = null
+    private var mAdapterHeader: MultyHeaderRvAdapter<PaymentPresent, FmtPaymentsVC>? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view: View = inflater!!.inflate(R.layout.fmt_list, container, false)
@@ -50,8 +50,8 @@ class PaymentsFragment : BaseParentFragment<FmtPaymentsVC>() {
                 (view.findViewById(R.id.v_payment_header_tv_order_sum) as TextView).setText(data.desc2)
             }
         }
-        mAdapter = MultyRvAdapter(SubsidaryHolder(context, R.layout.v_payment_header, headerBinder), PaymentHolder(context, mViewController))
-        mRvData.adapter = mAdapter
+        mAdapterHeader = MultyHeaderRvAdapter(SubsidaryHolder(context, R.layout.v_payment_header, headerBinder), PaymentHolder(context, mViewController))
+        mRvData.adapter = mAdapterHeader
         test()
     }
 
@@ -62,12 +62,12 @@ class PaymentsFragment : BaseParentFragment<FmtPaymentsVC>() {
 
     fun test() {
         val data: ArrayList<AdapterItemContainer<PaymentPresent>> = ArrayList()
-        data.add(AdapterItemContainer(MultyRvAdapter.VIEW_TYPE_HEADER, PaymentPresent("Предстоящие", "Итого к выплате: 2.000 руб.")))
-        data.add(AdapterItemContainer(MultyRvAdapter.VIEW_TYPE_HOLDER, PaymentPresent("Заказ №0", "на 22.05.2017 в 12:00", "К выплате: 2.000 руб.", "Статус: в работе")))
-        data.add(AdapterItemContainer(MultyRvAdapter.VIEW_TYPE_HEADER, PaymentPresent("Совершенные", "Итого к выплачено: 10.000 руб.")))
-        data.add(AdapterItemContainer(MultyRvAdapter.VIEW_TYPE_HOLDER, PaymentPresent("Заказ №4", "на 22.05.2017 в 14:00", "К выплате: 2.500 руб.", "Статус: выполнено 21.05.2017")))
-        data.add(AdapterItemContainer(MultyRvAdapter.VIEW_TYPE_HOLDER, PaymentPresent("Заказ №5", "на 22.05.2017 в 16:00", "К выплате: 4.500 руб.", "Статус: выполнено 21.05.2017")))
-        data.add(AdapterItemContainer(MultyRvAdapter.VIEW_TYPE_HOLDER, PaymentPresent("Заказ №6", "на 22.05.2017 в 18:00", "К выплате: 4.000 руб.", "Статус: выполнено 21.05.2017")))
-        mAdapter?.loadData(data)
+        data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HEADER, PaymentPresent("Предстоящие", "Итого к выплате: 2.000 руб.")))
+        data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HOLDER, PaymentPresent("Заказ №0", "на 22.05.2017 в 12:00", "К выплате: 2.000 руб.", "Статус: в работе")))
+        data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HEADER, PaymentPresent("Совершенные", "Итого к выплачено: 10.000 руб.")))
+        data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HOLDER, PaymentPresent("Заказ №4", "на 22.05.2017 в 14:00", "К выплате: 2.500 руб.", "Статус: выполнено 21.05.2017")))
+        data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HOLDER, PaymentPresent("Заказ №5", "на 22.05.2017 в 16:00", "К выплате: 4.500 руб.", "Статус: выполнено 21.05.2017")))
+        data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HOLDER, PaymentPresent("Заказ №6", "на 22.05.2017 в 18:00", "К выплате: 4.000 руб.", "Статус: выполнено 21.05.2017")))
+        mAdapterHeader?.loadData(data)
     }
 }

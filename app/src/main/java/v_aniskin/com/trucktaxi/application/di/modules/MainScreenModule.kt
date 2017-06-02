@@ -7,10 +7,8 @@ import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
 import v_aniskin.com.trucktaxi.application.utils.Logger
 import v_aniskin.com.trucktaxi.presentation.factories.MainFragmentFactory
-import v_aniskin.com.trucktaxi.presentation.navigators.FragmentNavigator
+import v_aniskin.com.trucktaxi.presentation.navigators.MainFragmentNavigator
 import v_aniskin.com.trucktaxi.presentation.screens.main.activities.MainActivity
-import java.util.*
-import javax.inject.Named
 
 /**
  * Created by root on 25.05.17.
@@ -41,7 +39,7 @@ class MainScreenModule(private val mActivity: MainActivity) {
     }
 
     @Provides
-    fun provideFragmentNavigator(fragmentFactory: MainFragmentFactory) : FragmentNavigator {
-        return FragmentNavigator(mActivity, fragmentFactory, mActivity.supportFragmentManager, mActivity.getContainerId())
+    fun provideFragmentNavigator(fragmentFactory: MainFragmentFactory) : MainFragmentNavigator {
+        return MainFragmentNavigator(mActivity, fragmentFactory, mActivity.supportFragmentManager, mActivity.getContainerId())
     }
 }

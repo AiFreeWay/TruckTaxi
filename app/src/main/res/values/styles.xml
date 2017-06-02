@@ -41,4 +41,14 @@
         <item name="android:textColor">@color/white</item>
         <item name="colorButtonNormal">@color/colorAccent</item>
     </style>
+
+    <style name="GreenButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:textColor">@color/white</item>
+        <item name="colorButtonNormal">@color/fern</item>
+    </style>
+
+    <style name="WhiteButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:textColor">@color/mineShaft</item>
+        <item name="colorButtonNormal">@color/white</item>
+    </style>
 </resources>

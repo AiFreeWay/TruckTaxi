@@ -13,7 +13,7 @@ import v_aniskin.com.trucktaxi.presentation.screens.main.view_controllers.FmtOrd
 /**
  * Created by root on 28.05.17.
  */
-class OrderHolder : BaseHolder<OrderPresent, FmtOrdersVC> {
+class OrderHolder: BaseHolder<OrderPresent, FmtOrdersVC> {
 
     @BindView(R.id.v_order_holder_tv_order)
     lateinit var mTvOrder: TextView
@@ -41,7 +41,7 @@ class OrderHolder : BaseHolder<OrderPresent, FmtOrdersVC> {
         mTvAddress.setText(dataModel.address)
         mTvWorkTime.setText(dataModel.workTime)
         mView.setOnClickListener {
-            mViewController?.showOrderDetailScreen()
+            mViewController?.showOrderDetailScreen(dataModel?.state)
         }
     }
 }

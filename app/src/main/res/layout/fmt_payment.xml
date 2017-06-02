@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.9">
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_date"
+                style="@style/TitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/external_padding"
+                android:layout_marginLeft="@dimen/external_padding"
+                android:layout_marginRight="@dimen/external_padding"
+                android:layout_marginStart="@dimen/external_padding"
+                android:layout_marginTop="@dimen/external_padding"
+                android:text="@string/date"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_begin_work_title"
+                style="@style/BoldText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/external_padding"
+                android:layout_marginStart="@dimen/external_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/begin_work"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_date" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_begin_work"
+                style="@style/Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/internal_padding"
+                android:layout_marginStart="@dimen/internal_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/test_begin_work"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@+id/fmt_payment_tv_begin_work_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_date" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_end_works_title"
+                style="@style/BoldText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/external_padding"
+                android:layout_marginStart="@dimen/external_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/end_works"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_begin_work_title" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_end_works"
+                style="@style/Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/internal_padding"
+                android:layout_marginStart="@dimen/internal_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/test_end_work"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@+id/fmt_payment_tv_end_works_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_begin_work_title" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_all_worked_hours_title"
+                style="@style/BoldText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/external_padding"
+                android:layout_marginStart="@dimen/external_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/all_worked_hours"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_end_works_title" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_all_worked_hours"
+                style="@style/Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/internal_padding"
+                android:layout_marginStart="@dimen/internal_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/test_worked_hour"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@+id/fmt_payment_tv_all_worked_hours_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_end_works_title" />
+
+            <View
+                android:id="@+id/fmt_payment_tv_v_devider_one"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:background="@color/mercury"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_all_worked_hours_title" />
+
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_hours_count_title"
+                style="@style/TitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/external_padding"
+                android:layout_marginStart="@dimen/external_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/work_hours"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_v_devider_one" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_count_title"
+                style="@style/BoldText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/external_padding"
+                android:layout_marginStart="@dimen/external_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/count"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_hours_count_title" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_count"
+                style="@style/Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/internal_padding"
+                android:layout_marginStart="@dimen/internal_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/test_hours_count"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@+id/fmt_payment_tv_count_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_hours_count_title" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_minimal_tarif_title"
+                style="@style/BoldText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/external_padding"
+                android:layout_marginStart="@dimen/external_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/minimal_tarif"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_count_title" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_minimal_tarif"
+                style="@style/Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/internal_padding"
+                android:layout_marginStart="@dimen/internal_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/test_minimal_tarif"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@+id/fmt_payment_tv_minimal_tarif_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_count_title" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_hours_cost_title"
+                style="@style/BoldText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/external_padding"
+                android:layout_marginStart="@dimen/external_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/hours_cost"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_minimal_tarif_title" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_hours_cost"
+                style="@style/Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/internal_padding"
+                android:layout_marginStart="@dimen/internal_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/test_hours_cost"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@+id/fmt_payment_tv_hours_cost_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_minimal_tarif_title" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_mkad_pass_title"
+                style="@style/BoldText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/external_padding"
+                android:layout_marginStart="@dimen/external_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/mkad_pass"
+                android:visibility="gone"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_hours_cost_title" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_mkad_pass"
+                style="@style/Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/internal_padding"
+                android:layout_marginStart="@dimen/internal_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:visibility="gone"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@+id/fmt_payment_tv_mkad_pass_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_hours_cost_title" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_ttk_pass_title"
+                style="@style/BoldText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/external_padding"
+                android:layout_marginStart="@dimen/external_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/ttk_pass"
+                android:visibility="gone"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_mkad_pass_title" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_ttk_pass"
+                style="@style/Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/internal_padding"
+                android:layout_marginStart="@dimen/internal_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text=""
+                android:visibility="gone"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@+id/fmt_payment_tv_ttk_pass_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_mkad_pass_title" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_sum_title"
+                style="@style/BoldText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/external_padding"
+                android:layout_marginStart="@dimen/external_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/sum"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_ttk_pass_title" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_sum"
+                style="@style/Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/internal_padding"
+                android:layout_marginStart="@dimen/internal_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/test_sum"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@+id/fmt_payment_tv_sum_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_ttk_pass_title" />
+
+            <View
+                android:id="@+id/fmt_payment_tv_v_devider_two"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:background="@color/mercury"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_sum_title" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_work_km_count"
+                style="@style/TitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/external_padding"
+                android:layout_marginStart="@dimen/external_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/km_count"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_v_devider_two" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_km_count_value_title"
+                style="@style/BoldText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/external_padding"
+                android:layout_marginStart="@dimen/external_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/count"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_work_km_count" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_km_count_value"
+                style="@style/Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/internal_padding"
+                android:layout_marginStart="@dimen/internal_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/test_km_count"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@+id/fmt_payment_tv_km_count_value_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_work_km_count" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_km_cost_mkad_title"
+                style="@style/BoldText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/external_padding"
+                android:layout_marginStart="@dimen/external_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/km_count"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_km_count_value_title" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_km_cost_mkad_hours"
+                style="@style/Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/internal_padding"
+                android:layout_marginStart="@dimen/internal_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/test_km_cost"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@+id/fmt_payment_tv_km_cost_mkad_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_km_count_value_title" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_km_sum_title"
+                style="@style/BoldText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/external_padding"
+                android:layout_marginStart="@dimen/external_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/sum"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_km_cost_mkad_title" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_km_sum"
+                style="@style/Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/internal_padding"
+                android:layout_marginStart="@dimen/internal_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/test_km_sum"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@+id/fmt_payment_tv_km_sum_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_km_cost_mkad_title" />
+
+            <View
+                android:id="@+id/fmt_payment_tv_v_devider_three"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:background="@color/mercury"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_km_sum" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_payments"
+                style="@style/TitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/external_padding"
+                android:layout_marginStart="@dimen/external_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/paymentsions"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_v_devider_three" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_total_on_tarif_title"
+                style="@style/BoldText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/external_padding"
+                android:layout_marginStart="@dimen/external_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/total_on_tarif"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_payments" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_total_on_tarif"
+                style="@style/Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/internal_padding"
+                android:layout_marginStart="@dimen/internal_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/test_total_on_tarif"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@+id/fmt_payment_tv_total_on_tarif_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_payments" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_fines_title"
+                style="@style/BoldText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/external_padding"
+                android:layout_marginStart="@dimen/external_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/fines"
+                android:visibility="gone"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_total_on_tarif_title" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_fines"
+                style="@style/Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/internal_padding"
+                android:layout_marginStart="@dimen/internal_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:visibility="gone"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@+id/fmt_payment_tv_fines_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_total_on_tarif_title" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_payed_customer_title"
+                style="@style/BoldText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/external_padding"
+                android:layout_marginStart="@dimen/external_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/payed_customer"
+                android:visibility="gone"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_fines_title" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_payed_customer"
+                style="@style/Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/internal_padding"
+                android:layout_marginStart="@dimen/internal_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:visibility="gone"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@+id/fmt_payment_tv_payed_customer_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_fines_title" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_commissions_title"
+                style="@style/BoldText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/external_padding"
+                android:layout_marginStart="@dimen/external_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/commissions"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_payed_customer_title" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_commissions"
+                style="@style/Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/internal_padding"
+                android:layout_marginStart="@dimen/internal_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/test_commissions"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@+id/fmt_payment_tv_commissions_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_payed_customer_title" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_total_pay_title"
+                style="@style/BoldText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/external_padding"
+                android:layout_marginStart="@dimen/external_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/total_pay"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_commissions_title" />
+
+            <TextView
+                android:id="@+id/fmt_payment_tv_total_pay"
+                style="@style/Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/internal_padding"
+                android:layout_marginStart="@dimen/internal_padding"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:text="@string/tets_total_pay"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@+id/fmt_payment_tv_total_pay_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_commissions_title" />
+
+
+            <View
+                android:id="@+id/fmt_payment_shadow_one"
+                android:layout_width="0dp"
+                android:layout_height="3dp"
+                android:layout_marginTop="@dimen/internal_padding"
+                android:background="@drawable/drop_shadow_gray"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_tv_total_pay_title" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="5dp"
+                android:background="@color/mercury"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fmt_payment_shadow_one" />
+        </android.support.constraint.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/internal_padding"
+            android:background="@color/mercury">
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/fmt_payment_btn_agree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="0.5"
+                android:text="@string/agree"
+                android:theme="@style/YellowButton" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/fmt_payment_btn_disagree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="0.5"
+                android:text="@string/disagree"
+                android:theme="@style/WhiteButton" />
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

@@ -61,6 +61,7 @@ dependencies {
     kapt 'com.jakewharton:butterknife-compiler:8.0.1'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.balysv.materialmenu:material-menu-toolbar:1.5.4'
+    compile 'ca.barrenechea.header-decor:header-decor:0.2.8'
 
     //Networking
     compile 'com.squareup.retrofit2:retrofit:2.1.0'

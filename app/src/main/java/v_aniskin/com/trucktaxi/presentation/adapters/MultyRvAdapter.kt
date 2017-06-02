@@ -10,14 +10,14 @@ import java.util.*
 /**
  * Created by root on 28.05.17.
  */
-class MultyRvAdapter<M, VC>: RecyclerView.Adapter<BaseHolder<M, VC>> {
+open class MultyRvAdapter<M, VC>: RecyclerView.Adapter<BaseHolder<M, VC>> {
 
     companion object {
         var VIEW_TYPE_HOLDER: Int = 0;
         var VIEW_TYPE_HEADER: Int = 1;
     }
 
-    private var mData: List<AdapterItemContainer<M>>
+    private var mData: List<M>
     private var mBaseHolderTemplate: BaseHolder<M, VC>
     private var mHeaderTemplate: SubsidaryHolder<M, VC>? = null
 
@@ -33,7 +33,7 @@ class MultyRvAdapter<M, VC>: RecyclerView.Adapter<BaseHolder<M, VC>> {
     }
 
     override fun onBindViewHolder(holder: BaseHolder<M, VC>, position: Int) {
-        holder.bind(mData.get(position).data);
+        holder.bind(getItem(position))
     }
 
     override fun getItemCount(): Int {
@@ -48,11 +48,19 @@ class MultyRvAdapter<M, VC>: RecyclerView.Adapter<BaseHolder<M, VC>> {
     }
 
     override fun getItemViewType(position: Int): Int {
-        return mData.get(position).type
+        return 0
     }
 
-    fun loadData(data: List<AdapterItemContainer<M>>) {
-        mData = data;
-        notifyDataSetChanged();
+    fun loadData(data: List<M>) {
+        mData = data
+        notifyDataSetChanged()
+    }
+
+    fun getData(): List<M> {
+      return mData
+    }
+
+    fun getItem(position: Int): M {
+        return mData.get(position)
     }
 }

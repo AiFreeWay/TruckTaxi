@@ -7,12 +7,11 @@ import v_aniskin.com.trucktaxi.application.di.components.DaggerMainScreenCompone
 import v_aniskin.com.trucktaxi.application.di.components.MainScreenComponent
 import v_aniskin.com.trucktaxi.application.di.modules.MainScreenModule
 import v_aniskin.com.trucktaxi.application.utils.Logger
-import v_aniskin.com.trucktaxi.presentation.navigators.FragmentNavigator
-import v_aniskin.com.trucktaxi.presentation.navigators.FragmentNavigator.Companion.EMPTY_DATA
+import v_aniskin.com.trucktaxi.presentation.navigators.MainFragmentNavigator
+import v_aniskin.com.trucktaxi.presentation.navigators.MainFragmentNavigator.Companion.EMPTY_DATA
 import v_aniskin.com.trucktaxi.presentation.screens.common.BaseViewController
 import v_aniskin.com.trucktaxi.presentation.screens.main.activities.MainActivity
 import v_aniskin.com.trucktaxi.presentation.screens.main.fragments.AuthFragment
-import v_aniskin.com.trucktaxi.presentation.screens.order_detail.activities.MapOrderDetailActivity
 import javax.inject.Inject
 
 /**
@@ -25,7 +24,7 @@ class AcMainVC(activity: MainActivity) : BaseViewController<MainActivity>(activi
     @Inject
     lateinit var mNavigatorHolder: NavigatorHolder
     @Inject
-    lateinit var mFragmentNavigator: FragmentNavigator
+    lateinit var mMainFragmentNavigator: MainFragmentNavigator
 
     private var mMainScreenComponent: MainScreenComponent? = null
     private var isCiceroneInit = false
@@ -68,14 +67,14 @@ class AcMainVC(activity: MainActivity) : BaseViewController<MainActivity>(activi
         mLastScreenKey = key
     }
 
-    fun showNewActivityScreen() {
-        mView.startActivity(Intent(mView, MapOrderDetailActivity::class.java))
+    fun showNewActivityScreen(intent: Intent) {
+        mView.startActivity(intent)
     }
 
     private fun initCicerone() {
         if (mMainScreenComponent != null && !isCiceroneInit) {
             Logger.testLog("AcMainVC init Cicerone")
-            mNavigatorHolder.setNavigator(mFragmentNavigator)
+            mNavigatorHolder.setNavigator(mMainFragmentNavigator)
             isCiceroneInit = true
         }
     }
