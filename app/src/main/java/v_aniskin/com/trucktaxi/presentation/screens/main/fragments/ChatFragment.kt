@@ -25,7 +25,7 @@ import java.util.*
 /**
  * Created by root on 02.06.17.
  */
-class ChatFragment : BaseParentFragment<FmtChatVC>() {
+class ChatFragment: BaseParentFragment<FmtChatVC>() {
 
     companion object {
         val CHAT_FRAGMENT_ID: String = "main.chat_fragment"
@@ -73,8 +73,8 @@ class ChatFragment : BaseParentFragment<FmtChatVC>() {
 
     private fun test() {
         var list: ArrayList<ChatPresent> = ArrayList<ChatPresent>()
-        list.add(ChatPresent(0, "Привет!", "22.05.2017"))
-        list.add(ChatPresent(1, "Здравствуйте", "22.05.2017 в 18:02"))
+        list.add(ChatPresent(0, "Здравствуйте, вы готовы выйти на заказ?", "22.05.2017"))
+        list.add(ChatPresent(1, "Здравствуйте, готов.", "22.05.2017 в 18:02"))
         mAdapter?.loadData(list)
     }
 }

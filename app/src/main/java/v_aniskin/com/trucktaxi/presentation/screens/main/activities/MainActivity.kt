@@ -14,6 +14,7 @@ import v_aniskin.com.trucktaxi.presentation.screens.main.fragments.ChatFragment.
 import v_aniskin.com.trucktaxi.presentation.screens.main.fragments.HomeFragment.Companion.HOME_FRAGMENT_ID
 import v_aniskin.com.trucktaxi.presentation.screens.main.fragments.OrdersFragment.Companion.ORDERS_FRAGMENT_ID
 import v_aniskin.com.trucktaxi.presentation.screens.main.fragments.PaymentsFragment.Companion.PAYMENTS_FRAGMENT_ID
+import v_aniskin.com.trucktaxi.presentation.screens.main.fragments.SettingsFragment.Companion.SETTINGS_FRAGMENT_ID
 
 class MainActivity : BaseActivity<AcMainVC>() {
 
@@ -47,6 +48,10 @@ class MainActivity : BaseActivity<AcMainVC>() {
                 }
                 R.id.action_chat -> {
                     mViewController?.showNewScreenChain(CHAT_FRAGMENT_ID)
+                    true
+                }
+                R.id.action_settings -> {
+                    mViewController?.showNewScreenChain(SETTINGS_FRAGMENT_ID)
                     true
                 }
                 else -> false

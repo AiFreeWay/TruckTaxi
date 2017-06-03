@@ -90,4 +90,7 @@
     <string name="test_commissions">211,2 руб.</string>
     <string name="total_pay">Итого к выплате:</string>
     <string name="tets_total_pay">2508,8 руб.</string>
+    <string name="personal_data">Личные данные</string>
+    <string name="car">Автомобиль</string>
+    <string name="edit">Редактировать</string>
 </resources>
