@@ -1,0 +1,43 @@
+{
+  "project_info": {
+    "project_number": "876553377953",
+    "project_id": "firebase-trucktaxi"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:876553377953:android:64f585b69e9f649c",
+        "android_client_info": {
+          "package_name": "v_aniskin.com.trucktaxi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "876553377953-r7sntv46mrg0bcbebks51vt7aj27o0j9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBr62dptCA4Z2kjbkzjIwbSgVbqAkh2Fow"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-101391815-1"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
