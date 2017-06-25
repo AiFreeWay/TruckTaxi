@@ -1,6 +1,5 @@
 package v_aniskin.com.trucktaxi.application
 
-import android.app.Application
 import android.support.multidex.MultiDexApplication
 import v_aniskin.com.trucktaxi.application.di.components.RootComponent
 import v_aniskin.com.trucktaxi.application.di.components.DaggerRootComponent

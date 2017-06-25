@@ -83,4 +83,8 @@ class AcMainVC(activity: MainActivity) : BaseViewController<MainActivity>(activi
     fun getRouter(): Router {
         return mRouter
     }
+
+    fun getMainScreenComponent(): MainScreenComponent? {
+        return mMainScreenComponent
+    }
 }

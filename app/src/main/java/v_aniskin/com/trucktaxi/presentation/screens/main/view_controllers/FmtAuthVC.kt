@@ -1,14 +1,26 @@
 package v_aniskin.com.trucktaxi.presentation.screens.main.view_controllers
 
+import v_aniskin.com.trucktaxi.domain.executors.interfaces.AuthExecutor
 import v_aniskin.com.trucktaxi.presentation.screens.common.BaseViewController
 import v_aniskin.com.trucktaxi.presentation.screens.main.activities.MainActivity
 import v_aniskin.com.trucktaxi.presentation.screens.main.fragments.AuthFragment
 import v_aniskin.com.trucktaxi.presentation.screens.main.fragments.HomeFragment.Companion.HOME_FRAGMENT_ID
+import javax.inject.Inject
 
 /**
  * Created by root on 26.05.17.
  */
 class FmtAuthVC(fragment: AuthFragment) : BaseViewController<AuthFragment>(fragment) {
+
+    @Inject
+    lateinit var mAuthExecutor: AuthExecutor
+
+    override fun inject() {
+        super.inject()
+        getAcMainVC()
+                ?.getMainScreenComponent()
+                ?.inject(this)
+    }
 
     fun getAcMainVC(): AcMainVC? {
         return getView()
