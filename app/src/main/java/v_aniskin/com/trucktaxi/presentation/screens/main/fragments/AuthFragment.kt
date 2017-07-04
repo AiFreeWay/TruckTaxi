@@ -28,6 +28,8 @@ class AuthFragment: BaseParentFragment<FmtAuthVC>() {
     lateinit var mSwtShowPassword: SwitchCompat
     @BindView(R.id.fmt_auth_btn_enter)
     lateinit var mBtnEnter: AppCompatButton
+    @BindView(R.id.fmt_auth_et_id)
+    lateinit var mEtId: EditText
     @BindView(R.id.fmt_auth_et_password)
     lateinit var mEtPassword: EditText
 
@@ -50,7 +52,8 @@ class AuthFragment: BaseParentFragment<FmtAuthVC>() {
             mEtPassword.setSelection(mEtPassword.getText().length)
         }
 
-        mBtnEnter.setOnClickListener { mViewController?.auth() }
+        mBtnEnter.setOnClickListener { mViewController?.auth(mEtId.text.toString(), mEtPassword.text.toString()) }
+        mViewController?.start()
     }
 
     override fun onResume() {

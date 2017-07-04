@@ -93,4 +93,5 @@
     <string name="personal_data">Личные данные</string>
     <string name="car">Автомобиль</string>
     <string name="edit">Редактировать</string>
+    <string name="load_on_error_data">При загрузке данных произошла ошибка</string>
 </resources>

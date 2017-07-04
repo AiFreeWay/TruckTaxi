@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:orientation="vertical"
     tools:context="v_aniskin.com.trucktaxi.presentation.screens.main.activities.MainActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/ac_map_order_detail_app_bar_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/ac_main_toolbar"
@@ -24,17 +25,27 @@
         android:id="@+id/ac_main_fl_fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.9"
-        android:background="@color/white" />
+        android:background="@color/white"
+        android:layout_below="@+id/ac_map_order_detail_app_bar_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/ac_main_bottom_navigation" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/ac_main_bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="?android:actionBarSize"
-        android:layout_weight="0.1"
         android:background="@color/black"
         app:itemBackground="@color/black"
         app:itemIconTint="@color/colorAccent"
         app:itemTextColor="@color/white"
-        app:menu="@menu/bottom_navigation_menu" />
-</LinearLayout>
+        app:menu="@menu/bottom_navigation_menu"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+
+    <ProgressBar
+        android:id="@+id/ac_main_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+</RelativeLayout>

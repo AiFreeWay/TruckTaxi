@@ -1,13 +1,15 @@
 package v_aniskin.com.trucktaxi.data.network_client
 
-import v_aniskin.com.trucktaxi.data.network_client.responses.ApiController
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.Retrofit
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import com.google.gson.GsonBuilder
+import rx.Observable
 import v_aniskin.com.trucktaxi.application.utils.Logger
+import v_aniskin.com.trucktaxi.data.network_client.requests.AuthRequest
+import v_aniskin.com.trucktaxi.data.network_client.responses.AuthResponse
 
 
 /**
@@ -16,7 +18,7 @@ import v_aniskin.com.trucktaxi.application.utils.Logger
 
 class NetworkClient {
 
-    private val API_URL = "http://test.com"
+    private val API_URL = "http://app.tg-group.ru/"
 
     private var mApiController: ApiController
 
@@ -38,5 +40,9 @@ class NetworkClient {
                 .client(httpClient.build())
                 .build()
         mApiController = retrofit.create(ApiController::class.java)
+    }
+
+    fun auth(authRequest: AuthRequest): Observable<AuthResponse> {
+        return  mApiController.auth(authRequest)
     }
 }

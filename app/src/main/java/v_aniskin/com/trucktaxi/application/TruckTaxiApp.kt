@@ -1,6 +1,7 @@
 package v_aniskin.com.trucktaxi.application
 
 import android.support.multidex.MultiDexApplication
+import com.orhanobut.hawk.Hawk
 import v_aniskin.com.trucktaxi.application.di.components.RootComponent
 import v_aniskin.com.trucktaxi.application.di.components.DaggerRootComponent
 import v_aniskin.com.trucktaxi.application.di.modules.RootModule
@@ -16,6 +17,7 @@ class TruckTaxiApp : MultiDexApplication() {
 
     override fun onCreate() {
         super.onCreate()
+        Hawk.init(this).build();
         mRootComponent = DaggerRootComponent.builder()
                 .rootModule(RootModule(this))
                 .build()

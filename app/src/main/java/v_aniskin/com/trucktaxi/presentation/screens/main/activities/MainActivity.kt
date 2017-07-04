@@ -4,6 +4,8 @@ package v_aniskin.com.trucktaxi.presentation.screens.main.activities
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.widget.Toolbar
+import android.view.View
+import android.widget.ProgressBar
 import butterknife.BindView
 import butterknife.ButterKnife
 import v_aniskin.com.trucktaxi.presentation.screens.common.BaseActivity
@@ -26,6 +28,8 @@ class MainActivity : BaseActivity<AcMainVC>() {
     lateinit var mToolbar: Toolbar
     @BindView(R.id.ac_main_bottom_navigation)
     lateinit var mBottomNavigation: BottomNavigationView
+    @BindView(R.id.ac_main_progress)
+    lateinit var mProgress: ProgressBar
 
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,6 +97,14 @@ class MainActivity : BaseActivity<AcMainVC>() {
     override fun  onPause() {
         super.onPause()
         mViewController?.pause()
+    }
+
+    fun startProgress() {
+        mProgress.visibility = View.VISIBLE
+    }
+
+    fun stopProgress() {
+        mProgress.visibility = View.GONE
     }
 
     //Getters and Setters

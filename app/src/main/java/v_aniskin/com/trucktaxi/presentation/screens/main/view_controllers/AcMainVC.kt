@@ -1,6 +1,7 @@
 package v_aniskin.com.trucktaxi.presentation.screens.main.view_controllers
 
 import android.content.Intent
+import android.widget.Toast
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
 import v_aniskin.com.trucktaxi.application.di.components.DaggerMainScreenComponent
@@ -69,6 +70,18 @@ class AcMainVC(activity: MainActivity) : BaseViewController<MainActivity>(activi
 
     fun showNewActivityScreen(intent: Intent) {
         mView.startActivity(intent)
+    }
+
+    fun showToast(text: String) {
+        Toast.makeText(mView, text, Toast.LENGTH_SHORT).show()
+    }
+
+    fun startProgressBar() {
+        mView.startProgress()
+    }
+
+    fun stopProgressBar() {
+        mView.stopProgress()
     }
 
     private fun initCicerone() {
