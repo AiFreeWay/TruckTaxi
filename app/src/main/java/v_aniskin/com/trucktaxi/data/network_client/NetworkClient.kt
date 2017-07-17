@@ -43,6 +43,6 @@ class NetworkClient {
     }
 
     fun auth(authRequest: AuthRequest): Observable<AuthResponse> {
-        return  mApiController.auth(authRequest)
+        return  mApiController.auth(authRequest.userEmail, authRequest.userPassword, authRequest.userType)
     }
 }

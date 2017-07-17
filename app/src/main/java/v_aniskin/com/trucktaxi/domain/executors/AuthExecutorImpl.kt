@@ -27,11 +27,7 @@ class AuthExecutorImpl @Inject constructor(var mRepository: Repository) : AuthEx
         return mRepository.auth(UsersMapper.mapAuth(id, password))
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map({authResponse ->
-                    val auth = UsersMapper.mapAuth(authResponse)
-                    if (auth.status.equals(ResponseMonade.SUCCESS))
-                        mRepository.putToken(auth.token!!)
-                    auth})
+                .map({response -> onAuth(response)})
     }
 
     override fun isHaveLocalToken(): Observable<Boolean> {
@@ -41,5 +37,12 @@ class AuthExecutorImpl @Inject constructor(var mRepository: Repository) : AuthEx
 
     override fun logout() {
         mRepository.putToken("")
+    }
+
+    private fun onAuth(authResponse: AuthResponse) : Auth {
+        val auth = UsersMapper.mapAuth(authResponse)
+        if (auth.status.equals(ResponseMonade.SUCCESS))
+            mRepository.putToken(auth.token!!)
+        return auth
     }
 }

@@ -2,6 +2,7 @@ package v_aniskin.com.trucktaxi.presentation.screens.main.view_controllers
 
 import v_aniskin.com.trucktaxi.R
 import v_aniskin.com.trucktaxi.application.utils.Logger
+import v_aniskin.com.trucktaxi.application.utils.NetworkErrors
 import v_aniskin.com.trucktaxi.domain.executors.interfaces.AuthExecutor
 import v_aniskin.com.trucktaxi.domain.models.ResponseMonade
 import v_aniskin.com.trucktaxi.presentation.screens.common.BaseViewController
@@ -40,6 +41,10 @@ class FmtAuthVC(fragment: AuthFragment) : BaseViewController<AuthFragment>(fragm
     }
 
     fun auth(id: String, password: String) {
+        if (id == "" || password == "") {
+            showToast(getView()!!.getString(R.string.please_fill_fields))
+            return
+        }
         mAuthExecutor.auth(id, password)
                 .doOnSubscribe { startProgressBar() }
                 .doOnCompleted { stopProgressBar() }
@@ -50,8 +55,7 @@ class FmtAuthVC(fragment: AuthFragment) : BaseViewController<AuthFragment>(fragm
                     if (auth.status.equals(ResponseMonade.SUCCESS))
                         openMainScreen()
                     else
-                        showToast(auth.error!!) })
-
+                        showToast(NetworkErrors.getErrorMessageByType(mView.context, auth.error)) })
     }
 
     private fun startProgressBar() {
@@ -66,11 +70,11 @@ class FmtAuthVC(fragment: AuthFragment) : BaseViewController<AuthFragment>(fragm
 
     private fun openMainScreen() {
         getAcMainVC()
-                ?.showNewScreenChain(HOME_FRAGMENT_ID)
+                ?.replaceFragmentScreen(HOME_FRAGMENT_ID)
     }
 
-    private fun showToast(error: String) {
+    private fun showToast(message: String) {
         getAcMainVC()
-                ?.showToast(error)
+                ?.showToast(message)
     }
 }

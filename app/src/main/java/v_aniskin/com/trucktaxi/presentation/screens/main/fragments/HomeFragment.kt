@@ -10,6 +10,7 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import de.hdodenhof.circleimageview.CircleImageView
 import v_aniskin.com.trucktaxi.R
+import v_aniskin.com.trucktaxi.application.utils.Logger
 import v_aniskin.com.trucktaxi.presentation.adapters.binders.NotificationBinder
 import v_aniskin.com.trucktaxi.presentation.models.NotificationPresent
 import v_aniskin.com.trucktaxi.presentation.screens.common.BaseActivity
@@ -38,6 +39,7 @@ class HomeFragment : BaseParentFragment<FmtHomeVC>() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        Logger.testLog("HOME CREATE")
         mViewController = FmtHomeVC(this)
         test()
     }

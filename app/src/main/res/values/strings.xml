@@ -94,4 +94,6 @@
     <string name="car">Автомобиль</string>
     <string name="edit">Редактировать</string>
     <string name="load_on_error_data">При загрузке данных произошла ошибка</string>
+    <string name="bad_auth">Ошибка авторизации, проверьте логин или пароль.</string>
+    <string name="please_fill_fields">Заполните поля.</string>
 </resources>

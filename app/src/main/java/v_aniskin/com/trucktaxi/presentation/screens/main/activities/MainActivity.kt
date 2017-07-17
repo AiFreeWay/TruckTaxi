@@ -20,10 +20,6 @@ import v_aniskin.com.trucktaxi.presentation.screens.main.fragments.SettingsFragm
 
 class MainActivity : BaseActivity<AcMainVC>() {
 
-    companion object {
-        private const val LAST_SCREEN_KEY: String = "lastscreenkey"
-    }
-
     @BindView(R.id.ac_main_toolbar)
     lateinit var mToolbar: Toolbar
     @BindView(R.id.ac_main_bottom_navigation)
@@ -39,45 +35,30 @@ class MainActivity : BaseActivity<AcMainVC>() {
         mBottomNavigation.setOnNavigationItemSelectedListener { item ->
             when(item.itemId) {
                 R.id.action_home -> {
-                    mViewController?.showNewScreenChain(HOME_FRAGMENT_ID)
+                    mViewController?.replaceFragmentScreen(HOME_FRAGMENT_ID)
                     true
                 }
                 R.id.action_orders -> {
-                    mViewController?.showNewScreenChain(ORDERS_FRAGMENT_ID)
+                    mViewController?.replaceFragmentScreen(ORDERS_FRAGMENT_ID)
                     true
                 }
                 R.id.action_payments -> {
-                    mViewController?.showNewScreenChain(PAYMENTS_FRAGMENT_ID)
+                    mViewController?.replaceFragmentScreen(PAYMENTS_FRAGMENT_ID)
                     true
                 }
                 R.id.action_chat -> {
-                    mViewController?.showNewScreenChain(CHAT_FRAGMENT_ID)
+                    mViewController?.replaceFragmentScreen(CHAT_FRAGMENT_ID)
                     true
                 }
                 R.id.action_settings -> {
-                    mViewController?.showNewScreenChain(SETTINGS_FRAGMENT_ID)
+                    mViewController?.replaceFragmentScreen(SETTINGS_FRAGMENT_ID)
                     true
                 }
                 else -> false
             }
         }
-        mViewController?.start()
-    }
-
-    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
-        super.onRestoreInstanceState(savedInstanceState)
-        val lastStringKey: String? = savedInstanceState?.getString(LAST_SCREEN_KEY)
-        if (lastStringKey != null) {
-            mViewController?.showNewScreenChain(lastStringKey)
-            mBottomNavigation.menu.getItem(MainFragmentFactory.getMenuPositionByScreenKey(lastStringKey)).setChecked(true)
-        }
-    }
-
-    override fun onSaveInstanceState(state: Bundle?) {
-        super.onSaveInstanceState(state)
-        val lastStringKey: String? = mViewController?.getLastScreenKey()
-        if (lastStringKey != null)
-            state?.putString(LAST_SCREEN_KEY, lastStringKey)
+        if (savedInstanceState == null)
+            mViewController?.start()
     }
 
     override fun getToolbar(): Toolbar {
