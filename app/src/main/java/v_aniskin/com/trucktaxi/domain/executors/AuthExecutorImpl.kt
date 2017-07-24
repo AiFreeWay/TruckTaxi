@@ -6,6 +6,7 @@ import rx.schedulers.Schedulers
 import v_aniskin.com.trucktaxi.application.di.scopes.PerMainScreen
 import v_aniskin.com.trucktaxi.application.utils.Logger
 import v_aniskin.com.trucktaxi.data.network_client.responses.AuthResponse
+import v_aniskin.com.trucktaxi.data.network_client.responses.BaseResponse
 import v_aniskin.com.trucktaxi.domain.executors.interfaces.AuthExecutor
 import v_aniskin.com.trucktaxi.domain.mappers.UsersMapper
 import v_aniskin.com.trucktaxi.domain.models.Auth
@@ -30,9 +31,15 @@ class AuthExecutorImpl @Inject constructor(var mRepository: Repository) : AuthEx
                 .map({response -> onAuth(response)})
     }
 
-    override fun isHaveLocalToken(): Observable<Boolean> {
+    override fun isHaveLocalToken(): Observable<ResponseMonade> {
         val token = mRepository.getToken()
-        return Observable.just(!token.isEmpty())
+        if (!token.isEmpty())
+            return updateToken()
+                    .map { request ->
+                        if (request.status.equals(ResponseMonade.ERROR))
+                            mRepository.removeToken()
+                        ResponseMonade(request.error, request.status) }
+        return Observable.just(null)
     }
 
     override fun logout() {
@@ -44,5 +51,11 @@ class AuthExecutorImpl @Inject constructor(var mRepository: Repository) : AuthEx
         if (auth.status.equals(ResponseMonade.SUCCESS))
             mRepository.putToken(auth.token!!)
         return auth
+    }
+
+    private fun updateToken() : Observable<BaseResponse> {
+        return mRepository.updateToken()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 }

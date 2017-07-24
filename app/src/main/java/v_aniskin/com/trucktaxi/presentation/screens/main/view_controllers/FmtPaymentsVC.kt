@@ -12,8 +12,7 @@ import v_aniskin.com.trucktaxi.presentation.screens.payment_detail.activities.Pa
 class FmtPaymentsVC(fragment: PaymentsFragment): BaseViewController<PaymentsFragment>(fragment) {
 
     fun getAcMainVC(): AcMainVC? {
-        return getView()
-                ?.getBaseActivity<MainActivity>()
+        return getView()?.getBaseActivity<MainActivity>()
                 ?.getViewController()
     }
 

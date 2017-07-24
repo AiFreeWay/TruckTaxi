@@ -35,7 +35,6 @@
             android:layout_marginRight="@dimen/internal_padding"
             android:layout_marginStart="@dimen/external_padding"
             android:layout_marginTop="@dimen/external_padding"
-            android:text="@string/test_name"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/fmt_home_iv_avatar"
             app:layout_constraintTop_toTopOf="parent" />
@@ -68,7 +67,6 @@
             android:layout_marginRight="@dimen/internal_padding"
             android:layout_marginStart="@dimen/external_padding"
             android:layout_marginTop="@dimen/internal_padding"
-            android:text="@string/test_rating"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/fmt_home_iv_avatar"
             app:layout_constraintTop_toBottomOf="@+id/fmt_home_rb_rate" />
@@ -83,7 +81,6 @@
             android:layout_marginRight="@dimen/internal_padding"
             android:layout_marginStart="@dimen/external_padding"
             android:layout_marginTop="@dimen/internal_padding"
-            android:text="@string/test_date_of_execution"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/fmt_home_iv_avatar"
             app:layout_constraintTop_toBottomOf="@+id/fmt_home_tv_rate" />
@@ -128,8 +125,8 @@
                 android:gravity="center"
                 android:text="@string/number"
                 android:textAllCaps="true" />
-
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/fmt_home_ll_car_description"
             android:layout_width="0dp"
@@ -144,28 +141,28 @@
             app:layout_constraintTop_toBottomOf="@+id/fmt_home_ll_car_description_titles">
 
             <TextView
+                android:id="@+id/fmt_home_tv_car_model"
                 style="@style/Text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.3"
-                android:gravity="center"
-                android:text="Hundai Solaris" />
+                android:gravity="center" />
 
             <TextView
+                android:id="@+id/fmt_home_tv_car_type"
                 style="@style/Text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.3"
-                android:gravity="center"
-                android:text="Sedan" />
+                android:gravity="center" />
 
             <TextView
+                android:id="@+id/fmt_home_tv_car_number"
                 style="@style/Text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.3"
-                android:gravity="center"
-                android:text="b555mk" />
+                android:gravity="center" />
         </LinearLayout>
 
         <View
@@ -223,7 +220,6 @@
             android:layout_marginRight="@dimen/external_padding"
             android:layout_marginStart="@dimen/external_padding"
             android:layout_marginTop="@dimen/external_padding"
-            android:text="@string/test_notifications_titile"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fmt_home_v_devider_two" />
@@ -242,13 +238,14 @@
             android:id="@+id/fmt_home_ll_notifications"
             style="@style/BoldText"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/mercury"
             android:checked="false"
             android:orientation="vertical"
             android:text="@string/working"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fmt_home_v_devider_three" />
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

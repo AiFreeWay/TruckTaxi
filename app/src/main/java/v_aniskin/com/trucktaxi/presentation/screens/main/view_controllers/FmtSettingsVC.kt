@@ -33,8 +33,7 @@ class FmtSettingsVC(fragment: SettingsFragment) : BaseViewController<SettingsFra
     }
 
     fun getAcMainVC(): AcMainVC? {
-        return getView()
-                ?.getBaseActivity<MainActivity>()
+        return getView()?.getBaseActivity<MainActivity>()
                 ?.getViewController()
     }
 }

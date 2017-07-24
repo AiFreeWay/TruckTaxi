@@ -10,8 +10,7 @@ import v_aniskin.com.trucktaxi.presentation.screens.main.fragments.ChatFragment
 class FmtChatVC(fragment: ChatFragment) : BaseViewController<ChatFragment>(fragment) {
 
     fun getAcMainVC(): AcMainVC? {
-        return getView()
-                ?.getBaseActivity<MainActivity>()
+        return getView()?.getBaseActivity<MainActivity>()
                 ?.getViewController()
     }
 }

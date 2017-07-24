@@ -4,15 +4,20 @@ import android.content.Intent
 import android.widget.Toast
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
+import v_aniskin.com.trucktaxi.R
 import v_aniskin.com.trucktaxi.application.di.components.DaggerMainScreenComponent
 import v_aniskin.com.trucktaxi.application.di.components.MainScreenComponent
 import v_aniskin.com.trucktaxi.application.di.modules.MainScreenModule
 import v_aniskin.com.trucktaxi.application.utils.Logger
+import v_aniskin.com.trucktaxi.application.utils.NetworkErrors
+import v_aniskin.com.trucktaxi.domain.executors.interfaces.AuthExecutor
+import v_aniskin.com.trucktaxi.domain.models.ResponseMonade
 import v_aniskin.com.trucktaxi.presentation.navigators.MainFragmentNavigator
 import v_aniskin.com.trucktaxi.presentation.navigators.MainFragmentNavigator.Companion.EMPTY_DATA
 import v_aniskin.com.trucktaxi.presentation.screens.common.BaseViewController
 import v_aniskin.com.trucktaxi.presentation.screens.main.activities.MainActivity
 import v_aniskin.com.trucktaxi.presentation.screens.main.fragments.AuthFragment
+import v_aniskin.com.trucktaxi.presentation.screens.main.fragments.HomeFragment
 import javax.inject.Inject
 
 /**
@@ -26,6 +31,8 @@ class AcMainVC(activity: MainActivity) : BaseViewController<MainActivity>(activi
     lateinit var mNavigatorHolder: NavigatorHolder
     @Inject
     lateinit var mMainFragmentNavigator: MainFragmentNavigator
+    @Inject
+    lateinit var mAuthExecutor: AuthExecutor
 
     private var mMainScreenComponent: MainScreenComponent? = null
     private var isCiceroneInit = false
@@ -36,7 +43,11 @@ class AcMainVC(activity: MainActivity) : BaseViewController<MainActivity>(activi
     }
 
     override fun start() {
-        replaceFragmentScreen(AuthFragment.AUTH_FRAGMENT_ID)
+        mAuthExecutor.isHaveLocalToken()
+                .doOnSubscribe { startProgressBar() }
+                .doOnCompleted { stopProgressBar() }
+                .subscribe({responseMonade -> doCheckToken(responseMonade)},
+                        {error -> doOnError(error)})
     }
 
     override fun resume() {
@@ -86,7 +97,23 @@ class AcMainVC(activity: MainActivity) : BaseViewController<MainActivity>(activi
         }
     }
 
-    //Getters and Setters
+    private fun doCheckToken(responseMonade: ResponseMonade?) {
+        if (responseMonade != null && responseMonade.status.equals(ResponseMonade.SUCCESS)) {
+            replaceFragmentScreen(HomeFragment.HOME_FRAGMENT_ID)
+        } else if (responseMonade != null) {
+            replaceFragmentScreen(AuthFragment.AUTH_FRAGMENT_ID)
+            showToast(NetworkErrors.getErrorMessageByType(mView, responseMonade!!.error))
+        } else {
+            replaceFragmentScreen(AuthFragment.AUTH_FRAGMENT_ID)
+        }
+    }
+
+    private fun doOnError(error: Throwable) {
+        showToast(mView.getString(R.string.load_on_error_data))
+        stopProgressBar()
+        Logger.logError(error)
+    }
+
     fun getRouter(): Router {
         return mRouter
     }

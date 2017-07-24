@@ -82,6 +82,7 @@ dependencies {
 
     //Utils
     compile 'com.orhanobut:hawk:2.0.1'
+    compile 'com.squareup.picasso:picasso:2.5.2'
 
     //Test
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {

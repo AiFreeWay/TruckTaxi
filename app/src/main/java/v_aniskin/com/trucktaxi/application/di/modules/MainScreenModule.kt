@@ -7,7 +7,11 @@ import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
 import v_aniskin.com.trucktaxi.application.utils.Logger
 import v_aniskin.com.trucktaxi.domain.executors.AuthExecutorImpl
+import v_aniskin.com.trucktaxi.domain.executors.NotificationExecutorImpl
+import v_aniskin.com.trucktaxi.domain.executors.ProfileExecutorImpl
 import v_aniskin.com.trucktaxi.domain.executors.interfaces.AuthExecutor
+import v_aniskin.com.trucktaxi.domain.executors.interfaces.NotificationExecutor
+import v_aniskin.com.trucktaxi.domain.executors.interfaces.ProfileExecutor
 import v_aniskin.com.trucktaxi.presentation.factories.MainFragmentFactory
 import v_aniskin.com.trucktaxi.presentation.navigators.MainFragmentNavigator
 import v_aniskin.com.trucktaxi.presentation.screens.main.activities.MainActivity
@@ -48,5 +52,15 @@ class MainScreenModule(private val mActivity: MainActivity) {
     @Provides
     fun provideAuthExecutor(authExecutor: AuthExecutorImpl) : AuthExecutor {
         return authExecutor
+    }
+
+    @Provides
+    fun provideProfileExecutor(profileExecutor: ProfileExecutorImpl) : ProfileExecutor {
+        return profileExecutor
+    }
+
+    @Provides
+    fun provideNotificationExecutor(notificationExecutor: NotificationExecutorImpl) : NotificationExecutor {
+        return notificationExecutor
     }
 }

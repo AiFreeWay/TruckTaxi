@@ -16,7 +16,7 @@ class HawkController {
         return Hawk.get(key, "")
     }
 
-    fun putString(key: String, data: String) {
+    fun putString(key: String, data: String?) {
         Hawk.put(key, data)
     }
 }

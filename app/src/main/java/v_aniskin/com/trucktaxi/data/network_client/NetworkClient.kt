@@ -9,7 +9,15 @@ import com.google.gson.GsonBuilder
 import rx.Observable
 import v_aniskin.com.trucktaxi.application.utils.Logger
 import v_aniskin.com.trucktaxi.data.network_client.requests.AuthRequest
+import v_aniskin.com.trucktaxi.data.network_client.requests.CheckTokenRequest
+import v_aniskin.com.trucktaxi.data.network_client.requests.NotificationRequest
+import v_aniskin.com.trucktaxi.data.network_client.requests.ProfileRequest
 import v_aniskin.com.trucktaxi.data.network_client.responses.AuthResponse
+import v_aniskin.com.trucktaxi.data.network_client.responses.BaseResponse
+import v_aniskin.com.trucktaxi.data.network_client.responses.NotificationResponse
+import v_aniskin.com.trucktaxi.data.network_client.responses.ProfileResponse
+import v_aniskin.com.trucktaxi.domain.models.NotificationDomain
+import java.util.*
 
 
 /**
@@ -44,5 +52,19 @@ class NetworkClient {
 
     fun auth(authRequest: AuthRequest): Observable<AuthResponse> {
         return  mApiController.auth(authRequest.userEmail, authRequest.userPassword, authRequest.userType)
+    }
+
+    fun checkToken(checkTokenRequest: CheckTokenRequest): Observable<BaseResponse> {
+        return  mApiController.checkToken(checkTokenRequest.token)
+    }
+
+    fun getProfile(profileRequest: ProfileRequest): Observable<ProfileResponse> {
+        return  mApiController.getProfile(profileRequest.token)
+    }
+
+    fun getNotifications(notificationRequest: NotificationRequest): Observable<NotificationResponse> {
+        val response: NotificationResponse = NotificationResponse()
+        response.status = "ok"
+        return Observable.just(response)
     }
 }

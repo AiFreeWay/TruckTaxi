@@ -10,8 +10,7 @@ import v_aniskin.com.trucktaxi.presentation.screens.main.fragments.CarSettingsFr
 class FmtCarSettingsVC(fragment: CarSettingsFragment) : BaseViewController<CarSettingsFragment>(fragment) {
 
     fun getAcMainVC(): AcMainVC? {
-        return getView()
-                ?.getBaseActivity<MainActivity>()
+        return getView()?.getBaseActivity<MainActivity>()
                 ?.getViewController()
     }
 }

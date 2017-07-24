@@ -23,11 +23,11 @@
     <string name="payments">Платежи</string>
     <string name="chat">Чат</string>
     <string name="settings">Настройки</string>
-    <string name="test_rating">Рэйтинг 34</string>
+    <string name="rating">Рэйтинг</string>
     <string name="test_name">Кузнецов Ф.Г.</string>
-    <string name="test_date_of_execution">Оформлен с 22.05.2017</string>
+    <string name="date_of_execution">Оформлен с</string>
     <string name="working">Работаю</string>
-    <string name="test_notifications_titile">Новых уведомлений: 3</string>
+    <string name="notifications_title">Новых уведомлений:</string>
     <string name="model">Модель</string>
     <string name="number">Номер</string>
     <string name="body_type">Тип кузова</string>
@@ -96,4 +96,7 @@
     <string name="load_on_error_data">При загрузке данных произошла ошибка</string>
     <string name="bad_auth">Ошибка авторизации, проверьте логин или пароль.</string>
     <string name="please_fill_fields">Заполните поля.</string>
+    <string name="invalid_token">Сессия потеряна, требуется переавторизация.</string>
+    <string name="no_new_notifcations">Нет новых уведомлений</string>
+    <string name="not_define">Не указано</string>
 </resources>

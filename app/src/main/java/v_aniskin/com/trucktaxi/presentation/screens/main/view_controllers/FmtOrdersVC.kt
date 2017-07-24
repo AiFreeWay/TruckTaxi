@@ -15,8 +15,7 @@ import v_aniskin.com.trucktaxi.presentation.screens.order_detail.activities.Orde
 class FmtOrdersVC(fragment: OrdersFragment): BaseViewController<OrdersFragment>(fragment) {
 
     fun getAcMainVC(): AcMainVC? {
-        return getView()
-                ?.getBaseActivity<MainActivity>()
+        return getView()?.getBaseActivity<MainActivity>()
                 ?.getViewController()
     }
 
