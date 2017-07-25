@@ -10,6 +10,7 @@ class OrderPresent {
         const val STATE_CURRENT: Int = 0
         const val STATE_NEW: Int = 1
         const val STATE_HISTORY: Int = 2
+        const val STATE_HEADER: Int = 3
     }
 
     var order: String? = null

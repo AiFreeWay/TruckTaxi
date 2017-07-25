@@ -4,7 +4,7 @@ package v_aniskin.com.trucktaxi.data.network_client.responses
  * Created by root on 22.07.17.
  */
 
-class ProfileResponse : BaseResponse() {
+class ProfileResponse: BaseResponse() {
 
     var myFirstName: String = ""
     var myLastName: String = ""

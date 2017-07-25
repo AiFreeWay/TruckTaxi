@@ -3,13 +3,12 @@ package v_aniskin.com.trucktaxi.presentation.screens.main.view_controllers
 import v_aniskin.com.trucktaxi.R
 import v_aniskin.com.trucktaxi.application.utils.Logger
 import v_aniskin.com.trucktaxi.application.utils.NetworkErrors
-import v_aniskin.com.trucktaxi.domain.executors.interfaces.NotificationExecutor
+import v_aniskin.com.trucktaxi.domain.executors.interfaces.NotificationsExecutor
 import v_aniskin.com.trucktaxi.domain.executors.interfaces.ProfileExecutor
-import v_aniskin.com.trucktaxi.domain.models.Auth
 import v_aniskin.com.trucktaxi.domain.models.Profile
 import v_aniskin.com.trucktaxi.domain.models.ResponseMonade
+import v_aniskin.com.trucktaxi.presentation.models.ModelsContainer
 import v_aniskin.com.trucktaxi.presentation.models.NotificationPresent
-import v_aniskin.com.trucktaxi.presentation.models.NotificationsContainer
 import v_aniskin.com.trucktaxi.presentation.screens.common.BaseViewController
 import v_aniskin.com.trucktaxi.presentation.screens.main.activities.MainActivity
 import v_aniskin.com.trucktaxi.presentation.screens.main.fragments.HomeFragment
@@ -23,7 +22,7 @@ class FmtHomeVC(fragment: HomeFragment) : BaseViewController<HomeFragment>(fragm
     @Inject
     lateinit var mProfileExecutor: ProfileExecutor
     @Inject
-    lateinit var mNotificationExecutor: NotificationExecutor
+    lateinit var mNotificationsExecutor: NotificationsExecutor
 
     override fun inject() {
         super.inject()
@@ -51,7 +50,7 @@ class FmtHomeVC(fragment: HomeFragment) : BaseViewController<HomeFragment>(fragm
     }
 
     private fun getNotifications() {
-        mNotificationExecutor.getNotifications()
+        mNotificationsExecutor.getNotifications()
                 .doOnSubscribe { startProgressBar() }
                 .doOnCompleted { stopProgressBar() }
                 .subscribe({profile -> doOnGetNotificationse(profile)},
@@ -65,7 +64,7 @@ class FmtHomeVC(fragment: HomeFragment) : BaseViewController<HomeFragment>(fragm
             showToast(NetworkErrors.getErrorMessageByType(mView.context, profile.error))
     }
 
-    private fun doOnGetNotificationse(notifications: NotificationsContainer) {
+    private fun doOnGetNotificationse(notifications: ModelsContainer<NotificationPresent>) {
         if (notifications.status.equals(ResponseMonade.SUCCESS))
             mView.loadNotifications(notifications.mData)
         else

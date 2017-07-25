@@ -51,7 +51,6 @@ class OrdersFragment : BaseParentFragment<FmtOrdersVC>() {
         }
         mAdapterHeader = MultyHeaderRvAdapter(SubsidaryHolder(context, R.layout.v_order_header, headerBinder), OrderHolder(context, mViewController))
         mRvData.adapter = mAdapterHeader
-        test()
     }
 
     override fun onResume() {
@@ -59,16 +58,14 @@ class OrdersFragment : BaseParentFragment<FmtOrdersVC>() {
         getToolbar().setTitle(getString(R.string.orders))
     }
 
-    fun test() {
+    fun loadOrders(orders: List<OrderPresent>) {
         val data: ArrayList<AdapterItemContainer<OrderPresent>> = ArrayList()
-        data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HEADER, OrderPresent("Текущие")))
-        data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HOLDER, OrderPresent("Заказ №0", "на 22.05.2017 в 12:00", "ул. Профсоюзная - ул. Моховая", "c 14:00 до 15:00", OrderPresent.STATE_CURRENT)))
-        data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HEADER, OrderPresent("Предстоящие")))
-        data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HOLDER, OrderPresent("Заказ №1", "на 22.05.2017 в 14:00", "ул. Профсоюзная - ул. Моховая", "c 14:00 до 15:00", OrderPresent.STATE_NEW)))
-        data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HOLDER, OrderPresent("Заказ №2", "на 22.05.2017 в 16:00", "ул. Комсомольская - ул. Набережная", "c 16:00 до 17:00", OrderPresent.STATE_NEW)))
-        data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HOLDER, OrderPresent("Заказ №3", "на 22.05.2017 в 18:00", "ул. Демократическая - ул. Новоселова", "c 18:00 до 20:00", OrderPresent.STATE_NEW)))
-        data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HEADER, OrderPresent("История")))
-        data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HOLDER, OrderPresent("Заказ №7", "на 22.05.2017 в 12:00", "ул. Дальняя - ул. Невская", "c 14:00 до 15:00", OrderPresent.STATE_HISTORY)))
+        orders.forEach {
+            if (it.state == OrderPresent.STATE_HEADER)
+                data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HEADER, it))
+            else
+                data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HOLDER, it))
+        }
         mAdapterHeader?.loadData(data)
     }
 }

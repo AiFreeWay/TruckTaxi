@@ -6,8 +6,8 @@ import java.util.*
 /**
  * Created by root on 24.07.17.
  */
-class NotificationsContainer(error: String?, status: String?): ResponseMonade(error, status) {
+class ModelsContainer<T>(error: String?, status: String?): ResponseMonade(error, status) {
 
-    var mData: List<NotificationPresent> = Collections.emptyList()
+    var mData: List<T> = Collections.emptyList()
 
 }

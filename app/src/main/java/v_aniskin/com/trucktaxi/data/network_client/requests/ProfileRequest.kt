@@ -4,7 +4,7 @@ package v_aniskin.com.trucktaxi.data.network_client.requests
  * Created by root on 22.07.17.
  */
 
-class ProfileRequest(var token: String) {
+class ProfileRequest(token: String): BaseRequest(token) {
 
     companion object {
         const val URI: String = "api/user/getMe/index.php"

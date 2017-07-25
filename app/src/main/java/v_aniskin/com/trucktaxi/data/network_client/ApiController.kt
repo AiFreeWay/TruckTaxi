@@ -4,9 +4,11 @@ import retrofit2.http.*
 import rx.Observable
 import v_aniskin.com.trucktaxi.data.network_client.requests.AuthRequest
 import v_aniskin.com.trucktaxi.data.network_client.requests.CheckTokenRequest
+import v_aniskin.com.trucktaxi.data.network_client.requests.OrdersRequest
 import v_aniskin.com.trucktaxi.data.network_client.requests.ProfileRequest
 import v_aniskin.com.trucktaxi.data.network_client.responses.AuthResponse
 import v_aniskin.com.trucktaxi.data.network_client.responses.BaseResponse
+import v_aniskin.com.trucktaxi.data.network_client.responses.OrdersResponse
 import v_aniskin.com.trucktaxi.data.network_client.responses.ProfileResponse
 
 /**
@@ -27,4 +29,10 @@ interface ApiController {
     @FormUrlEncoded
     @POST(ProfileRequest.URI)
     fun getProfile(@Field (ProfileRequest.FIELD_TOKEN) token: String): Observable<ProfileResponse>
+
+    @FormUrlEncoded
+    @POST(OrdersRequest.URI)
+    fun getOrders(@Field (OrdersRequest.FIELD_TOKEN) token: String,
+                  @Field (OrdersRequest.FIELD_LIST_TYPE) listType: String,
+                  @Field (OrdersRequest.FIELD_ORDER_STATUS) orderStatus: String): Observable<OrdersResponse>
 }

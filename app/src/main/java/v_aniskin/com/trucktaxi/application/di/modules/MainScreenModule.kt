@@ -7,10 +7,12 @@ import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
 import v_aniskin.com.trucktaxi.application.utils.Logger
 import v_aniskin.com.trucktaxi.domain.executors.AuthExecutorImpl
-import v_aniskin.com.trucktaxi.domain.executors.NotificationExecutorImpl
+import v_aniskin.com.trucktaxi.domain.executors.NotificationsExecutorImpl
+import v_aniskin.com.trucktaxi.domain.executors.OrdersExecutorImpl
 import v_aniskin.com.trucktaxi.domain.executors.ProfileExecutorImpl
 import v_aniskin.com.trucktaxi.domain.executors.interfaces.AuthExecutor
-import v_aniskin.com.trucktaxi.domain.executors.interfaces.NotificationExecutor
+import v_aniskin.com.trucktaxi.domain.executors.interfaces.NotificationsExecutor
+import v_aniskin.com.trucktaxi.domain.executors.interfaces.OrdersExecutor
 import v_aniskin.com.trucktaxi.domain.executors.interfaces.ProfileExecutor
 import v_aniskin.com.trucktaxi.presentation.factories.MainFragmentFactory
 import v_aniskin.com.trucktaxi.presentation.navigators.MainFragmentNavigator
@@ -60,7 +62,12 @@ class MainScreenModule(private val mActivity: MainActivity) {
     }
 
     @Provides
-    fun provideNotificationExecutor(notificationExecutor: NotificationExecutorImpl) : NotificationExecutor {
-        return notificationExecutor
+    fun provideNotificationsExecutor(notificationsExecutor: NotificationsExecutorImpl) : NotificationsExecutor {
+        return notificationsExecutor
+    }
+
+    @Provides
+    fun provideOrdersExecutor(ordersExecutor: OrdersExecutorImpl) : OrdersExecutor {
+        return ordersExecutor
     }
 }

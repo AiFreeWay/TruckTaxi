@@ -5,24 +5,24 @@ import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 import v_aniskin.com.trucktaxi.application.di.scopes.PerMainScreen
 import v_aniskin.com.trucktaxi.application.utils.Logger
-import v_aniskin.com.trucktaxi.domain.executors.interfaces.NotificationExecutor
+import v_aniskin.com.trucktaxi.domain.executors.interfaces.NotificationsExecutor
 import v_aniskin.com.trucktaxi.domain.mappers.NotificationsMapper
 import v_aniskin.com.trucktaxi.domain.repositories.Repository
+import v_aniskin.com.trucktaxi.presentation.models.ModelsContainer
 import v_aniskin.com.trucktaxi.presentation.models.NotificationPresent
-import v_aniskin.com.trucktaxi.presentation.models.NotificationsContainer
 import javax.inject.Inject
 
 /**
  * Created by root on 22.07.17.
  */
 @PerMainScreen
-class NotificationExecutorImpl @Inject constructor(var mRepository: Repository) : NotificationExecutor {
+class NotificationsExecutorImpl @Inject constructor(var mRepository: Repository) : NotificationsExecutor {
 
     init {
-        Logger.testLog("AuthExecutorImpl Create")
+        Logger.testLog("NotificationsExecutorImpl Create")
     }
 
-    override fun getNotifications(): Observable<NotificationsContainer> {
+    override fun getNotifications(): Observable<ModelsContainer<NotificationPresent>> {
         return mRepository.getNotifications()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
