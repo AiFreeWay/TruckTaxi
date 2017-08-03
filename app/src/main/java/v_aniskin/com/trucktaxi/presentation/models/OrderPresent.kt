@@ -7,10 +7,8 @@ class OrderPresent {
 
     companion object {
 
-        const val STATE_CURRENT: Int = 0
-        const val STATE_NEW: Int = 1
-        const val STATE_HISTORY: Int = 2
-        const val STATE_HEADER: Int = 3
+        const val STATE_ITEM: Int = 0
+        const val STATE_HEADER: Int = 1
     }
 
     var order: String? = null
@@ -18,17 +16,20 @@ class OrderPresent {
     var address: String? = null
     var workTime: String? = null
     var desc: String? = null
-    var state: Int? = null
+    var state: Int? = STATE_ITEM
+    var status: String? = null
 
-    constructor(desc: String) {
+    constructor(desc: String, state: Int?) {
         this.desc = desc
+        this.state = state
     }
 
-    constructor(order: String?, time: String?, address: String?, workTime: String?, state: Int?) {
+    constructor(order: String?, time: String?, address: String?, workTime: String?, state: Int?, status: String?) {
         this.order = order
         this.time = time
         this.address = address
         this.workTime = workTime
         this.state = state
+        this.status = status
     }
 }

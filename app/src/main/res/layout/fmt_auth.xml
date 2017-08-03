@@ -32,7 +32,8 @@
             android:id="@+id/fmt_auth_et_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/id" />
+            android:hint="@string/id"
+            android:lines="1" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -50,7 +51,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:lines="1" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.v7.widget.SwitchCompat

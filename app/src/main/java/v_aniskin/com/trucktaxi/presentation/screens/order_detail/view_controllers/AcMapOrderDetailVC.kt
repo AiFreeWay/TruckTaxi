@@ -10,9 +10,9 @@ import v_aniskin.com.trucktaxi.presentation.screens.order_detail.activities.Orde
  */
 class AcMapOrderDetailVC(view: MapOrderDetailActivity) : BaseViewController<MapOrderDetailActivity>(view) {
 
-    fun showOrdersDetailScreen(state: Int) {
+    fun showOrdersDetailScreen(status: String) {
         val intent: Intent = Intent(mView, OrderDetailActivity::class.java)
-        intent.putExtra(OrderDetailActivity.ORDER_DETAIL_ACTIVITY_ID, state)
+        intent.putExtra(OrderDetailActivity.ORDER_DETAIL_ACTIVITY_ID, status)
         mView.startActivity(intent)
     }
 }

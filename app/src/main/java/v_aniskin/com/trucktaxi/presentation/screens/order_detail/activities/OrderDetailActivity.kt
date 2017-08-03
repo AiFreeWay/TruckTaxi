@@ -17,6 +17,7 @@ import com.balysv.materialmenu.extras.toolbar.MaterialMenuIconToolbar
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import v_aniskin.com.trucktaxi.R
+import v_aniskin.com.trucktaxi.application.utils.OrdersTypes
 import v_aniskin.com.trucktaxi.presentation.adapters.addons.ViewPagerItemContainer
 import v_aniskin.com.trucktaxi.presentation.adapters.ViewPagerTabsAdapter
 import v_aniskin.com.trucktaxi.presentation.models.OrderPresent
@@ -43,18 +44,18 @@ class OrderDetailActivity : BaseActivity<AcOrderDetailVC>() {
 
     private lateinit var mMenuDrawer: MaterialMenuIconToolbar
     private lateinit var mAdapter: ViewPagerTabsAdapter
-    private var mState: Int = -1
+    private var mStatus: String = ""
 
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.ac_order_details);
         ButterKnife.bind(this)
-        mState = intent.getIntExtra(ORDER_DETAIL_ACTIVITY_ID, -1)
+        mStatus = intent.getStringExtra(ORDER_DETAIL_ACTIVITY_ID)
         mViewController = AcOrderDetailVC(this)
         mAdapter = ViewPagerTabsAdapter(getSupportFragmentManager(), mTlTabs, mVpBody)
         mVpBody.setAdapter(mAdapter)
         initToolbar()
-        if (mState == OrderPresent.STATE_NEW) {
+        if (mStatus == OrdersTypes.ORDER_STATUS_NEW) {
             mMvMap.visibility = VISIBLE
             mMvMap.onCreate(savedInstanceState)
             mMvMap.getMapAsync({ map -> doOnGetMap(map) })
@@ -68,7 +69,7 @@ class OrderDetailActivity : BaseActivity<AcOrderDetailVC>() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater: MenuInflater = menuInflater
-        if (mState == OrderPresent.STATE_NEW)
+        if (mStatus == OrdersTypes.ORDER_STATUS_NEW)
             inflater.inflate(R.menu.new_order_detail_menu, menu)
         else
             inflater.inflate(R.menu.order_detail_menu, menu)
@@ -77,25 +78,25 @@ class OrderDetailActivity : BaseActivity<AcOrderDetailVC>() {
 
     override fun onLowMemory() {
         super.onLowMemory()
-        if (mState == OrderPresent.STATE_NEW)
+        if (mStatus == OrdersTypes.ORDER_STATUS_NEW)
             mMvMap.onLowMemory()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        if (mState == OrderPresent.STATE_NEW)
+        if (mStatus == OrdersTypes.ORDER_STATUS_NEW)
             mMvMap.onDestroy()
     }
 
     override fun onResume() {
         super.onResume()
-        if (mState == OrderPresent.STATE_NEW)
+        if (mStatus == OrdersTypes.ORDER_STATUS_NEW)
             mMvMap.onResume()
     }
 
     override fun onPause() {
         super.onPause()
-        if (mState == OrderPresent.STATE_NEW)
+        if (mStatus == OrdersTypes.ORDER_STATUS_NEW)
             mMvMap.onPause()
     }
 

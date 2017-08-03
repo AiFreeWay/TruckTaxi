@@ -14,6 +14,7 @@ import butterknife.ButterKnife
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 import v_aniskin.com.trucktaxi.R
+import v_aniskin.com.trucktaxi.application.utils.DateMapper
 import v_aniskin.com.trucktaxi.application.utils.Logger
 import v_aniskin.com.trucktaxi.domain.models.Profile
 import v_aniskin.com.trucktaxi.presentation.adapters.binders.NotificationBinder
@@ -60,7 +61,6 @@ class HomeFragment : BaseParentFragment<FmtHomeVC>() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        Logger.testLog("HOME CREATE")
         mViewController = FmtHomeVC(this)    }
 
     override fun onResume() {
@@ -74,6 +74,11 @@ class HomeFragment : BaseParentFragment<FmtHomeVC>() {
         mViewController?.start()
     }
 
+    override fun onStop() {
+        super.onStop()
+        mViewController?.stop()
+    }
+
     fun loadProfile(profile: Profile) {
         Picasso.with(context)
                 .load(profile.mPhoto)
@@ -81,11 +86,12 @@ class HomeFragment : BaseParentFragment<FmtHomeVC>() {
                 .placeholder(R.drawable.avatar)
                 .into(mIvAvatar)
 
-        val name: String = profile.mFirstName+" "+profile.mLastName;
+        val name: String = profile.mFirstName+" "+profile.mLastName
         mTvName.setText(name)
-        val rating = getString(R.string.rating)+" "+profile.mRate;
+        mRating.rating = profile.mRate!!.toFloat()
+        val rating = getString(R.string.rating)+" "+profile.mRate
         mTvRating.setText(rating)
-        val dateOfExecution = getString(R.string.date_of_execution)+" "+profile.mFormalizDate;
+        val dateOfExecution = getString(R.string.date_of_execution)+" "+DateMapper.mapDate(profile.mFormalizDate!!.toLong())
         mTvDateOfExecution.setText(dateOfExecution)
         mTvCarModel.setText(checkCarParamOnEmpty(profile.mMainCarModel))
         mTvCarType.setText(checkCarParamOnEmpty(profile.mMainCarType))

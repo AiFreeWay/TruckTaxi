@@ -8,6 +8,6 @@ import java.util.*
  */
 class ModelsContainer<T>(error: String?, status: String?): ResponseMonade(error, status) {
 
-    var mData: List<T> = Collections.emptyList()
+    var mData: ArrayList<T> = ArrayList()
 
 }

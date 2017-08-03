@@ -31,4 +31,8 @@ interface Repository {
     fun getNewOrders(): Observable<OrdersResponse>
 
     fun getHistoryOrders(): Observable<OrdersResponse>
+
+    fun startScanLocation()
+
+    fun stopScanLocation()
 }

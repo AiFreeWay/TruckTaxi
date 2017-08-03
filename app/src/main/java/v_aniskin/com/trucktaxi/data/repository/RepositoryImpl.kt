@@ -1,9 +1,13 @@
 package v_aniskin.com.trucktaxi.data.repository
 
 import android.content.Context
+import android.location.LocationManager
 import rx.Observable
 import v_aniskin.com.trucktaxi.application.utils.Logger
+import v_aniskin.com.trucktaxi.application.utils.OrdersTypes
 import v_aniskin.com.trucktaxi.data.HawkController
+import v_aniskin.com.trucktaxi.data.location.LocationController
+import v_aniskin.com.trucktaxi.data.location.LocationLiveData
 import v_aniskin.com.trucktaxi.data.network_client.NetworkClient
 import v_aniskin.com.trucktaxi.data.network_client.requests.*
 import v_aniskin.com.trucktaxi.data.network_client.responses.*
@@ -19,11 +23,14 @@ class RepositoryImpl @Inject constructor(context: Context) : Repository {
 
     private val mNetworkClinet: NetworkClient
     private val mHawkController: HawkController
+    private val mLocationController: LocationController
 
     init {
         Logger.testLog("RepositoryImpl Create")
         mNetworkClinet = NetworkClient()
         mHawkController = HawkController()
+        val locationManager: LocationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        mLocationController = LocationController(locationManager)
     }
 
     override fun auth(authRequest: AuthRequest): Observable<AuthResponse> {
@@ -59,14 +66,22 @@ class RepositoryImpl @Inject constructor(context: Context) : Repository {
     }
 
     override fun getCurrentOrders(): Observable<OrdersResponse> {
-        return mNetworkClinet.getOrders(OrdersRequest(getToken(), OrdersRequest.ORDER_STATUS_CURRENT))
+        return mNetworkClinet.getOrders(OrdersRequest(getToken(), OrdersTypes.ORDER_STATUS_CURRENT))
     }
 
     override fun getNewOrders(): Observable<OrdersResponse> {
-        return mNetworkClinet.getOrders(OrdersRequest(getToken(), OrdersRequest.ORDER_STATUS_NEW))
+        return mNetworkClinet.getOrders(OrdersRequest(getToken(), OrdersTypes.ORDER_STATUS_NEW))
     }
 
     override fun getHistoryOrders(): Observable<OrdersResponse> {
-        return mNetworkClinet.getOrders(OrdersRequest(getToken(), OrdersRequest.ORDER_STATUS_HISTORY))
+        return mNetworkClinet.getOrders(OrdersRequest(getToken(), OrdersTypes.ORDER_STATUS_HISTORY))
+    }
+
+    override fun startScanLocation() {
+        mLocationController.startLocationUpdate()
+    }
+
+    override fun stopScanLocation() {
+        mLocationController.stopLocationUpdate()
     }
 }

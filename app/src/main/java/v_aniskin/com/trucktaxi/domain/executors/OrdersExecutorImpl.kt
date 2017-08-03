@@ -7,6 +7,7 @@ import v_aniskin.com.trucktaxi.application.di.scopes.PerMainScreen
 import v_aniskin.com.trucktaxi.application.utils.Logger
 import v_aniskin.com.trucktaxi.domain.executors.interfaces.OrdersExecutor
 import v_aniskin.com.trucktaxi.domain.mappers.OrdersMapper
+import v_aniskin.com.trucktaxi.domain.models.Order
 import v_aniskin.com.trucktaxi.domain.repositories.Repository
 import v_aniskin.com.trucktaxi.presentation.models.ModelsContainer
 import v_aniskin.com.trucktaxi.presentation.models.OrderPresent
@@ -23,11 +24,20 @@ class OrdersExecutorImpl @Inject constructor(var mRepository: Repository) : Orde
     }
 
     override fun getOrders(): Observable<ModelsContainer<OrderPresent>> {
-        return mRepository.getAllOrders()
+        return mRepository.getCurrentOrders()
+                .zipWith(mRepository.getNewOrders(), {r1, r2 ->
+                    val orders: ModelsContainer<Order> = ModelsContainer(r1.error, r1.status)
+                    orders.mData.add(Order("Текущие", OrderPresent.STATE_HEADER))
+                    orders.mData.addAll(r1.orders)
+                    orders.mData.add(Order("Предстоящие", OrderPresent.STATE_HEADER))
+                    orders.mData.addAll(r2.orders)
+                    orders })
+                .zipWith(mRepository.getHistoryOrders(), {orders, r2 ->
+                    orders.mData.add(Order("История", OrderPresent.STATE_HEADER))
+                    orders.mData.addAll(r2.orders)
+                    orders })
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map {response ->
-                    val ordersDomain = OrdersMapper.mapOrderResponse(response)
-                    OrdersMapper.mapOrders(ordersDomain, response.error, response.status)}
+                .map {OrdersMapper.mapOrders(it)}
     }
 }

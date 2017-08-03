@@ -3,6 +3,7 @@ package v_aniskin.com.trucktaxi.presentation.screens.main.view_controllers
 import v_aniskin.com.trucktaxi.R
 import v_aniskin.com.trucktaxi.application.utils.Logger
 import v_aniskin.com.trucktaxi.application.utils.NetworkErrors
+import v_aniskin.com.trucktaxi.application.utils.SubscriptionContainer
 import v_aniskin.com.trucktaxi.domain.executors.interfaces.NotificationsExecutor
 import v_aniskin.com.trucktaxi.domain.executors.interfaces.ProfileExecutor
 import v_aniskin.com.trucktaxi.domain.models.Profile
@@ -24,6 +25,8 @@ class FmtHomeVC(fragment: HomeFragment) : BaseViewController<HomeFragment>(fragm
     @Inject
     lateinit var mNotificationsExecutor: NotificationsExecutor
 
+    private val mSubscriptionContainer: SubscriptionContainer = SubscriptionContainer()
+
     override fun inject() {
         super.inject()
         getAcMainVC()?.getMainScreenComponent()
@@ -36,25 +39,30 @@ class FmtHomeVC(fragment: HomeFragment) : BaseViewController<HomeFragment>(fragm
         getNotifications()
     }
 
+    override fun stop() {
+        super.stop()
+        mSubscriptionContainer.unsubscribeAll()
+    }
+
     fun getAcMainVC(): AcMainVC? {
         return getView()?.getBaseActivity<MainActivity>()
                 ?.getViewController()
     }
 
     private fun getProfile() {
-        mProfileExecutor.getProfile()
+        mSubscriptionContainer.addSubscription(mProfileExecutor.getProfile()
                 .doOnSubscribe { startProgressBar() }
                 .doOnCompleted { stopProgressBar() }
                 .subscribe({profile -> doOnGetProfile(profile)},
-                        {error -> doOnError(error)})
+                        {error -> doOnError(error)}))
     }
 
     private fun getNotifications() {
-        mNotificationsExecutor.getNotifications()
+        mSubscriptionContainer.addSubscription(mNotificationsExecutor.getNotifications()
                 .doOnSubscribe { startProgressBar() }
                 .doOnCompleted { stopProgressBar() }
                 .subscribe({profile -> doOnGetNotificationse(profile)},
-                        {error -> doOnError(error)})
+                        {error -> doOnError(error)}))
     }
 
     private fun doOnGetProfile(profile: Profile) {

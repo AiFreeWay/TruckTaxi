@@ -15,8 +15,5 @@ class OrdersRequest(token: String, var orderStatus: String): BaseRequest(token) 
         const val LIST_TYPE_SHORT: String = "short"
 
         const val ORDER_STATUS_ALL: String = "all"
-        const val ORDER_STATUS_CURRENT: String = "current"
-        const val ORDER_STATUS_NEW: String = "new"
-        const val ORDER_STATUS_HISTORY: String = "history"
     }
 }

@@ -41,7 +41,7 @@ class OrderHolder: BaseHolder<OrderPresent, FmtOrdersVC> {
         mTvAddress.setText(dataModel.address)
         mTvWorkTime.setText(dataModel.workTime)
         mView.setOnClickListener {
-            mViewController?.showOrderDetailScreen(dataModel?.state)
+            mViewController?.showOrderDetailScreen(dataModel?.status)
         }
     }
 }

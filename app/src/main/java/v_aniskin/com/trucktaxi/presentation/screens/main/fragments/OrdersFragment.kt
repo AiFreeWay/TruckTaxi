@@ -10,6 +10,7 @@ import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
 import v_aniskin.com.trucktaxi.R
+import v_aniskin.com.trucktaxi.application.utils.Logger
 import v_aniskin.com.trucktaxi.presentation.adapters.MultyHeaderRvAdapter
 import v_aniskin.com.trucktaxi.presentation.adapters.holders.OrderHolder
 import v_aniskin.com.trucktaxi.presentation.adapters.holders.SubsidaryBinder
@@ -56,6 +57,16 @@ class OrdersFragment : BaseParentFragment<FmtOrdersVC>() {
     override fun onResume() {
         super.onResume()
         getToolbar().setTitle(getString(R.string.orders))
+    }
+
+    override fun onStart() {
+        super.onStart()
+        mViewController?.start()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mViewController?.stop()
     }
 
     fun loadOrders(orders: List<OrderPresent>) {

@@ -12,6 +12,7 @@ import com.balysv.materialmenu.extras.toolbar.MaterialMenuIconToolbar
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import v_aniskin.com.trucktaxi.R
+import v_aniskin.com.trucktaxi.application.utils.OrdersTypes
 import v_aniskin.com.trucktaxi.presentation.models.OrderPresent
 import v_aniskin.com.trucktaxi.presentation.screens.common.BaseActivity
 import v_aniskin.com.trucktaxi.presentation.screens.order_detail.view_controllers.AcMapOrderDetailVC
@@ -43,7 +44,7 @@ class MapOrderDetailActivity : BaseActivity<AcMapOrderDetailVC>() {
         initToolbar()
         mMvMap.onCreate(savedInstanceState)
         mMvMap.getMapAsync({map -> doOnGetMap(map)})
-        mBtnInfo.setOnClickListener { mViewController?.showOrdersDetailScreen(OrderPresent.STATE_CURRENT) }
+        mBtnInfo.setOnClickListener { mViewController?.showOrdersDetailScreen(OrdersTypes.ORDER_STATUS_CURRENT) }
     }
 
     override fun onLowMemory() {

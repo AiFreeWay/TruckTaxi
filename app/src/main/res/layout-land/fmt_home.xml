@@ -67,7 +67,7 @@
             android:layout_marginStart="@dimen/external_padding"
             android:layout_marginTop="@dimen/internal_padding"
             android:numStars="5"
-            android:rating="3.5"
+            android:rating="0"
             android:stepSize="0.5"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toRightOf="@+id/fmt_home_tv_rate"
