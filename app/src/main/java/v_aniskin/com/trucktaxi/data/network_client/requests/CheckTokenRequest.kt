@@ -1,7 +1,7 @@
 package v_aniskin.com.trucktaxi.data.network_client.requests
 
 /**
- * Created by root on 20.07.17.
+ * Created by root on 19.07.17.
  */
 
 class CheckTokenRequest(token: String): BaseRequest(token) {
