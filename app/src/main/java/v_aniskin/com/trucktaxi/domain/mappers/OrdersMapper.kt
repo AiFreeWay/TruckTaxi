@@ -20,7 +20,7 @@ class OrdersMapper {
         }
 
         fun mapOrder(order: Order): OrderPresent {
-            return OrderPresent(order.order, order.time, order.address, order.workTime, order.state, order.status)
+            return OrderPresent(order.desc, order.order, order.time, order.address, order.workTime, order.state, order.status)
         }
     }
 }

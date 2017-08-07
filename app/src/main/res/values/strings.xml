@@ -99,4 +99,10 @@
     <string name="invalid_token">Сессия потеряна, требуется переавторизация.</string>
     <string name="no_new_notifcations">Нет новых уведомлений</string>
     <string name="not_define">Не указано</string>
+
+    <string name="orders_fragment_type_error">Not define fragment type "getFragmentType()"</string>
+    <string name="orders_future">В ожидании</string>
+    <string name="orders_current">В работе</string>
+    <string name="orders_history">История</string>
+    <string name="no_data">Нет данных</string>
 </resources>

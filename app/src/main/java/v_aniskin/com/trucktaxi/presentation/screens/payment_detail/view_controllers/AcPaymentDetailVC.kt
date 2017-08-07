@@ -28,6 +28,6 @@ class AcPaymentDetailVC(view: PaymentDetailActivity) : BaseViewController<Paymen
 
     override fun start() {
         super.start()
-        mView.loadData(mFactory.getAllItems())
+        mView.loadData(mFactory.getAllItems(mView))
     }
 }

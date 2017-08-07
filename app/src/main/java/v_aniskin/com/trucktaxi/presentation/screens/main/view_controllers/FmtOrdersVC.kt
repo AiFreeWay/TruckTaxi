@@ -1,6 +1,7 @@
 package v_aniskin.com.trucktaxi.presentation.screens.main.view_controllers
 
 import android.content.Intent
+import rx.Observable
 import v_aniskin.com.trucktaxi.R
 import v_aniskin.com.trucktaxi.application.utils.Logger
 import v_aniskin.com.trucktaxi.application.utils.NetworkErrors
@@ -21,7 +22,7 @@ import javax.inject.Inject
 /**
  * Created by root on 28.05.17.
  */
-class FmtOrdersVC(fragment: OrdersFragment): BaseViewController<OrdersFragment>(fragment) {
+class FmtOrdersVC(fragment: OrdersFragment) : BaseViewController<OrdersFragment>(fragment) {
 
     @Inject
     lateinit var mOrdersExecutor: OrdersExecutor
@@ -45,7 +46,14 @@ class FmtOrdersVC(fragment: OrdersFragment): BaseViewController<OrdersFragment>(
     }
 
     private fun getOrders() {
-        mSubscriptionContainer.addSubscription(mOrdersExecutor.getOrders()
+        val orderObservable = when (mView.getFragmentType()) {
+            OrdersFragment.FRAGMENT_TYPE_FUTURE -> mOrdersExecutor.getFeatureOrders()
+            OrdersFragment.FRAGMENT_TYPE_CURRENT -> mOrdersExecutor.getCurrentOrders()
+            OrdersFragment.FRAGMENT_TYPE_HISTORY -> mOrdersExecutor.getHistoryOrders()
+            else -> throw RuntimeException(mView.getString(R.string.orders_fragment_type_error))
+        }
+
+        mSubscriptionContainer.addSubscription(orderObservable
                 .doOnSubscribe { startProgressBar() }
                 .doOnCompleted { stopProgressBar() }
                 .subscribe({orders -> doOnGetOrders(orders)},
@@ -86,7 +94,7 @@ class FmtOrdersVC(fragment: OrdersFragment): BaseViewController<OrdersFragment>(
         var intent: Intent
         if (status == OrdersTypes.ORDER_STATUS_CURRENT)
             intent = Intent(mView.context, MapOrderDetailActivity::class.java)
-        else if (status == OrdersTypes.ORDER_STATUS_NEW) {
+        else if (status == OrdersTypes.ORDER_STATUS_APPOINTED) {
             intent = Intent(mView.context, OrderDetailActivity::class.java)
             intent.putExtra(ORDER_DETAIL_ACTIVITY_ID, status)
         } else {

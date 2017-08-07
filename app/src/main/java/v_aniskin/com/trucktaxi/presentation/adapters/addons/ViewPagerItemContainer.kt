@@ -8,19 +8,19 @@ import android.support.v4.app.Fragment
 class ViewPagerItemContainer {
 
     var fragment: Fragment? = null
-    var tabTitleResource: Int = 0
+    var tabTitle: String = ""
     var data: Any? = null
 
     constructor() {}
 
-    constructor(tabTitleResource: Int, fragment: Fragment) {
+    constructor(tabTitle: String, fragment: Fragment) {
         this.fragment = fragment
-        this.tabTitleResource = tabTitleResource
+        this.tabTitle = tabTitle
     }
 
-    constructor(tabTitleResource: Int, fragment: Fragment, data: Any) {
+    constructor(tabTitle: String, fragment: Fragment, data: Any) {
         this.fragment = fragment
-        this.tabTitleResource = tabTitleResource
+        this.tabTitle = tabTitle
         this.data = data
     }
 }

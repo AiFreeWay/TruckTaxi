@@ -9,5 +9,7 @@ import v_aniskin.com.trucktaxi.presentation.models.OrderPresent
  */
 interface OrdersExecutor {
 
-    fun getOrders(): Observable<ModelsContainer<OrderPresent>>
+    fun getFeatureOrders(): Observable<ModelsContainer<OrderPresent>>
+    fun getCurrentOrders(): Observable<ModelsContainer<OrderPresent>>
+    fun getHistoryOrders(): Observable<ModelsContainer<OrderPresent>>
 }

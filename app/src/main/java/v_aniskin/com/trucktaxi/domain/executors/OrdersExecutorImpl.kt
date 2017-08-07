@@ -23,17 +23,47 @@ class OrdersExecutorImpl @Inject constructor(var mRepository: Repository) : Orde
         Logger.testLog("OrdersExecutorImpl Create")
     }
 
-    override fun getOrders(): Observable<ModelsContainer<OrderPresent>> {
-        return mRepository.getCurrentOrders()
-                .zipWith(mRepository.getNewOrders(), {r1, r2 ->
+    override fun getFeatureOrders(): Observable<ModelsContainer<OrderPresent>> {
+        return mRepository.getPreappointedOrders()
+                .zipWith(mRepository.getAppointedOrders(), { r1, r2 ->
                     val orders: ModelsContainer<Order> = ModelsContainer(r1.error, r1.status)
-                    orders.mData.add(Order("Текущие", OrderPresent.STATE_HEADER))
+                    if (r1.orders.isNotEmpty())
+                        orders.mData.add(Order("Предварительное назначение", OrderPresent.STATE_HEADER))
                     orders.mData.addAll(r1.orders)
-                    orders.mData.add(Order("Предстоящие", OrderPresent.STATE_HEADER))
+                    if (r2.orders.isNotEmpty())
+                        orders.mData.add(Order("Утвержденные", OrderPresent.STATE_HEADER))
                     orders.mData.addAll(r2.orders)
                     orders })
-                .zipWith(mRepository.getHistoryOrders(), {orders, r2 ->
-                    orders.mData.add(Order("История", OrderPresent.STATE_HEADER))
+                .zipWith(mRepository.getNewOrders(), { orders, r2 ->
+                    if (r2.orders.isNotEmpty())
+                        orders.mData.add(Order("Новые", OrderPresent.STATE_HEADER))
+                    orders.mData.addAll(r2.orders)
+                    orders })
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .map {OrdersMapper.mapOrders(it)}
+    }
+
+    override fun getCurrentOrders(): Observable<ModelsContainer<OrderPresent>> {
+        return mRepository.getCurrentOrders()
+                .map {
+                    val orders: ModelsContainer<Order> = ModelsContainer(it.error, it.status)
+                    orders.mData.addAll(it.orders)
+                    OrdersMapper.mapOrders(orders)
+                }
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun getHistoryOrders(): Observable<ModelsContainer<OrderPresent>> {
+        return mRepository.getCompleteOrders()
+                .zipWith(mRepository.getArchiveOrders(), { r1, r2 ->
+                    val orders: ModelsContainer<Order> = ModelsContainer(r1.error, r1.status)
+                    if (r1.orders.isNotEmpty())
+                        orders.mData.add(Order("Завершённые", OrderPresent.STATE_HEADER))
+                    orders.mData.addAll(r1.orders)
+                    if (r2.orders.isNotEmpty())
+                        orders.mData.add(Order("Архив", OrderPresent.STATE_HEADER))
                     orders.mData.addAll(r2.orders)
                     orders })
                 .subscribeOn(Schedulers.newThread())

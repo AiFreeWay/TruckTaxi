@@ -7,7 +7,6 @@ import v_aniskin.com.trucktaxi.application.utils.Logger
 import v_aniskin.com.trucktaxi.application.utils.OrdersTypes
 import v_aniskin.com.trucktaxi.data.HawkController
 import v_aniskin.com.trucktaxi.data.location.LocationController
-import v_aniskin.com.trucktaxi.data.location.LocationLiveData
 import v_aniskin.com.trucktaxi.data.network_client.NetworkClient
 import v_aniskin.com.trucktaxi.data.network_client.requests.*
 import v_aniskin.com.trucktaxi.data.network_client.responses.*
@@ -65,17 +64,35 @@ class RepositoryImpl @Inject constructor(context: Context) : Repository {
         return mNetworkClinet.getOrders(OrdersRequest(getToken(), OrdersRequest.ORDER_STATUS_ALL))
     }
 
-    override fun getCurrentOrders(): Observable<OrdersResponse> {
-        return mNetworkClinet.getOrders(OrdersRequest(getToken(), OrdersTypes.ORDER_STATUS_CURRENT))
+
+    override fun getPreappointedOrders(): Observable<OrdersResponse> {
+        return mNetworkClinet.getOrders(OrdersRequest(getToken(), OrdersTypes.ORDER_STATUS_PREAPPOINTED))
     }
 
     override fun getNewOrders(): Observable<OrdersResponse> {
         return mNetworkClinet.getOrders(OrdersRequest(getToken(), OrdersTypes.ORDER_STATUS_NEW))
     }
 
-    override fun getHistoryOrders(): Observable<OrdersResponse> {
-        return mNetworkClinet.getOrders(OrdersRequest(getToken(), OrdersTypes.ORDER_STATUS_HISTORY))
+    override fun getAppointedOrders(): Observable<OrdersResponse> {
+        return mNetworkClinet.getOrders(OrdersRequest(getToken(), OrdersTypes.ORDER_STATUS_APPOINTED))
     }
+
+    override fun getCurrentOrders(): Observable<OrdersResponse> {
+        return mNetworkClinet.getOrders(OrdersRequest(getToken(), OrdersTypes.ORDER_STATUS_CURRENT))
+    }
+
+    override fun getArchiveOrders(): Observable<OrdersResponse> {
+        return mNetworkClinet.getOrders(OrdersRequest(getToken(), OrdersTypes.ORDER_STATUS_ARCHIVE))
+    }
+
+    override fun getCompleteOrders(): Observable<OrdersResponse> {
+        return mNetworkClinet.getOrders(OrdersRequest(getToken(), OrdersTypes.ORDER_STATUS_COMPLETE))
+    }
+
+
+
+
+
 
     override fun startScanLocation() {
         mLocationController.startLocationUpdate()

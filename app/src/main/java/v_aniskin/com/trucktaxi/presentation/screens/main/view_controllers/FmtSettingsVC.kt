@@ -29,7 +29,7 @@ class FmtSettingsVC(fragment: SettingsFragment) : BaseViewController<SettingsFra
 
     override fun start() {
         super.start()
-        mView.loadData(mFactory.getAllItems())
+        mView.loadData(mFactory.getAllItems(mView.context))
     }
 
     fun getAcMainVC(): AcMainVC? {

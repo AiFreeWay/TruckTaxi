@@ -1,5 +1,6 @@
 package v_aniskin.com.trucktaxi.presentation.factories
 
+import android.content.Context
 import v_aniskin.com.trucktaxi.R
 import v_aniskin.com.trucktaxi.presentation.adapters.addons.ViewPagerItemContainer
 import v_aniskin.com.trucktaxi.presentation.screens.main.fragments.CarSettingsFragment
@@ -11,10 +12,10 @@ import java.util.*
  */
 class SettingsFragmentFactory {
 
-    fun getAllItems(): List<ViewPagerItemContainer> {
+    fun getAllItems(context: Context): List<ViewPagerItemContainer> {
         val list: ArrayList<ViewPagerItemContainer> = ArrayList<ViewPagerItemContainer>()
-        list.add(ViewPagerItemContainer(R.string.personal_data, ProfileSettingsFragment()))
-        list.add(ViewPagerItemContainer(R.string.car, CarSettingsFragment()))
+        list.add(ViewPagerItemContainer(context.getString(R.string.personal_data), ProfileSettingsFragment()))
+        list.add(ViewPagerItemContainer(context.getString(R.string.car), CarSettingsFragment()))
         return list
     }
 }

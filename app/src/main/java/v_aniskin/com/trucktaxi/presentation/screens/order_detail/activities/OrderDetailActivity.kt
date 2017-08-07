@@ -20,7 +20,6 @@ import v_aniskin.com.trucktaxi.R
 import v_aniskin.com.trucktaxi.application.utils.OrdersTypes
 import v_aniskin.com.trucktaxi.presentation.adapters.addons.ViewPagerItemContainer
 import v_aniskin.com.trucktaxi.presentation.adapters.ViewPagerTabsAdapter
-import v_aniskin.com.trucktaxi.presentation.models.OrderPresent
 import v_aniskin.com.trucktaxi.presentation.screens.common.BaseActivity
 import v_aniskin.com.trucktaxi.presentation.screens.order_detail.view_controllers.AcOrderDetailVC
 
@@ -52,10 +51,11 @@ class OrderDetailActivity : BaseActivity<AcOrderDetailVC>() {
         ButterKnife.bind(this)
         mStatus = intent.getStringExtra(ORDER_DETAIL_ACTIVITY_ID)
         mViewController = AcOrderDetailVC(this)
-        mAdapter = ViewPagerTabsAdapter(getSupportFragmentManager(), mTlTabs, mVpBody)
+        mTlTabs.setupWithViewPager(mVpBody)
+        mAdapter = ViewPagerTabsAdapter(getSupportFragmentManager())
         mVpBody.setAdapter(mAdapter)
         initToolbar()
-        if (mStatus == OrdersTypes.ORDER_STATUS_NEW) {
+        if (mStatus == OrdersTypes.ORDER_STATUS_APPOINTED) {
             mMvMap.visibility = VISIBLE
             mMvMap.onCreate(savedInstanceState)
             mMvMap.getMapAsync({ map -> doOnGetMap(map) })
@@ -69,7 +69,7 @@ class OrderDetailActivity : BaseActivity<AcOrderDetailVC>() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater: MenuInflater = menuInflater
-        if (mStatus == OrdersTypes.ORDER_STATUS_NEW)
+        if (mStatus == OrdersTypes.ORDER_STATUS_APPOINTED)
             inflater.inflate(R.menu.new_order_detail_menu, menu)
         else
             inflater.inflate(R.menu.order_detail_menu, menu)
@@ -78,25 +78,25 @@ class OrderDetailActivity : BaseActivity<AcOrderDetailVC>() {
 
     override fun onLowMemory() {
         super.onLowMemory()
-        if (mStatus == OrdersTypes.ORDER_STATUS_NEW)
+        if (mStatus == OrdersTypes.ORDER_STATUS_APPOINTED)
             mMvMap.onLowMemory()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        if (mStatus == OrdersTypes.ORDER_STATUS_NEW)
+        if (mStatus == OrdersTypes.ORDER_STATUS_APPOINTED)
             mMvMap.onDestroy()
     }
 
     override fun onResume() {
         super.onResume()
-        if (mStatus == OrdersTypes.ORDER_STATUS_NEW)
+        if (mStatus == OrdersTypes.ORDER_STATUS_APPOINTED)
             mMvMap.onResume()
     }
 
     override fun onPause() {
         super.onPause()
-        if (mStatus == OrdersTypes.ORDER_STATUS_NEW)
+        if (mStatus == OrdersTypes.ORDER_STATUS_APPOINTED)
             mMvMap.onPause()
     }
 

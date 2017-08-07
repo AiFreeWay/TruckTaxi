@@ -28,6 +28,6 @@ class AcOrderDetailVC(view: OrderDetailActivity) : BaseViewController<OrderDetai
 
     override fun start() {
         super.start()
-        mView.loadData(mFactory.getAllItems())
+        mView.loadData(mFactory.getAllItems(mView))
     }
 }

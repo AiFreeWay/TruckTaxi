@@ -1,7 +1,6 @@
 package v_aniskin.com.trucktaxi.presentation.factories
 
 import android.support.v4.app.Fragment
-import v_aniskin.com.trucktaxi.R
 import v_aniskin.com.trucktaxi.presentation.screens.main.fragments.*
 
 /**
@@ -27,7 +26,7 @@ class MainFragmentFactory: BaseFactory<Fragment> {
         when(key) {
             AuthFragment.AUTH_FRAGMENT_ID -> return AuthFragment()
             HomeFragment.HOME_FRAGMENT_ID -> return HomeFragment()
-            OrdersFragment.ORDERS_FRAGMENT_ID -> return OrdersFragment()
+            OrdersFragment.ORDERS_FRAGMENT_ID -> return OrdersPagerFragment()
             PaymentsFragment.PAYMENTS_FRAGMENT_ID -> return PaymentsFragment()
             ChatFragment.CHAT_FRAGMENT_ID -> return ChatFragment()
             SettingsFragment.SETTINGS_FRAGMENT_ID -> return SettingsFragment()

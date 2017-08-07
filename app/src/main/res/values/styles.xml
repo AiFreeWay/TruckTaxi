@@ -8,6 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="HideText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif-regular</item>
+        <item name="android:textColor">@color/doveGray</item>
+    </style>
+
     <style name="Text">
         <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">sans-serif-regular</item>

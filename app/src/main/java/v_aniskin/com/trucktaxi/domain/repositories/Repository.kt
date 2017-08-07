@@ -26,13 +26,19 @@ interface Repository {
 
     fun getAllOrders(): Observable<OrdersResponse>
 
-    fun getCurrentOrders(): Observable<OrdersResponse>
-
-    fun getNewOrders(): Observable<OrdersResponse>
-
-    fun getHistoryOrders(): Observable<OrdersResponse>
-
     fun startScanLocation()
 
     fun stopScanLocation()
+
+    fun getAppointedOrders(): Observable<OrdersResponse>
+
+    fun getPreappointedOrders(): Observable<OrdersResponse>
+
+    fun getNewOrders(): Observable<OrdersResponse>
+
+    fun getCurrentOrders(): Observable<OrdersResponse>
+
+    fun getCompleteOrders(): Observable<OrdersResponse>
+
+    fun getArchiveOrders(): Observable<OrdersResponse>
 }

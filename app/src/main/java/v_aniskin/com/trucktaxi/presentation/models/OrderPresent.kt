@@ -24,7 +24,8 @@ class OrderPresent {
         this.state = state
     }
 
-    constructor(order: String?, time: String?, address: String?, workTime: String?, state: Int?, status: String?) {
+    constructor(desc: String?, order: String?, time: String?, address: String?, workTime: String?, state: Int?, status: String?) {
+        this.desc = desc
         this.order = order
         this.time = time
         this.address = address

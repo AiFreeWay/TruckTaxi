@@ -40,7 +40,8 @@ class PaymentDetailActivity : BaseActivity<AcPaymentDetailVC>() {
         setContentView(R.layout.ac_payment_detail);
         ButterKnife.bind(this)
         mViewController = AcPaymentDetailVC(this)
-        mAdapter = ViewPagerTabsAdapter(getSupportFragmentManager(), mTlTabs, mVpBody)
+        mTlTabs.setupWithViewPager(mVpBody)
+        mAdapter = ViewPagerTabsAdapter(getSupportFragmentManager())
         mVpBody.setAdapter(mAdapter)
         initToolbar()
         mViewController?.start()
