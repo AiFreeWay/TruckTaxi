@@ -15,6 +15,7 @@ import v_aniskin.com.trucktaxi.presentation.adapters.holders.PaymentHolder
 import v_aniskin.com.trucktaxi.presentation.adapters.holders.SubsidaryBinder
 import v_aniskin.com.trucktaxi.presentation.adapters.holders.SubsidaryHolder
 import v_aniskin.com.trucktaxi.presentation.models.AdapterItemContainer
+import v_aniskin.com.trucktaxi.domain.models.ListItemTypes
 import v_aniskin.com.trucktaxi.presentation.models.PaymentPresent
 import v_aniskin.com.trucktaxi.presentation.screens.common.BaseParentFragment
 import v_aniskin.com.trucktaxi.presentation.screens.main.view_controllers.FmtPaymentsVC
@@ -31,6 +32,8 @@ class PaymentsFragment : BaseParentFragment<FmtPaymentsVC>() {
 
     @BindView(R.id.fmt_list_rv_data)
     lateinit var mRvData: RecyclerView
+    @BindView(R.id.fmt_list_tv_error)
+    lateinit var mTvError: TextView
 
     private var mAdapterHeader: MultyHeaderRvAdapter<PaymentPresent, FmtPaymentsVC>? = null
 
@@ -52,7 +55,6 @@ class PaymentsFragment : BaseParentFragment<FmtPaymentsVC>() {
         }
         mAdapterHeader = MultyHeaderRvAdapter(SubsidaryHolder(context, R.layout.v_payment_header, headerBinder), PaymentHolder(context, mViewController))
         mRvData.adapter = mAdapterHeader
-        test()
     }
 
     override fun onResume() {
@@ -60,14 +62,29 @@ class PaymentsFragment : BaseParentFragment<FmtPaymentsVC>() {
         getToolbar().setTitle(getString(R.string.payments))
     }
 
-    fun test() {
+    override fun onStart() {
+        super.onStart()
+        mViewController?.start()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mViewController?.stop()
+    }
+
+    fun loadPayments(payments: ArrayList<PaymentPresent>) {
+        if (payments.isEmpty())
+            mTvError.visibility = View.VISIBLE
+        else
+            mTvError.visibility = View.INVISIBLE
+
         val data: ArrayList<AdapterItemContainer<PaymentPresent>> = ArrayList()
-        data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HEADER, PaymentPresent("Предстоящие", "Итого к выплате: 2.000 руб.")))
-        data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HOLDER, PaymentPresent("Заказ №0", "на 22.05.2017 в 12:00", "К выплате: 2.000 руб.", "Статус: в работе")))
-        data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HEADER, PaymentPresent("Совершенные", "Итого к выплачено: 10.000 руб.")))
-        data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HOLDER, PaymentPresent("Заказ №4", "на 22.05.2017 в 14:00", "К выплате: 2.500 руб.", "Статус: выполнено 21.05.2017")))
-        data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HOLDER, PaymentPresent("Заказ №5", "на 22.05.2017 в 16:00", "К выплате: 4.500 руб.", "Статус: выполнено 21.05.2017")))
-        data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HOLDER, PaymentPresent("Заказ №6", "на 22.05.2017 в 18:00", "К выплате: 4.000 руб.", "Статус: выполнено 21.05.2017")))
+        payments.forEach {
+            if (it.state == ListItemTypes.TYPE_HEADER)
+                data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HEADER, it))
+            else
+                data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HOLDER, it))
+        }
         mAdapterHeader?.loadData(data)
     }
 }

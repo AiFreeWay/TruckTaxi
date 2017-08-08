@@ -10,6 +10,7 @@
         android:id="@+id/fmt_view_pager_tb_tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:tabGravity="fill"
         app:tabIndicatorColor="@color/colorPrimary"
         app:tabSelectedTextColor="@color/colorPrimary"
         app:tabTextColor="@color/mineShaft"

@@ -63,4 +63,8 @@ class NetworkClient {
     fun getOrders(ordersRequest: OrdersRequest): Observable<OrdersResponse> {
         return mApiController.getOrders(ordersRequest.token, OrdersRequest.LIST_TYPE_SHORT, ordersRequest.orderStatus)
     }
+
+    fun getPayments(paymenstRequest: PaymentsRequest): Observable<PaymentsResponse> {
+        return mApiController.getPayments(paymenstRequest.token)
+    }
 }

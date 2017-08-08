@@ -1,13 +1,13 @@
 package v_aniskin.com.trucktaxi.data.network_client.requests
 
 /**
- * Created by root on 25.07.17.
+ * Created by root on 08.08.17.
  */
-
-class OrdersRequest(token: String, var orderStatus: String): BaseRequest(token) {
+class PaymentsRequest(token: String): BaseRequest(token) {
 
     companion object {
-        const val URI: String = "api/orders/getList/index.php"
+        const val URI: String = "api/checklistitems/getList/index.php"
+
         const val FIELD_TOKEN: String = "token"
         const val FIELD_LIST_TYPE: String = "listType"
         const val FIELD_ORDER_STATUS: String = "orderStatus"

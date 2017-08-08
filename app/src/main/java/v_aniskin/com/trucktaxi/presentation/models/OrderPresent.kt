@@ -1,22 +1,18 @@
 package v_aniskin.com.trucktaxi.presentation.models
 
+import v_aniskin.com.trucktaxi.domain.models.ListItemTypes
+
 /**
  * Created by root on 28.05.17.
  */
 class OrderPresent {
-
-    companion object {
-
-        const val STATE_ITEM: Int = 0
-        const val STATE_HEADER: Int = 1
-    }
 
     var order: String? = null
     var time: String? = null
     var address: String? = null
     var workTime: String? = null
     var desc: String? = null
-    var state: Int? = STATE_ITEM
+    var state: Int? = ListItemTypes.TYPE_ITEM
     var status: String? = null
 
     constructor(desc: String, state: Int?) {

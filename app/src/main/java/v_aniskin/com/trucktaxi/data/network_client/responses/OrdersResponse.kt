@@ -1,5 +1,6 @@
 package v_aniskin.com.trucktaxi.data.network_client.responses
 
+import v_aniskin.com.trucktaxi.data.network_client.models.OrderNetwork
 import v_aniskin.com.trucktaxi.domain.models.Order
 import java.util.*
 
@@ -8,5 +9,5 @@ import java.util.*
  */
 class OrdersResponse: BaseResponse() {
 
-    var orders: List<Order> = Collections.emptyList()
+    var orders: List<OrderNetwork> = Collections.emptyList()
 }

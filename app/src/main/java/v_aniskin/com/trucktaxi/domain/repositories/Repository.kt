@@ -41,4 +41,6 @@ interface Repository {
     fun getCompleteOrders(): Observable<OrdersResponse>
 
     fun getArchiveOrders(): Observable<OrdersResponse>
+
+    fun getPayments(): Observable<PaymentsResponse>
 }

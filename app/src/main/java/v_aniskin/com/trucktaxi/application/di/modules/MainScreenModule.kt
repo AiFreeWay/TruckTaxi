@@ -6,14 +6,8 @@ import ru.terrakok.cicerone.Cicerone
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
 import v_aniskin.com.trucktaxi.application.utils.Logger
-import v_aniskin.com.trucktaxi.domain.executors.AuthExecutorImpl
-import v_aniskin.com.trucktaxi.domain.executors.NotificationsExecutorImpl
-import v_aniskin.com.trucktaxi.domain.executors.OrdersExecutorImpl
-import v_aniskin.com.trucktaxi.domain.executors.ProfileExecutorImpl
-import v_aniskin.com.trucktaxi.domain.executors.interfaces.AuthExecutor
-import v_aniskin.com.trucktaxi.domain.executors.interfaces.NotificationsExecutor
-import v_aniskin.com.trucktaxi.domain.executors.interfaces.OrdersExecutor
-import v_aniskin.com.trucktaxi.domain.executors.interfaces.ProfileExecutor
+import v_aniskin.com.trucktaxi.domain.executors.*
+import v_aniskin.com.trucktaxi.domain.executors.interfaces.*
 import v_aniskin.com.trucktaxi.presentation.factories.MainFragmentFactory
 import v_aniskin.com.trucktaxi.presentation.navigators.MainFragmentNavigator
 import v_aniskin.com.trucktaxi.presentation.screens.main.activities.MainActivity
@@ -69,5 +63,10 @@ class MainScreenModule(private val mActivity: MainActivity) {
     @Provides
     fun provideOrdersExecutor(ordersExecutor: OrdersExecutorImpl) : OrdersExecutor {
         return ordersExecutor
+    }
+
+    @Provides
+    fun providePaymentsExecutor(paymentsExecutor: PaymentsExecutorImpl) : PaymentsExecutor {
+        return paymentsExecutor
     }
 }

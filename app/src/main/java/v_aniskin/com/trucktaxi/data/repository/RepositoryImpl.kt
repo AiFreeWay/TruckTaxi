@@ -64,7 +64,6 @@ class RepositoryImpl @Inject constructor(context: Context) : Repository {
         return mNetworkClinet.getOrders(OrdersRequest(getToken(), OrdersRequest.ORDER_STATUS_ALL))
     }
 
-
     override fun getPreappointedOrders(): Observable<OrdersResponse> {
         return mNetworkClinet.getOrders(OrdersRequest(getToken(), OrdersTypes.ORDER_STATUS_PREAPPOINTED))
     }
@@ -89,16 +88,15 @@ class RepositoryImpl @Inject constructor(context: Context) : Repository {
         return mNetworkClinet.getOrders(OrdersRequest(getToken(), OrdersTypes.ORDER_STATUS_COMPLETE))
     }
 
-
-
-
-
-
     override fun startScanLocation() {
         mLocationController.startLocationUpdate()
     }
 
     override fun stopScanLocation() {
         mLocationController.stopLocationUpdate()
+    }
+
+    override fun getPayments(): Observable<PaymentsResponse> {
+        return mNetworkClinet.getPayments(PaymentsRequest(getToken()))
     }
 }

@@ -12,24 +12,26 @@ class Order {
     }
 
     var order: String? = null
-    var time: String? = null
+    var beginDate: String? = null
     var address: String? = null
     var workTime: String? = null
     var desc: String? = null
     var state: Int? = STATE_ITEM
     var status: String? = null
+    var cost: String? = null
 
     constructor(desc: String, state: Int?) {
         this.desc = desc
         this.state = state
     }
 
-    constructor(order: String?, time: String?, address: String?, workTime: String?, state: Int?, status: String?) {
+    constructor(order: String?, beginDate: String?, address: String?, workTime: String?, status: String?, cost: String?) {
         this.order = order
-        this.time = time
+        this.beginDate = beginDate
         this.address = address
         this.workTime = workTime
-        this.state = state
         this.status = status
+        this.cost = cost
+        this.desc = "Заказ #"+order+" на "+beginDate+" "+address+" Часы работы "+workTime+" - "+cost+" руб."
     }
 }

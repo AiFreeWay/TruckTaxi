@@ -10,12 +10,12 @@ import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
 import v_aniskin.com.trucktaxi.R
-import v_aniskin.com.trucktaxi.application.utils.Logger
 import v_aniskin.com.trucktaxi.presentation.adapters.MultyHeaderRvAdapter
 import v_aniskin.com.trucktaxi.presentation.adapters.holders.OrderHolder
 import v_aniskin.com.trucktaxi.presentation.adapters.holders.SubsidaryBinder
 import v_aniskin.com.trucktaxi.presentation.adapters.holders.SubsidaryHolder
 import v_aniskin.com.trucktaxi.presentation.models.AdapterItemContainer
+import v_aniskin.com.trucktaxi.domain.models.ListItemTypes
 import v_aniskin.com.trucktaxi.presentation.models.OrderPresent
 import v_aniskin.com.trucktaxi.presentation.screens.common.BaseParentFragment
 import v_aniskin.com.trucktaxi.presentation.screens.main.view_controllers.FmtOrdersVC
@@ -36,7 +36,6 @@ class OrdersFragment : BaseParentFragment<FmtOrdersVC>() {
 
     @BindView(R.id.fmt_list_rv_data)
     lateinit var mRvData: RecyclerView
-
     @BindView(R.id.fmt_list_tv_error)
     lateinit var mTvError: TextView
 
@@ -83,7 +82,7 @@ class OrdersFragment : BaseParentFragment<FmtOrdersVC>() {
 
         val data: ArrayList<AdapterItemContainer<OrderPresent>> = ArrayList()
         orders.forEach {
-            if (it.state == OrderPresent.STATE_HEADER)
+            if (it.state == ListItemTypes.TYPE_HEADER)
                 data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HEADER, it))
             else
                 data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HOLDER, it))
