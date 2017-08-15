@@ -10,7 +10,6 @@ import rx.Observable
 import v_aniskin.com.trucktaxi.application.utils.Logger
 import v_aniskin.com.trucktaxi.data.network_client.requests.*
 import v_aniskin.com.trucktaxi.data.network_client.responses.*
-import v_aniskin.com.trucktaxi.domain.models.ResponseMonade
 
 
 /**
@@ -69,7 +68,7 @@ class NetworkClient {
         return mApiController.getPayments(request.token, request.paymentStatus)
     }
 
-    fun setWorkState(request: ChangeWorkStateRequest): Observable<ChangeWorkStateResponse> {
-        return mApiController.changeWorkState(request.token, request.workState)
+    fun editProfile(request: EditProfileRequest): Observable<EditProfileResponse> {
+        return mApiController.editProfile(request.token, request.workState)
     }
 }

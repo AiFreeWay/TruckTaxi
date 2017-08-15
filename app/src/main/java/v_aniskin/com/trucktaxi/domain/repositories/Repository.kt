@@ -46,5 +46,5 @@ interface Repository {
 
     fun getPaymentsComlete(): Observable<PaymentsResponse>
 
-    fun setWorkState(state: String): Observable<ChangeWorkStateResponse>
+    fun editProfile(state: String): Observable<EditProfileResponse>
 }

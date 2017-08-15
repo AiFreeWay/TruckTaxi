@@ -1,6 +1,6 @@
 package v_aniskin.com.trucktaxi.domain.mappers
 
-import v_aniskin.com.trucktaxi.data.network_client.responses.ChangeWorkStateResponse
+import v_aniskin.com.trucktaxi.data.network_client.responses.EditProfileResponse
 import v_aniskin.com.trucktaxi.domain.models.WorkState
 
 /**
@@ -10,7 +10,7 @@ class WorkStateMapper {
 
     companion object {
 
-        fun mapWorkState(response: ChangeWorkStateResponse): WorkState {
+        fun mapWorkState(response: EditProfileResponse): WorkState {
             return WorkState(response.state, response.error, response.status)
         }
     }

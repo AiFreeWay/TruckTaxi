@@ -4,6 +4,7 @@ import v_aniskin.com.trucktaxi.R
 import v_aniskin.com.trucktaxi.application.utils.Logger
 import v_aniskin.com.trucktaxi.application.utils.NetworkErrors
 import v_aniskin.com.trucktaxi.application.utils.SubscriptionContainer
+import v_aniskin.com.trucktaxi.application.utils.WorkStates
 import v_aniskin.com.trucktaxi.domain.executors.interfaces.NotificationsExecutor
 import v_aniskin.com.trucktaxi.domain.executors.interfaces.ProfileExecutor
 import v_aniskin.com.trucktaxi.domain.models.Profile
@@ -49,6 +50,14 @@ class FmtHomeVC(fragment: HomeFragment) : BaseViewController<HomeFragment>(fragm
                 ?.getViewController()
     }
 
+    fun editProfile(workState: String) {
+        mSubscriptionContainer.addSubscription(mProfileExecutor.editProfile(workState)
+                .doOnSubscribe { startProgressBar() }
+                .doOnCompleted { stopProgressBar() }
+                .subscribe({}, {error -> doOnError(error)
+                    mView.revertSwtOnWork()}))
+    }
+
     private fun getProfile() {
         mSubscriptionContainer.addSubscription(mProfileExecutor.getProfile()
                 .doOnSubscribe { startProgressBar() }
@@ -81,10 +90,12 @@ class FmtHomeVC(fragment: HomeFragment) : BaseViewController<HomeFragment>(fragm
 
     private fun startProgressBar() {
         getAcMainVC()?.startProgressBar()
+        mView.lockSwtOnWork()
     }
 
     private fun stopProgressBar() {
         getAcMainVC()?.stopProgressBar()
+        mView.unlockSwtOnWork()
     }
 
     private fun showToast(message: String) {

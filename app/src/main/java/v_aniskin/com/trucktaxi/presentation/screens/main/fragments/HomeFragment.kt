@@ -1,8 +1,6 @@
 package v_aniskin.com.trucktaxi.presentation.screens.main.fragments
 
-import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.os.WorkSource
 import android.support.v7.widget.SwitchCompat
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -17,10 +15,8 @@ import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 import v_aniskin.com.trucktaxi.R
 import v_aniskin.com.trucktaxi.application.utils.DateMapper
-import v_aniskin.com.trucktaxi.application.utils.Logger
 import v_aniskin.com.trucktaxi.application.utils.WorkStates
 import v_aniskin.com.trucktaxi.domain.models.Profile
-import v_aniskin.com.trucktaxi.domain.models.WorkState
 import v_aniskin.com.trucktaxi.presentation.adapters.binders.NotificationBinder
 import v_aniskin.com.trucktaxi.presentation.models.NotificationPresent
 import v_aniskin.com.trucktaxi.presentation.screens.common.BaseActivity
@@ -68,9 +64,6 @@ class HomeFragment : BaseParentFragment<FmtHomeVC>() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         mViewController = FmtHomeVC(this)
-        mSwtOnWork.setOnCheckedChangeListener { compoundButton, b ->
-            compoundButton.isChecked = !b
-        }
     }
 
     override fun onResume() {
@@ -87,6 +80,18 @@ class HomeFragment : BaseParentFragment<FmtHomeVC>() {
     override fun onStop() {
         super.onStop()
         mViewController?.stop()
+    }
+
+    fun lockSwtOnWork() {
+        mSwtOnWork.isEnabled = false
+    }
+
+    fun unlockSwtOnWork() {
+        mSwtOnWork.isEnabled = true
+    }
+
+    fun revertSwtOnWork() {
+        mSwtOnWork.isChecked = !mSwtOnWork.isChecked
     }
 
     fun loadProfile(profile: Profile) {
@@ -107,6 +112,10 @@ class HomeFragment : BaseParentFragment<FmtHomeVC>() {
         mTvCarType.setText(checkCarParamOnEmpty(profile.mMainCarType))
         mTvCarNumber.setText(checkCarParamOnEmpty(profile.mMainCarNumber))
         mSwtOnWork.isChecked =  TextUtils.equals(profile.mStatus, WorkStates.WORK_STATE_ON_WORK)
+        mSwtOnWork.setOnCheckedChangeListener { compoundButton, b ->
+            val workState = if (b) WorkStates.WORK_STATE_ON_WORK else WorkStates.WORK_STATE_ON_REST
+            mViewController?.editProfile(workState)
+        }
     }
 
     fun loadNotifications(notifications: List<NotificationPresent>) {

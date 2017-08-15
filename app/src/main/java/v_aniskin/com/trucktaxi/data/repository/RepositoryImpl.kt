@@ -105,8 +105,8 @@ class RepositoryImpl @Inject constructor(context: Context) : Repository {
         return mNetworkClinet.getPayments(PaymentsRequest(getToken(), PaymentsType.ORDER_STATUS_COMPLETE))
     }
 
-    override fun setWorkState(state: String): Observable<ChangeWorkStateResponse> {
-        return mNetworkClinet.setWorkState(ChangeWorkStateRequest(getToken(), state))
+    override fun editProfile(state: String): Observable<EditProfileResponse> {
+        return mNetworkClinet.editProfile(EditProfileRequest(getToken(), state))
     }
 
 }

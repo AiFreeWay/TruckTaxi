@@ -3,7 +3,7 @@ package v_aniskin.com.trucktaxi.data.network_client.requests
 /**
  * Created by root on 15.08.17.
  */
-class ChangeWorkStateRequest(token: String, var workState: String): BaseRequest(token) {
+class EditProfileRequest(token: String, var workState: String): BaseRequest(token) {
 
     companion object {
         const val URI: String = "api/driver/edit/index.php"

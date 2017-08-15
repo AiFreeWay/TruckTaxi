@@ -30,8 +30,8 @@ class ProfileExecutorImpl @Inject constructor(var mRepository: Repository): Prof
                 .map {response -> ProfileMapper.mapProfile(response)}
     }
 
-    override fun setWorkState(state: Int): Observable<WorkState> {
-        return mRepository.setWorkState(state)
+    override fun editProfile(state: String): Observable<WorkState> {
+        return mRepository.editProfile(state)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map { WorkStateMapper.mapWorkState(it) }

@@ -10,5 +10,5 @@ import v_aniskin.com.trucktaxi.domain.models.WorkState
 interface ProfileExecutor {
 
     fun getProfile(): Observable<Profile>
-    fun setWorkState(state: Int): Observable<WorkState>
+    fun editProfile(state: String): Observable<WorkState>
 }

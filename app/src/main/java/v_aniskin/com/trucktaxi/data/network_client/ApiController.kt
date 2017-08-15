@@ -36,7 +36,7 @@ interface ApiController {
                     @Field (PaymentsRequest.FIELD_PAYMENT_STATUS) paymentStatus: String): Observable<PaymentsResponse>
 
     @FormUrlEncoded
-    @POST(ChangeWorkStateRequest.URI)
-    fun changeWorkState(@Field (ChangeWorkStateRequest.FIELD_TOKEN) token: String,
-                    @Field (ChangeWorkStateRequest.FIELD_DRIVER_STATUS) driverStatus: String): Observable<ChangeWorkStateResponse>
+    @POST(EditProfileRequest.URI)
+    fun editProfile(@Field (EditProfileRequest.FIELD_TOKEN) token: String,
+                        @Field (EditProfileRequest.FIELD_DRIVER_STATUS) driverStatus: String): Observable<EditProfileResponse>
 }
