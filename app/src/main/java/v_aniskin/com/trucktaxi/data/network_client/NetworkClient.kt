@@ -10,6 +10,7 @@ import rx.Observable
 import v_aniskin.com.trucktaxi.application.utils.Logger
 import v_aniskin.com.trucktaxi.data.network_client.requests.*
 import v_aniskin.com.trucktaxi.data.network_client.responses.*
+import v_aniskin.com.trucktaxi.domain.models.ResponseMonade
 
 
 /**
@@ -42,29 +43,33 @@ class NetworkClient {
         mApiController = retrofit.create(ApiController::class.java)
     }
 
-    fun auth(authRequest: AuthRequest): Observable<AuthResponse> {
-        return  mApiController.auth(authRequest.userEmail, authRequest.userPassword, authRequest.userType)
+    fun auth(request: AuthRequest): Observable<AuthResponse> {
+        return  mApiController.auth(request.userEmail, request.userPassword, request.userType)
     }
 
-    fun checkToken(checkTokenRequest: CheckTokenRequest): Observable<BaseResponse> {
-        return  mApiController.checkToken(checkTokenRequest.token)
+    fun checkToken(request: CheckTokenRequest): Observable<BaseResponse> {
+        return  mApiController.checkToken(request.token)
     }
 
-    fun getProfile(profileRequest: ProfileRequest): Observable<ProfileResponse> {
-        return  mApiController.getProfile(profileRequest.token)
+    fun getProfile(request: ProfileRequest): Observable<ProfileResponse> {
+        return  mApiController.getProfile(request.token)
     }
 
-    fun getNotifications(notificationsRequest: NotificationsRequest): Observable<NotificationsResponse> {
+    fun getNotifications(request: NotificationsRequest): Observable<NotificationsResponse> {
         val response: NotificationsResponse = NotificationsResponse()
         response.status = "ok"
         return Observable.just(response)
     }
 
-    fun getOrders(ordersRequest: OrdersRequest): Observable<OrdersResponse> {
-        return mApiController.getOrders(ordersRequest.token, OrdersRequest.LIST_TYPE_SHORT, ordersRequest.orderStatus)
+    fun getOrders(request: OrdersRequest): Observable<OrdersResponse> {
+        return mApiController.getOrders(request.token, OrdersRequest.LIST_TYPE_SHORT, request.orderStatus)
     }
 
-    fun getPayments(paymenstRequest: PaymentsRequest): Observable<PaymentsResponse> {
-        return mApiController.getPayments(paymenstRequest.token)
+    fun getPayments(request: PaymentsRequest): Observable<PaymentsResponse> {
+        return mApiController.getPayments(request.token, request.paymentStatus)
+    }
+
+    fun setWorkState(request: ChangeWorkStateRequest): Observable<ChangeWorkStateResponse> {
+        return mApiController.changeWorkState(request.token, request.workState)
     }
 }

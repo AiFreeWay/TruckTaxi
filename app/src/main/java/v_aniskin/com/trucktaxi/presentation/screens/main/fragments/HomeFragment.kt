@@ -2,6 +2,8 @@ package v_aniskin.com.trucktaxi.presentation.screens.main.fragments
 
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.os.WorkSource
+import android.support.v7.widget.SwitchCompat
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +18,9 @@ import de.hdodenhof.circleimageview.CircleImageView
 import v_aniskin.com.trucktaxi.R
 import v_aniskin.com.trucktaxi.application.utils.DateMapper
 import v_aniskin.com.trucktaxi.application.utils.Logger
+import v_aniskin.com.trucktaxi.application.utils.WorkStates
 import v_aniskin.com.trucktaxi.domain.models.Profile
+import v_aniskin.com.trucktaxi.domain.models.WorkState
 import v_aniskin.com.trucktaxi.presentation.adapters.binders.NotificationBinder
 import v_aniskin.com.trucktaxi.presentation.models.NotificationPresent
 import v_aniskin.com.trucktaxi.presentation.screens.common.BaseActivity
@@ -46,6 +50,8 @@ class HomeFragment : BaseParentFragment<FmtHomeVC>() {
     lateinit var mTvCarType: TextView
     @BindView(R.id.fmt_home_tv_car_number)
     lateinit var mTvCarNumber: TextView
+    @BindView(R.id.fmt_home_swt_on_work)
+    lateinit var mSwtOnWork: SwitchCompat
     @BindView(R.id.fmt_home_tv_notification)
     lateinit var mTvNotifications: TextView
     @BindView(R.id.fmt_home_iv_avatar)
@@ -55,13 +61,17 @@ class HomeFragment : BaseParentFragment<FmtHomeVC>() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view: View = inflater!!.inflate(R.layout.fmt_home, container, false)
-        ButterKnife.bind(this, view);
+        ButterKnife.bind(this, view)
         return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        mViewController = FmtHomeVC(this)    }
+        mViewController = FmtHomeVC(this)
+        mSwtOnWork.setOnCheckedChangeListener { compoundButton, b ->
+            compoundButton.isChecked = !b
+        }
+    }
 
     override fun onResume() {
         super.onResume()
@@ -96,6 +106,7 @@ class HomeFragment : BaseParentFragment<FmtHomeVC>() {
         mTvCarModel.setText(checkCarParamOnEmpty(profile.mMainCarModel))
         mTvCarType.setText(checkCarParamOnEmpty(profile.mMainCarType))
         mTvCarNumber.setText(checkCarParamOnEmpty(profile.mMainCarNumber))
+        mSwtOnWork.isChecked =  TextUtils.equals(profile.mStatus, WorkStates.WORK_STATE_ON_WORK)
     }
 
     fun loadNotifications(notifications: List<NotificationPresent>) {

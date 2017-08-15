@@ -5,8 +5,11 @@ import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 import v_aniskin.com.trucktaxi.application.di.scopes.PerMainScreen
 import v_aniskin.com.trucktaxi.application.utils.Logger
+import v_aniskin.com.trucktaxi.data.network_client.responses.PaymentsResponse
 import v_aniskin.com.trucktaxi.domain.executors.interfaces.PaymentsExecutor
 import v_aniskin.com.trucktaxi.domain.mappers.PaymentsMapper
+import v_aniskin.com.trucktaxi.domain.models.ListItemTypes
+import v_aniskin.com.trucktaxi.domain.models.Payment
 import v_aniskin.com.trucktaxi.domain.repositories.Repository
 import v_aniskin.com.trucktaxi.presentation.models.ModelsContainer
 import v_aniskin.com.trucktaxi.presentation.models.PaymentPresent
@@ -23,9 +26,22 @@ class PaymentsExecutorImpl @Inject constructor(var mRepository: Repository) : Pa
     }
 
     override fun getPayments(): Observable<ModelsContainer<PaymentPresent>> {
-        return mRepository.getPayments()
+        return mRepository.getPaymentsFuture()
+                .zipWith(mRepository.getPaymentsComlete(), { r1, r2 -> zipPayments(r1, r2) })
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map {response -> PaymentsMapper.mapPayments(response)}
+                .map {PaymentsMapper.mapPayments(it)}
+    }
+
+    private fun zipPayments(futurePayments: PaymentsResponse, completePayments: PaymentsResponse): ModelsContainer<Payment> {
+        val payments: ModelsContainer<Payment> = ModelsContainer(completePayments.error, completePayments.status)
+        if (futurePayments.payments.isNotEmpty())
+            payments.mData.add(Payment("Предстоящие", "", ListItemTypes.TYPE_HEADER))
+        payments.mData.addAll(PaymentsMapper.mapPaymentsNetwork(futurePayments.payments))
+
+        if (completePayments.payments.isNotEmpty())
+            payments.mData.add(Payment("Завершённые", "", ListItemTypes.TYPE_HEADER))
+        payments.mData.addAll(PaymentsMapper.mapPaymentsNetwork(completePayments.payments))
+        return payments
     }
 }

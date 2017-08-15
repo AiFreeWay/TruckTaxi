@@ -7,7 +7,9 @@ import v_aniskin.com.trucktaxi.application.di.scopes.PerMainScreen
 import v_aniskin.com.trucktaxi.application.utils.Logger
 import v_aniskin.com.trucktaxi.domain.executors.interfaces.ProfileExecutor
 import v_aniskin.com.trucktaxi.domain.mappers.ProfileMapper
+import v_aniskin.com.trucktaxi.domain.mappers.WorkStateMapper
 import v_aniskin.com.trucktaxi.domain.models.Profile
+import v_aniskin.com.trucktaxi.domain.models.WorkState
 import v_aniskin.com.trucktaxi.domain.repositories.Repository
 import javax.inject.Inject
 
@@ -26,5 +28,12 @@ class ProfileExecutorImpl @Inject constructor(var mRepository: Repository): Prof
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map {response -> ProfileMapper.mapProfile(response)}
+    }
+
+    override fun setWorkState(state: Int): Observable<WorkState> {
+        return mRepository.setWorkState(state)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .map { WorkStateMapper.mapWorkState(it) }
     }
 }

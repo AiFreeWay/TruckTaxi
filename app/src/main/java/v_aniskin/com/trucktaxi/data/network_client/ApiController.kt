@@ -32,5 +32,11 @@ interface ApiController {
 
     @FormUrlEncoded
     @POST(PaymentsRequest.URI)
-    fun getPayments(@Field (PaymentsRequest.FIELD_TOKEN) token: String): Observable<PaymentsResponse>
+    fun getPayments(@Field (PaymentsRequest.FIELD_TOKEN) token: String,
+                    @Field (PaymentsRequest.FIELD_PAYMENT_STATUS) paymentStatus: String): Observable<PaymentsResponse>
+
+    @FormUrlEncoded
+    @POST(ChangeWorkStateRequest.URI)
+    fun changeWorkState(@Field (ChangeWorkStateRequest.FIELD_TOKEN) token: String,
+                    @Field (ChangeWorkStateRequest.FIELD_DRIVER_STATUS) driverStatus: String): Observable<ChangeWorkStateResponse>
 }

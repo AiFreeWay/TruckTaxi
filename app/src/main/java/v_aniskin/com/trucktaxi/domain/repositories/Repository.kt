@@ -42,5 +42,9 @@ interface Repository {
 
     fun getArchiveOrders(): Observable<OrdersResponse>
 
-    fun getPayments(): Observable<PaymentsResponse>
+    fun getPaymentsFuture(): Observable<PaymentsResponse>
+
+    fun getPaymentsComlete(): Observable<PaymentsResponse>
+
+    fun setWorkState(state: String): Observable<ChangeWorkStateResponse>
 }

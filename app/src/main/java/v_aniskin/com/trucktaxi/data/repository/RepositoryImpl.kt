@@ -5,6 +5,7 @@ import android.location.LocationManager
 import rx.Observable
 import v_aniskin.com.trucktaxi.application.utils.Logger
 import v_aniskin.com.trucktaxi.application.utils.OrdersTypes
+import v_aniskin.com.trucktaxi.application.utils.PaymentsType
 import v_aniskin.com.trucktaxi.data.HawkController
 import v_aniskin.com.trucktaxi.data.location.LocationController
 import v_aniskin.com.trucktaxi.data.network_client.NetworkClient
@@ -96,7 +97,16 @@ class RepositoryImpl @Inject constructor(context: Context) : Repository {
         mLocationController.stopLocationUpdate()
     }
 
-    override fun getPayments(): Observable<PaymentsResponse> {
-        return mNetworkClinet.getPayments(PaymentsRequest(getToken()))
+    override fun getPaymentsFuture(): Observable<PaymentsResponse> {
+        return mNetworkClinet.getPayments(PaymentsRequest(getToken(), PaymentsType.ORDER_STATUS_FUTURE))
     }
+
+    override fun getPaymentsComlete(): Observable<PaymentsResponse> {
+        return mNetworkClinet.getPayments(PaymentsRequest(getToken(), PaymentsType.ORDER_STATUS_COMPLETE))
+    }
+
+    override fun setWorkState(state: String): Observable<ChangeWorkStateResponse> {
+        return mNetworkClinet.setWorkState(ChangeWorkStateRequest(getToken(), state))
+    }
+
 }
