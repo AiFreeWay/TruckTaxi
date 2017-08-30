@@ -6,9 +6,9 @@ import v_aniskin.com.trucktaxi.application.utils.Logger
 import v_aniskin.com.trucktaxi.application.utils.NetworkErrors
 import v_aniskin.com.trucktaxi.application.utils.SubscriptionContainer
 import v_aniskin.com.trucktaxi.domain.executors.interfaces.PaymentsExecutor
+import v_aniskin.com.trucktaxi.domain.models.Payment
 import v_aniskin.com.trucktaxi.domain.models.ResponseMonade
-import v_aniskin.com.trucktaxi.presentation.models.ModelsContainer
-import v_aniskin.com.trucktaxi.presentation.models.PaymentPresent
+import v_aniskin.com.trucktaxi.presentation.models.ModelContainer
 import v_aniskin.com.trucktaxi.presentation.screens.common.BaseViewController
 import v_aniskin.com.trucktaxi.presentation.screens.main.activities.MainActivity
 import v_aniskin.com.trucktaxi.presentation.screens.main.fragments.PaymentsFragment
@@ -58,9 +58,9 @@ class FmtPaymentsVC(fragment: PaymentsFragment): BaseViewController<PaymentsFrag
                         {error -> doOnError(error)}))
     }
 
-    private fun doOnGetPayments(payments: ModelsContainer<PaymentPresent>) {
+    private fun doOnGetPayments(payments: ModelContainer<List<Payment>>) {
         if (payments.status.equals(ResponseMonade.SUCCESS))
-            mView.loadPayments(payments.mData)
+            mView.loadPayments(payments.mData!!)
         else
             showToast(NetworkErrors.getErrorMessageByType(mView.context, payments.error))
     }

@@ -26,10 +26,6 @@ interface Repository {
 
     fun getAllOrders(): Observable<OrdersResponse>
 
-    fun startScanLocation()
-
-    fun stopScanLocation()
-
     fun getAppointedOrders(): Observable<OrdersResponse>
 
     fun getPreappointedOrders(): Observable<OrdersResponse>
@@ -47,4 +43,6 @@ interface Repository {
     fun getPaymentsComlete(): Observable<PaymentsResponse>
 
     fun editProfile(state: String): Observable<EditProfileResponse>
+
+    fun getOrder(orderId: String): Observable<OrderResponse>
 }

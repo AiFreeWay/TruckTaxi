@@ -1,36 +1,29 @@
 package v_aniskin.com.trucktaxi.data.repository
 
 import android.content.Context
-import android.location.LocationManager
 import rx.Observable
 import v_aniskin.com.trucktaxi.application.utils.Logger
 import v_aniskin.com.trucktaxi.application.utils.OrdersTypes
 import v_aniskin.com.trucktaxi.application.utils.PaymentsType
 import v_aniskin.com.trucktaxi.data.HawkController
-import v_aniskin.com.trucktaxi.data.location.LocationController
 import v_aniskin.com.trucktaxi.data.network_client.NetworkClient
 import v_aniskin.com.trucktaxi.data.network_client.requests.*
 import v_aniskin.com.trucktaxi.data.network_client.responses.*
 import v_aniskin.com.trucktaxi.domain.repositories.Repository
 import javax.inject.Inject
-import javax.inject.Singleton
 
 /**
  * Created by root on 24.05.17.
  */
-@Singleton
 class RepositoryImpl @Inject constructor(context: Context) : Repository {
 
     private val mNetworkClinet: NetworkClient
     private val mHawkController: HawkController
-    private val mLocationController: LocationController
 
     init {
         Logger.testLog("RepositoryImpl Create")
         mNetworkClinet = NetworkClient()
         mHawkController = HawkController()
-        val locationManager: LocationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        mLocationController = LocationController(locationManager)
     }
 
     override fun auth(authRequest: AuthRequest): Observable<AuthResponse> {
@@ -89,14 +82,6 @@ class RepositoryImpl @Inject constructor(context: Context) : Repository {
         return mNetworkClinet.getOrders(OrdersRequest(getToken(), OrdersTypes.ORDER_STATUS_COMPLETE))
     }
 
-    override fun startScanLocation() {
-        mLocationController.startLocationUpdate()
-    }
-
-    override fun stopScanLocation() {
-        mLocationController.stopLocationUpdate()
-    }
-
     override fun getPaymentsFuture(): Observable<PaymentsResponse> {
         return mNetworkClinet.getPayments(PaymentsRequest(getToken(), PaymentsType.ORDER_STATUS_FUTURE))
     }
@@ -109,4 +94,7 @@ class RepositoryImpl @Inject constructor(context: Context) : Repository {
         return mNetworkClinet.editProfile(EditProfileRequest(getToken(), state))
     }
 
+    override fun getOrder(orderId: String): Observable<OrderResponse> {
+        return mNetworkClinet.getOrder(OrderRequest(getToken(), orderId))
+    }
 }

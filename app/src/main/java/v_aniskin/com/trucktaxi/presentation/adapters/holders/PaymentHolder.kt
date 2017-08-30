@@ -7,14 +7,13 @@ import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
 import v_aniskin.com.trucktaxi.R
-import v_aniskin.com.trucktaxi.presentation.models.PaymentPresent
-import v_aniskin.com.trucktaxi.presentation.screens.main.view_controllers.FmtOrdersVC
+import v_aniskin.com.trucktaxi.domain.models.Payment
 import v_aniskin.com.trucktaxi.presentation.screens.main.view_controllers.FmtPaymentsVC
 
 /**
  * Created by root on 28.05.17.
  */
-class PaymentHolder : BaseHolder<PaymentPresent, FmtPaymentsVC> {
+class PaymentHolder : BaseHolder<Payment, FmtPaymentsVC> {
 
     @BindView(R.id.v_payment_holder_tv_order)
     lateinit var mTvOrder: TextView
@@ -31,12 +30,12 @@ class PaymentHolder : BaseHolder<PaymentPresent, FmtPaymentsVC> {
         ButterKnife.bind(this, mView)
     }
 
-    override fun create(viewGroup: ViewGroup): BaseHolder<PaymentPresent, FmtPaymentsVC> {
+    override fun create(viewGroup: ViewGroup): BaseHolder<Payment, FmtPaymentsVC> {
         val view = viewInflater(viewGroup, R.layout.v_payment_holder)
         return PaymentHolder(view, mViewController)
     }
 
-    override fun bind(dataModel: PaymentPresent) {
+    override fun bind(dataModel: Payment) {
         mTvOrder.setText(dataModel.order)
         mTvTime.setText(dataModel.time)
         mTvSum.setText(dataModel.sum)

@@ -39,4 +39,9 @@ interface ApiController {
     @POST(EditProfileRequest.URI)
     fun editProfile(@Field (EditProfileRequest.FIELD_TOKEN) token: String,
                         @Field (EditProfileRequest.FIELD_DRIVER_STATUS) driverStatus: String): Observable<EditProfileResponse>
+
+    @FormUrlEncoded
+    @POST(OrderRequest.URI)
+    fun getOrder(@Field (OrderRequest.FIELD_TOKEN) token: String,
+                  @Field (OrderRequest.FIELD_ORDER_ID) orderId: String): Observable<OrderResponse>
 }

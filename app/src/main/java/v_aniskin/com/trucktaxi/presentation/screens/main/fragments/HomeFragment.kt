@@ -16,9 +16,9 @@ import de.hdodenhof.circleimageview.CircleImageView
 import v_aniskin.com.trucktaxi.R
 import v_aniskin.com.trucktaxi.application.utils.DateMapper
 import v_aniskin.com.trucktaxi.application.utils.WorkStates
+import v_aniskin.com.trucktaxi.domain.models.Notification
 import v_aniskin.com.trucktaxi.domain.models.Profile
 import v_aniskin.com.trucktaxi.presentation.adapters.binders.NotificationBinder
-import v_aniskin.com.trucktaxi.presentation.models.NotificationPresent
 import v_aniskin.com.trucktaxi.presentation.screens.common.BaseActivity
 import v_aniskin.com.trucktaxi.presentation.screens.common.BaseParentFragment
 import v_aniskin.com.trucktaxi.presentation.screens.main.view_controllers.FmtHomeVC
@@ -118,7 +118,7 @@ class HomeFragment : BaseParentFragment<FmtHomeVC>() {
         }
     }
 
-    fun loadNotifications(notifications: List<NotificationPresent>) {
+    fun loadNotifications(notifications: List<Notification>) {
         val notificationsTitle: String
         if (notifications.isNotEmpty())
             notificationsTitle = getString(R.string.notifications_title)+" "+notifications.size

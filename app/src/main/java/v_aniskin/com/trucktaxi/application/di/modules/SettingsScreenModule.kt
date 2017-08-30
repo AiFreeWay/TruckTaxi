@@ -2,6 +2,7 @@ package v_aniskin.com.trucktaxi.application.di.modules
 
 import dagger.Module
 import dagger.Provides
+import v_aniskin.com.trucktaxi.application.di.scopes.PerSettingsScreen
 import v_aniskin.com.trucktaxi.application.utils.Logger
 import v_aniskin.com.trucktaxi.presentation.factories.SettingsFragmentFactory
 
@@ -19,6 +20,7 @@ class SettingsScreenModule {
     }
 
     @Provides
+    @PerSettingsScreen
     fun provideSettingsFragmentFactory() : SettingsFragmentFactory {
         return mFactory
     }

@@ -20,7 +20,7 @@ abstract class BaseActivity<VC> : AppCompatActivity(), Screen {
 
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
-        inject();
+        inject()
     }
 
     override fun getScreenComponet(): ScreenComponent? {

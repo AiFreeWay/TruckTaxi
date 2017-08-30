@@ -4,13 +4,12 @@ import v_aniskin.com.trucktaxi.R
 import v_aniskin.com.trucktaxi.application.utils.Logger
 import v_aniskin.com.trucktaxi.application.utils.NetworkErrors
 import v_aniskin.com.trucktaxi.application.utils.SubscriptionContainer
-import v_aniskin.com.trucktaxi.application.utils.WorkStates
 import v_aniskin.com.trucktaxi.domain.executors.interfaces.NotificationsExecutor
 import v_aniskin.com.trucktaxi.domain.executors.interfaces.ProfileExecutor
+import v_aniskin.com.trucktaxi.domain.models.Notification
 import v_aniskin.com.trucktaxi.domain.models.Profile
 import v_aniskin.com.trucktaxi.domain.models.ResponseMonade
-import v_aniskin.com.trucktaxi.presentation.models.ModelsContainer
-import v_aniskin.com.trucktaxi.presentation.models.NotificationPresent
+import v_aniskin.com.trucktaxi.presentation.models.ModelContainer
 import v_aniskin.com.trucktaxi.presentation.screens.common.BaseViewController
 import v_aniskin.com.trucktaxi.presentation.screens.main.activities.MainActivity
 import v_aniskin.com.trucktaxi.presentation.screens.main.fragments.HomeFragment
@@ -81,9 +80,9 @@ class FmtHomeVC(fragment: HomeFragment) : BaseViewController<HomeFragment>(fragm
             showToast(NetworkErrors.getErrorMessageByType(mView.context, profile.error))
     }
 
-    private fun doOnGetNotificationse(notifications: ModelsContainer<NotificationPresent>) {
+    private fun doOnGetNotificationse(notifications: ModelContainer<List<Notification>>) {
         if (notifications.status.equals(ResponseMonade.SUCCESS))
-            mView.loadNotifications(notifications.mData)
+            mView.loadNotifications(notifications.mData!!)
         else
             showToast(NetworkErrors.getErrorMessageByType(mView.context, notifications.error))
     }

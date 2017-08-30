@@ -9,7 +9,11 @@ import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
 import android.view.View.VISIBLE
+import android.widget.ProgressBar
+import android.widget.TextView
+import android.widget.Toast
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.balysv.materialmenu.MaterialMenuDrawable
@@ -18,6 +22,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import v_aniskin.com.trucktaxi.R
 import v_aniskin.com.trucktaxi.application.utils.OrdersTypes
+import v_aniskin.com.trucktaxi.domain.models.Order
 import v_aniskin.com.trucktaxi.presentation.adapters.addons.ViewPagerItemContainer
 import v_aniskin.com.trucktaxi.presentation.adapters.ViewPagerTabsAdapter
 import v_aniskin.com.trucktaxi.presentation.screens.common.BaseActivity
@@ -30,8 +35,11 @@ class OrderDetailActivity : BaseActivity<AcOrderDetailVC>() {
 
     companion object {
         val ORDER_DETAIL_ACTIVITY_ID: String = "orderdetail.orderdetailactivity"
+        val ORDER_ID_KEY = "order_id"
     }
 
+    @BindView(R.id.ac_order_details_progress)
+    lateinit var mProgress: ProgressBar
     @BindView(R.id.ac_order_details_toolbar)
     lateinit var mToolbar: Toolbar
     @BindView(R.id.ac_order_details_mv_map)
@@ -40,16 +48,24 @@ class OrderDetailActivity : BaseActivity<AcOrderDetailVC>() {
     lateinit var mTlTabs: TabLayout
     @BindView(R.id.ac_order_details_vp_payments)
     lateinit var mVpBody: ViewPager
+    @BindView(R.id.ac_order_details_tv_from)
+    lateinit var mTvFrom: TextView
+    @BindView(R.id.ac_order_details_tv_phone_from)
+    lateinit var mTvPhoneFrom: TextView
+    @BindView(R.id.ac_order_details_tv_addresses)
+    lateinit var mTvAddresses: TextView
 
     private lateinit var mMenuDrawer: MaterialMenuIconToolbar
     private lateinit var mAdapter: ViewPagerTabsAdapter
     private var mStatus: String = ""
+    private var mOrderId: String = ""
 
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.ac_order_details);
         ButterKnife.bind(this)
         mStatus = intent.getStringExtra(ORDER_DETAIL_ACTIVITY_ID)
+        mOrderId = intent.getStringExtra(ORDER_ID_KEY)
         mViewController = AcOrderDetailVC(this)
         mTlTabs.setupWithViewPager(mVpBody)
         mAdapter = ViewPagerTabsAdapter(getSupportFragmentManager())
@@ -100,17 +116,34 @@ class OrderDetailActivity : BaseActivity<AcOrderDetailVC>() {
             mMvMap.onPause()
     }
 
-    override fun getToolbar(): Toolbar {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun getToolbar(): Toolbar = mToolbar
 
     override fun getBottomNavigation(): BottomNavigationView {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        throw Exception("BottomNavigation not implemented here v_aniskin.com.trucktaxi.presentation.screens.order_detail.activities.OrderDetailActivity")
+    }
+
+    fun loadOrder(order: Order) {
+        mTvFrom.setText(order.finalRoutePointAddress)
+        //mTvPhoneFrom.setText(order.)
     }
 
     fun loadData(data: List<ViewPagerItemContainer>) {
         mAdapter.loadData(data)
     }
+
+    fun startProgress() {
+        mProgress.visibility = View.VISIBLE
+    }
+
+    fun stopProgress() {
+        mProgress.visibility = View.GONE
+    }
+
+    fun showToast(text: Int) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+    }
+
+    fun getOrderId() = mOrderId
 
     private fun doOnGetMap(map: GoogleMap) {
         map.getUiSettings().setAllGesturesEnabled(true)

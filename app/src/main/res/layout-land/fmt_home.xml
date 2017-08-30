@@ -58,7 +58,7 @@
 
         <RatingBar
             android:id="@+id/fmt_home_rb_rate"
-            style="@style/customRatingBar"
+            style="?android:attr/ratingBarStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/internal_padding"

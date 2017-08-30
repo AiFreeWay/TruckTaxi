@@ -38,6 +38,7 @@
     <string name="from_address">Адрес вызова:</string>
     <string name="test_address_to">ул. Моховая, д. 21, к.2</string>
     <string name="address_to">Адрес назначения</string>
+    <string name="addresses_to">Адреса назначения</string>
     <string name="test_phone_from">+79027773901</string>
     <string name="test_phone_to">+79641256803</string>
     <string name="get">Взять</string>
@@ -101,8 +102,15 @@
     <string name="not_define">Не указано</string>
 
     <string name="orders_fragment_type_error">Not define fragment type "getFragmentType()"</string>
-    <string name="orders_future">В ожидании</string>
+    <string name="orders_future">В очереди</string>
     <string name="orders_current">В работе</string>
     <string name="orders_history">История</string>
     <string name="no_data">Нет данных</string>
+    <string name="destination_point">Точка назначения</string>
+    <string name="i_am">Я</string>
+    <string name="on">на</string>
+    <string name="order_prefix">Заказ</string>
+    <string name="ruble">руб.</string>
+    <string name="hour_suffix">ч+1</string>
+    <string name="need_location_enabled">Необходимо включить геоданные</string>
 </resources>

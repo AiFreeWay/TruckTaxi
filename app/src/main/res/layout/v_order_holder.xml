@@ -34,7 +34,7 @@
         android:layout_marginRight="@dimen/external_padding" />
 
     <TextView
-        android:id="@+id/v_order_holder_tv_work_time"
+        android:id="@+id/v_order_holder_tv_work_time_and_payment"
         style="@style/Text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

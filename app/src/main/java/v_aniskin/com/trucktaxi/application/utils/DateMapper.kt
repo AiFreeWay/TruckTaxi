@@ -11,9 +11,10 @@ class DateMapper {
 
     companion object {
 
-        val DATE_FORMAT: String = "dd-MM-yyyy"
-        val DATE_TIME_FORMAT: String = "dd-MM-yyyy HH:mm"
+        val DATE_FORMAT: String = "dd.MM.yyyy"
+        val DATE_TIME_FORMAT: String = "dd.MM.yyyy HH:mm"
         val TIME_FORMAT: String = "HH:mm"
+        val HOUR_FORMAT: String = "H"
 
         fun mapDate(date: Long): String {
             val dateFormat: DateFormat = SimpleDateFormat(DATE_FORMAT)
@@ -27,6 +28,11 @@ class DateMapper {
 
         fun mapTime(date: Long): String {
             val dateFormat: DateFormat = SimpleDateFormat(TIME_FORMAT)
+            return dateFormat.format(Date(date*1000L))
+        }
+
+        fun mapHour(date: Long): String {
+            val dateFormat: DateFormat = SimpleDateFormat(HOUR_FORMAT)
             return dateFormat.format(Date(date*1000L))
         }
     }

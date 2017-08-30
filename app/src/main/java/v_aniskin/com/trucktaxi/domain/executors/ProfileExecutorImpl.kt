@@ -16,7 +16,6 @@ import javax.inject.Inject
 /**
  * Created by root on 22.07.17.
  */
-@PerMainScreen
 class ProfileExecutorImpl @Inject constructor(var mRepository: Repository): ProfileExecutor {
 
     init {

@@ -80,16 +80,15 @@ class MainActivity : BaseActivity<AcMainVC>() {
         mViewController?.pause()
     }
 
+    fun getContainerId(): Int {
+        return R.id.ac_main_fl_fragment_container
+    }
+
     fun startProgress() {
         mProgress.visibility = View.VISIBLE
     }
 
     fun stopProgress() {
         mProgress.visibility = View.GONE
-    }
-
-    //Getters and Setters
-    fun getContainerId(): Int {
-        return R.id.ac_main_fl_fragment_container
     }
 }

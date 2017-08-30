@@ -3,7 +3,6 @@ package v_aniskin.com.trucktaxi.domain.executors
 import rx.Observable
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
-import v_aniskin.com.trucktaxi.application.di.scopes.PerMainScreen
 import v_aniskin.com.trucktaxi.application.utils.Logger
 import v_aniskin.com.trucktaxi.data.network_client.responses.AuthResponse
 import v_aniskin.com.trucktaxi.data.network_client.responses.BaseResponse
@@ -17,7 +16,6 @@ import javax.inject.Inject
 /**
  * Created by root on 25.06.17.
  */
-@PerMainScreen
 class AuthExecutorImpl @Inject constructor(var mRepository: Repository) : AuthExecutor {
 
     init {

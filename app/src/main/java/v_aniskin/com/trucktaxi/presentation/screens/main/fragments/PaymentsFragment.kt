@@ -16,7 +16,7 @@ import v_aniskin.com.trucktaxi.presentation.adapters.holders.SubsidaryBinder
 import v_aniskin.com.trucktaxi.presentation.adapters.holders.SubsidaryHolder
 import v_aniskin.com.trucktaxi.presentation.models.AdapterItemContainer
 import v_aniskin.com.trucktaxi.domain.models.ListItemTypes
-import v_aniskin.com.trucktaxi.presentation.models.PaymentPresent
+import v_aniskin.com.trucktaxi.domain.models.Payment
 import v_aniskin.com.trucktaxi.presentation.screens.common.BaseParentFragment
 import v_aniskin.com.trucktaxi.presentation.screens.main.view_controllers.FmtPaymentsVC
 import java.util.*
@@ -35,7 +35,7 @@ class PaymentsFragment : BaseParentFragment<FmtPaymentsVC>() {
     @BindView(R.id.fmt_list_tv_error)
     lateinit var mTvError: TextView
 
-    private var mAdapterHeader: MultyHeaderRvAdapter<PaymentPresent, FmtPaymentsVC>? = null
+    private var mAdapterHeader: MultyHeaderRvAdapter<Payment, FmtPaymentsVC>? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view: View = inflater!!.inflate(R.layout.fmt_list, container, false)
@@ -47,8 +47,8 @@ class PaymentsFragment : BaseParentFragment<FmtPaymentsVC>() {
         super.onActivityCreated(savedInstanceState)
         mViewController = FmtPaymentsVC(this)
         mRvData.setLayoutManager(LinearLayoutManager(getContext()))
-        val headerBinder = object : SubsidaryBinder<PaymentPresent> {
-            override fun bind(view: View, data: PaymentPresent) {
+        val headerBinder = object : SubsidaryBinder<Payment> {
+            override fun bind(view: View, data: Payment) {
                 (view.findViewById(R.id.v_payment_header_tv_order_text) as TextView).setText(data.desc)
                 (view.findViewById(R.id.v_payment_header_tv_order_sum) as TextView).setText(data.desc2)
             }
@@ -72,13 +72,13 @@ class PaymentsFragment : BaseParentFragment<FmtPaymentsVC>() {
         mViewController?.stop()
     }
 
-    fun loadPayments(payments: ArrayList<PaymentPresent>) {
+    fun loadPayments(payments: List<Payment>) {
         if (payments.isEmpty())
             mTvError.visibility = View.VISIBLE
         else
             mTvError.visibility = View.INVISIBLE
 
-        val data: ArrayList<AdapterItemContainer<PaymentPresent>> = ArrayList()
+        val data: ArrayList<AdapterItemContainer<Payment>> = ArrayList()
         payments.forEach {
             if (it.state == ListItemTypes.TYPE_HEADER)
                 data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HEADER, it))

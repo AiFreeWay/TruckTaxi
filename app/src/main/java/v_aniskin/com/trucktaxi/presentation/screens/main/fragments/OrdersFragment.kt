@@ -16,7 +16,7 @@ import v_aniskin.com.trucktaxi.presentation.adapters.holders.SubsidaryBinder
 import v_aniskin.com.trucktaxi.presentation.adapters.holders.SubsidaryHolder
 import v_aniskin.com.trucktaxi.presentation.models.AdapterItemContainer
 import v_aniskin.com.trucktaxi.domain.models.ListItemTypes
-import v_aniskin.com.trucktaxi.presentation.models.OrderPresent
+import v_aniskin.com.trucktaxi.domain.models.Order
 import v_aniskin.com.trucktaxi.presentation.screens.common.BaseParentFragment
 import v_aniskin.com.trucktaxi.presentation.screens.main.view_controllers.FmtOrdersVC
 import java.util.*
@@ -39,7 +39,7 @@ class OrdersFragment : BaseParentFragment<FmtOrdersVC>() {
     @BindView(R.id.fmt_list_tv_error)
     lateinit var mTvError: TextView
 
-    private var mAdapterHeader: MultyHeaderRvAdapter<OrderPresent, FmtOrdersVC>? = null
+    private var mAdapterHeader: MultyHeaderRvAdapter<Order, FmtOrdersVC>? = null
     private var mFragmentTypeByOrder: Int = -1
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -53,8 +53,8 @@ class OrdersFragment : BaseParentFragment<FmtOrdersVC>() {
         mFragmentTypeByOrder = arguments.getInt(FRAGMENT_TYPE_BY_ORDER, -1)
         mViewController = FmtOrdersVC(this)
         mRvData.setLayoutManager(LinearLayoutManager(getContext()))
-        val headerBinder = object : SubsidaryBinder<OrderPresent>  {
-            override fun bind(view: View, data: OrderPresent) {
+        val headerBinder = object : SubsidaryBinder<Order>  {
+            override fun bind(view: View, data: Order) {
                 (view.findViewById(R.id.v_order_header_tv_order_text) as TextView).setText(data.desc)
             }
         }
@@ -74,13 +74,13 @@ class OrdersFragment : BaseParentFragment<FmtOrdersVC>() {
 
     fun getFragmentType(): Int = mFragmentTypeByOrder
 
-    fun loadOrders(orders: List<OrderPresent>) {
+    fun loadOrders(orders: List<Order>) {
         if (orders.isEmpty())
             mTvError.visibility = View.VISIBLE
         else
             mTvError.visibility = View.INVISIBLE
 
-        val data: ArrayList<AdapterItemContainer<OrderPresent>> = ArrayList()
+        val data: ArrayList<AdapterItemContainer<Order>> = ArrayList()
         orders.forEach {
             if (it.state == ListItemTypes.TYPE_HEADER)
                 data.add(AdapterItemContainer(MultyHeaderRvAdapter.VIEW_TYPE_HEADER, it))

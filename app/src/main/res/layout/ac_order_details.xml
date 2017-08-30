@@ -6,180 +6,179 @@
     android:layout_height="match_parent"
     android:fillViewport="true">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/mercury"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <android.support.design.widget.AppBarLayout
-            android:id="@+id/ac_order_details_app_bar_layout"
+        <LinearLayout
+            android:id="@+id/ac_order_details_ll_body"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/ac_order_details_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?android:actionBarSize"
-                android:background="@color/colorAccent" />
-        </android.support.design.widget.AppBarLayout>
-
-        <v_aniskin.com.trucktaxi.presentation.screens.order_detail.views.CustomMapView
-            android:id="@+id/ac_order_details_mv_map"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:background="@color/mercury"
-            android:visibility="gone"
-            map:uiCompass="true" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
             android:orientation="vertical">
 
-            <TextView
-                style="@style/TitleText"
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/ac_order_details_app_bar_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/external_padding"
-                android:paddingRight="@dimen/external_padding"
-                android:paddingTop="@dimen/external_padding"
-                android:text="@string/routes" />
+                android:layout_height="wrap_content">
 
-            <TextView
-                style="@style/BoldText"
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/ac_order_details_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?android:actionBarSize"
+                    android:background="@color/colorAccent" />
+            </android.support.design.widget.AppBarLayout>
+
+            <v_aniskin.com.trucktaxi.presentation.screens.order_detail.views.CustomMapView
+                android:id="@+id/ac_order_details_mv_map"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingEnd="@dimen/external_padding"
-                android:paddingLeft="@dimen/external_padding"
-                android:paddingRight="@dimen/external_padding"
-                android:paddingStart="@dimen/external_padding"
-                android:paddingTop="@dimen/external_padding"
-                android:text="@string/from_address" />
+                android:layout_height="250dp"
+                android:background="@color/mercury"
+                android:visibility="gone"
+                map:uiCompass="true" />
 
-            <TextView
-                android:id="@+id/ac_order_details_tv_from"
-                style="@style/Text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingEnd="@dimen/external_padding"
-                android:paddingLeft="@dimen/external_padding"
-                android:paddingRight="@dimen/external_padding"
-                android:paddingStart="@dimen/external_padding"
-                android:paddingTop="@dimen/internal_padding"
-                android:text="@string/test_address_from" />
-
-            <TextView
-                android:id="@+id/ac_order_details_tv_phone_from"
-                style="@style/Text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingEnd="@dimen/external_padding"
-                android:paddingLeft="@dimen/external_padding"
-                android:paddingRight="@dimen/external_padding"
-                android:paddingStart="@dimen/external_padding"
-                android:paddingTop="@dimen/internal_padding"
-                android:text="@string/test_phone_from" />
-
-            <TextView
-                style="@style/BoldText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingEnd="@dimen/external_padding"
-                android:paddingLeft="@dimen/external_padding"
-                android:paddingRight="@dimen/external_padding"
-                android:paddingStart="@dimen/external_padding"
-                android:paddingTop="@dimen/external_padding"
-                android:text="@string/address_to" />
-
-            <TextView
-                android:id="@+id/ac_order_details_tv_to"
-                style="@style/Text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingEnd="@dimen/external_padding"
-                android:paddingLeft="@dimen/external_padding"
-                android:paddingRight="@dimen/external_padding"
-                android:paddingStart="@dimen/external_padding"
-                android:paddingTop="@dimen/internal_padding"
-                android:text="@string/test_address_to" />
-
-            <TextView
-                android:id="@+id/ac_order_details_tv_phone_to"
-                style="@style/Text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingEnd="@dimen/external_padding"
-                android:paddingLeft="@dimen/external_padding"
-                android:paddingRight="@dimen/external_padding"
-                android:paddingStart="@dimen/external_padding"
-                android:paddingTop="@dimen/internal_padding"
-                android:text="@string/test_phone_to" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:layout_marginTop="@dimen/internal_padding"
-                android:background="@drawable/drop_shadow_gray"
-                android:paddingBottom="@dimen/internal_padding" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:background="@color/mercury" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:orientation="vertical">
-
-            <TextView
-                style="@style/TitleText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/external_padding"
-                android:paddingRight="@dimen/external_padding"
-                android:paddingTop="@dimen/external_padding"
-                android:text="@string/payments" />
-
-            <android.support.design.widget.TabLayout
-                android:id="@+id/ac_order_details_tb_payments_types"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:paddingEnd="@dimen/external_padding"
-                android:paddingLeft="@dimen/external_padding"
-                android:paddingRight="@dimen/external_padding"
-                android:paddingStart="@dimen/external_padding"
-                android:paddingTop="@dimen/internal_padding"
-                app:tabIndicatorColor="@color/colorAccent"
-                app:tabSelectedTextColor="@color/mineShaft"
-                app:tabTextColor="@color/doveGray" />
+                android:orientation="vertical">
 
-            <android.support.v4.view.ViewPager
-                android:id="@+id/ac_order_details_vp_payments"
-                android:layout_width="match_parent"
-                android:layout_height="360dp"
-                android:paddingBottom="@dimen/internal_padding"
-                android:paddingEnd="@dimen/external_padding"
-                android:paddingLeft="@dimen/external_padding"
-                android:paddingRight="@dimen/external_padding"
-                android:paddingStart="@dimen/external_padding" />
+                <TextView
+                    style="@style/TitleText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/external_padding"
+                    android:paddingRight="@dimen/external_padding"
+                    android:paddingTop="@dimen/external_padding"
+                    android:text="@string/routes" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:layout_marginTop="@dimen/internal_padding"
-                android:background="@drawable/drop_shadow_gray"
-                android:paddingBottom="@dimen/internal_padding" />
+                <TextView
+                    style="@style/BoldText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="@dimen/external_padding"
+                    android:paddingLeft="@dimen/external_padding"
+                    android:paddingRight="@dimen/external_padding"
+                    android:paddingStart="@dimen/external_padding"
+                    android:paddingTop="@dimen/external_padding"
+                    android:text="@string/from_address" />
 
-            <View
+                <TextView
+                    android:id="@+id/ac_order_details_tv_from"
+                    style="@style/Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="@dimen/external_padding"
+                    android:paddingLeft="@dimen/external_padding"
+                    android:paddingRight="@dimen/external_padding"
+                    android:paddingStart="@dimen/external_padding"
+                    android:paddingTop="@dimen/internal_padding"/>
+
+                <TextView
+                    android:id="@+id/ac_order_details_tv_phone_from"
+                    style="@style/Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="@dimen/external_padding"
+                    android:paddingLeft="@dimen/external_padding"
+                    android:paddingRight="@dimen/external_padding"
+                    android:paddingStart="@dimen/external_padding"
+                    android:paddingTop="@dimen/internal_padding" />
+
+                <TextView
+                    android:id="@+id/ac_order_details_tv_addresses"
+                    style="@style/BoldText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="@dimen/external_padding"
+                    android:paddingLeft="@dimen/external_padding"
+                    android:paddingRight="@dimen/external_padding"
+                    android:paddingStart="@dimen/external_padding"
+                    android:paddingTop="@dimen/external_padding"
+                    android:text="@string/addresses_to" />
+
+                <LinearLayout
+                    android:id="@+id/ac_order_details_ll_addreses"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginTop="@dimen/internal_padding"
+                    android:background="@drawable/drop_shadow_gray"
+                    android:paddingBottom="@dimen/internal_padding" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:background="@color/mercury" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:background="@color/mercury" />
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TitleText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/external_padding"
+                    android:paddingRight="@dimen/external_padding"
+                    android:paddingTop="@dimen/external_padding"
+                    android:text="@string/payments" />
+
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/ac_order_details_tb_payments_types"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingEnd="@dimen/external_padding"
+                    android:paddingLeft="@dimen/external_padding"
+                    android:paddingRight="@dimen/external_padding"
+                    android:paddingStart="@dimen/external_padding"
+                    android:paddingTop="@dimen/internal_padding"
+                    app:tabIndicatorColor="@color/colorAccent"
+                    app:tabSelectedTextColor="@color/mineShaft"
+                    app:tabTextColor="@color/doveGray" />
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/ac_order_details_vp_payments"
+                    android:layout_width="match_parent"
+                    android:layout_height="360dp"
+                    android:paddingBottom="@dimen/internal_padding"
+                    android:paddingEnd="@dimen/external_padding"
+                    android:paddingLeft="@dimen/external_padding"
+                    android:paddingRight="@dimen/external_padding"
+                    android:paddingStart="@dimen/external_padding" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginTop="@dimen/internal_padding"
+                    android:background="@drawable/drop_shadow_gray"
+                    android:paddingBottom="@dimen/internal_padding" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:background="@color/mercury" />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/ac_order_details_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:elevation="2dp"
+            android:visibility="gone" />
+    </RelativeLayout>
 </android.support.v4.widget.NestedScrollView>

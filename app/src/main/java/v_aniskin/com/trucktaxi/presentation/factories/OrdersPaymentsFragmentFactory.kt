@@ -11,7 +11,7 @@ import java.util.*
  */
 class OrdersPaymentsFragmentFactory {
 
-    fun getAllItems(context: Context): List<ViewPagerItemContainer> {
+    fun getAllItems(orderId: String, context: Context): List<ViewPagerItemContainer> {
         val list: ArrayList<ViewPagerItemContainer> = ArrayList<ViewPagerItemContainer>()
         list.add(ViewPagerItemContainer(context.getString(R.string.requistion), OrderPaymentFragment()))
         list.add(ViewPagerItemContainer(context.getString(R.string.fact), OrderPaymentFragment()))

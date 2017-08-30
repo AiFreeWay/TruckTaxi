@@ -71,4 +71,8 @@ class NetworkClient {
     fun editProfile(request: EditProfileRequest): Observable<EditProfileResponse> {
         return mApiController.editProfile(request.token, request.workState)
     }
+
+    fun getOrder(request: OrderRequest): Observable<OrderResponse> {
+        return mApiController.getOrder(request.token, request.orderId)
+    }
 }

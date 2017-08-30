@@ -2,6 +2,7 @@ package v_aniskin.com.trucktaxi.application.di.modules
 
 import dagger.Module
 import dagger.Provides
+import v_aniskin.com.trucktaxi.application.di.scopes.PerOrderDetailScreen
 import v_aniskin.com.trucktaxi.application.utils.Logger
 import v_aniskin.com.trucktaxi.presentation.factories.OrdersPaymentsFragmentFactory
 import v_aniskin.com.trucktaxi.presentation.screens.order_detail.activities.OrderDetailActivity
@@ -20,6 +21,7 @@ class OrderDetailScreenModule(private val mActivity: OrderDetailActivity) {
     }
 
     @Provides
+    @PerOrderDetailScreen
     fun providePaymentsFragmentFactory() : OrdersPaymentsFragmentFactory {
         return mFactory
     }

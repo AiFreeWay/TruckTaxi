@@ -9,5 +9,5 @@ import java.util.*
  */
 class OrdersResponse: BaseResponse() {
 
-    var orders: List<OrderNetwork> = Collections.emptyList()
+    var ordersList: List<OrderNetwork> = Collections.emptyList()
 }

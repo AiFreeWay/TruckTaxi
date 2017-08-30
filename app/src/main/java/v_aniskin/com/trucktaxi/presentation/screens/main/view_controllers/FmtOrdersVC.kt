@@ -1,16 +1,15 @@
 package v_aniskin.com.trucktaxi.presentation.screens.main.view_controllers
 
 import android.content.Intent
-import rx.Observable
 import v_aniskin.com.trucktaxi.R
 import v_aniskin.com.trucktaxi.application.utils.Logger
 import v_aniskin.com.trucktaxi.application.utils.NetworkErrors
 import v_aniskin.com.trucktaxi.application.utils.OrdersTypes
 import v_aniskin.com.trucktaxi.application.utils.SubscriptionContainer
 import v_aniskin.com.trucktaxi.domain.executors.interfaces.OrdersExecutor
+import v_aniskin.com.trucktaxi.domain.models.Order
 import v_aniskin.com.trucktaxi.domain.models.ResponseMonade
-import v_aniskin.com.trucktaxi.presentation.models.ModelsContainer
-import v_aniskin.com.trucktaxi.presentation.models.OrderPresent
+import v_aniskin.com.trucktaxi.presentation.models.ModelContainer
 import v_aniskin.com.trucktaxi.presentation.screens.common.BaseViewController
 import v_aniskin.com.trucktaxi.presentation.screens.main.activities.MainActivity
 import v_aniskin.com.trucktaxi.presentation.screens.main.fragments.OrdersFragment
@@ -60,9 +59,9 @@ class FmtOrdersVC(fragment: OrdersFragment) : BaseViewController<OrdersFragment>
                         {error -> doOnError(error)}))
     }
 
-    private fun doOnGetOrders(orders: ModelsContainer<OrderPresent>) {
+    private fun doOnGetOrders(orders: ModelContainer<List<Order>>) {
         if (orders.status.equals(ResponseMonade.SUCCESS))
-            mView.loadOrders(orders.mData)
+            mView.loadOrders(orders.mData!!)
         else
             showToast(NetworkErrors.getErrorMessageByType(mView.context, orders.error))
     }
@@ -90,17 +89,21 @@ class FmtOrdersVC(fragment: OrdersFragment) : BaseViewController<OrdersFragment>
                 ?.getViewController()
     }
 
-    fun showOrderDetailScreen(status: String?) {
-        var intent: Intent
-        if (status == OrdersTypes.ORDER_STATUS_CURRENT)
+    fun showOrderDetailScreen(orderId: String?, status: String?) {
+        startProgressBar()
+        val intent: Intent
+        if (status == OrdersTypes.ORDER_STATUS_CURRENT) {
             intent = Intent(mView.context, MapOrderDetailActivity::class.java)
-        else if (status == OrdersTypes.ORDER_STATUS_APPOINTED) {
+            intent.putExtra(MapOrderDetailActivity.ORDER_ID_KEY, orderId)
+        } else if (status == OrdersTypes.ORDER_STATUS_APPOINTED) {
             intent = Intent(mView.context, OrderDetailActivity::class.java)
             intent.putExtra(ORDER_DETAIL_ACTIVITY_ID, status)
+            intent.putExtra(OrderDetailActivity.ORDER_ID_KEY, orderId)
         } else {
             intent = Intent(mView.context, OrderDetailActivity::class.java)
             intent.putExtra(ORDER_DETAIL_ACTIVITY_ID, status)
+            intent.putExtra(OrderDetailActivity.ORDER_ID_KEY, orderId)
         }
-        getAcMainVC()?.showNewActivityScreen(intent);
+        getAcMainVC()?.showNewActivityScreen(intent)
     }
 }

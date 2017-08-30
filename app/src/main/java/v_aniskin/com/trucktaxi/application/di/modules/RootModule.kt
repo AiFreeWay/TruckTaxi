@@ -6,6 +6,7 @@ import dagger.Provides
 import v_aniskin.com.trucktaxi.application.utils.Logger
 import v_aniskin.com.trucktaxi.data.repository.RepositoryImpl
 import v_aniskin.com.trucktaxi.domain.repositories.Repository
+import javax.inject.Singleton
 
 /**
  * Created by root on 25.05.17.
@@ -18,11 +19,13 @@ class RootModule(private val mContext: Context) {
     }
 
     @Provides
+    @Singleton
     fun  provideContext() : Context {
         return mContext
     }
 
     @Provides
+    @Singleton
     fun provideRepository(repository : RepositoryImpl) : Repository {
         return repository
     }
