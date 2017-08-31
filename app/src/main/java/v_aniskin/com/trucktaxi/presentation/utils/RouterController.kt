@@ -49,6 +49,7 @@ class RouterController(private val mMap: GoogleMap, private val mContext: Contex
                 .title(mContext.getString(R.string.destination_point))
                 .position(lastPoint)
                 .draggable(false))
+                .showInfoWindow()
     }
 
     fun showCurrentPoint(currentPoint: LatLng) {
@@ -59,6 +60,7 @@ class RouterController(private val mMap: GoogleMap, private val mContext: Contex
                     .title(mContext.getString(R.string.i_am))
                     .position(currentPoint)
                     .draggable(false))
+            mCurrentMarker!!.showInfoWindow()
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentPoint, 17F))
         }
         rotateMap(currentPoint)
@@ -70,6 +72,16 @@ class RouterController(private val mMap: GoogleMap, private val mContext: Contex
                 .title(mContext.getString(R.string.destination_point))
                 .position(currentPoint)
                 .draggable(false))
+                .showInfoWindow()
+    }
+
+    fun showStartPoint(currentPoint: LatLng) {
+        mMap.addMarker(MarkerOptions()
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_start))
+                .title(mContext.getString(R.string.start_point))
+                .position(currentPoint)
+                .draggable(false))
+                .showInfoWindow()
     }
 
     fun setRotateEnabled(enabled: Boolean) {

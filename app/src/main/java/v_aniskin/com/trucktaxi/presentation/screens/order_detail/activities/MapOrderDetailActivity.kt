@@ -125,6 +125,10 @@ class MapOrderDetailActivity : BaseActivity<AcMapOrderDetailVC>(), LifecycleRegi
         }
     }
 
+    fun setTitle(title: String) {
+        supportActionBar?.title = title
+    }
+
     fun getOrderId(): String = mOrderId
 
     private fun doOnGetMap(map: GoogleMap) {

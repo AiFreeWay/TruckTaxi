@@ -6,11 +6,10 @@ import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.TabLayout
 import android.support.v4.view.ViewPager
 import android.support.v7.widget.Toolbar
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
+import android.text.TextUtils
+import android.view.*
 import android.view.View.VISIBLE
+import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
@@ -23,6 +22,7 @@ import com.google.android.gms.maps.MapView
 import v_aniskin.com.trucktaxi.R
 import v_aniskin.com.trucktaxi.application.utils.OrdersTypes
 import v_aniskin.com.trucktaxi.domain.models.Order
+import v_aniskin.com.trucktaxi.domain.models.OrderRoutePoint
 import v_aniskin.com.trucktaxi.presentation.adapters.addons.ViewPagerItemContainer
 import v_aniskin.com.trucktaxi.presentation.adapters.ViewPagerTabsAdapter
 import v_aniskin.com.trucktaxi.presentation.screens.common.BaseActivity
@@ -54,6 +54,8 @@ class OrderDetailActivity : BaseActivity<AcOrderDetailVC>() {
     lateinit var mTvPhoneFrom: TextView
     @BindView(R.id.ac_order_details_tv_addresses)
     lateinit var mTvAddresses: TextView
+    @BindView(R.id.ac_order_details_ll_addreses)
+    lateinit var mLlAddresses: LinearLayout
 
     private lateinit var mMenuDrawer: MaterialMenuIconToolbar
     private lateinit var mAdapter: ViewPagerTabsAdapter
@@ -123,8 +125,19 @@ class OrderDetailActivity : BaseActivity<AcOrderDetailVC>() {
     }
 
     fun loadOrder(order: Order) {
-        mTvFrom.setText(order.finalRoutePointAddress)
-        //mTvPhoneFrom.setText(order.)
+        mLlAddresses.removeAllViews()
+        if (order.orderRoutepoints.size > 1)
+            mTvAddresses.visibility = View.VISIBLE
+        else
+            mTvAddresses.visibility = View.GONE
+
+        for (i: Int in order.orderRoutepoints.indices) {
+            val orderPoint = order.orderRoutepoints[i]
+            if (i == 0)
+                loadStartPointData(orderPoint)
+            else
+                loadDestinationPointData(orderPoint)
+        }
     }
 
     fun loadData(data: List<ViewPagerItemContainer>) {
@@ -145,11 +158,44 @@ class OrderDetailActivity : BaseActivity<AcOrderDetailVC>() {
 
     fun getOrderId() = mOrderId
 
+    fun setTitle(title: String) {
+        supportActionBar?.title = title
+    }
+
+    private fun loadStartPointData(point: OrderRoutePoint) {
+        val address = point.routepointContactAddress
+        val phone = point.routepointContactPhone
+
+        if (!TextUtils.isEmpty(address)) {
+            mTvFrom.visibility = View.VISIBLE
+            mTvFrom.setText(address)
+        } else
+            mTvFrom.visibility = View.GONE
+
+        if (!TextUtils.isEmpty(phone)) {
+            mTvPhoneFrom.visibility = View.VISIBLE
+            mTvPhoneFrom.setText(phone)
+        } else
+            mTvPhoneFrom.visibility = View.GONE
+    }
+
+    private fun loadDestinationPointData(point: OrderRoutePoint) {
+        val fromTextView = createTextView(mLlAddresses)
+        val fromPhoneTextView = createTextView(mLlAddresses)
+        fromTextView.setText(point.routepointContactAddress)
+        fromPhoneTextView.setText(point.routepointContactPhone)
+        mLlAddresses.addView(fromTextView)
+        mLlAddresses.addView(fromPhoneTextView)
+    }
+
     private fun doOnGetMap(map: GoogleMap) {
         map.getUiSettings().setAllGesturesEnabled(true)
         map.getUiSettings().setCompassEnabled(true)
         map.getUiSettings().setZoomControlsEnabled(true)
     }
+
+    private fun createTextView(viewGroup: ViewGroup): TextView =
+            LayoutInflater.from(this).inflate(R.layout.v_text_view, viewGroup, false) as TextView
 
     private fun initToolbar() {
         setSupportActionBar(mToolbar)

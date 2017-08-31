@@ -36,7 +36,7 @@ class OrderHolder: BaseHolder<Order, FmtOrdersVC> {
     }
 
     override fun bind(dataModel: Order) {
-        val orderId = itemView.context.getString(R.string.order_prefix)+" "+dataModel.orderId
+        val orderId = itemView.context.getString(R.string.order_prefix)+" №"+dataModel.orderId
         val orderTime = itemView.context.getString(R.string.on)+" "+dataModel.orderTimeStart
         val addres = dataModel.startRoutePointAddress+" - "+dataModel.finalRoutePointAddress
         val desc = dataModel.orderWorkTime+" "+itemView.context.getString(R.string.hour_suffix)+" - "+dataModel.orderPrice+" "+itemView.context.getString(R.string.ruble)

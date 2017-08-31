@@ -78,10 +78,16 @@ class AcMapOrderDetailVC(view: MapOrderDetailActivity) : BaseViewController<MapO
     }
 
     private fun doOnGetOrderDetail(order: ModelContainer<Order>) {
-        order.mData!!.orderRoutepoints.forEach {
-            val coords = it.routepointLocation
+        val orderId = mView.getString(R.string.order_prefix)+" №"+order.mData!!.orderId
+        mView.setTitle(orderId)
+        for (i: Int in order.mData!!.orderRoutepoints.indices) {
+            val orderPoint = order.mData!!.orderRoutepoints[i]
+            val coords = orderPoint.routepointLocation
             val latLng = LatLng(coords[0].toDouble(), coords[1].toDouble())
-            mRouteController?.showFinishPoint(latLng)
+            if (i == 0)
+                mRouteController?.showStartPoint(latLng)
+            else
+                mRouteController?.showFinishPoint(latLng)
         }
     }
 

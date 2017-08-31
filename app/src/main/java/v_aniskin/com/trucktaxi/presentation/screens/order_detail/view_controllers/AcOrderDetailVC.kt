@@ -54,6 +54,9 @@ class AcOrderDetailVC(view: OrderDetailActivity) : BaseViewController<OrderDetai
     }
 
     fun doOnGetOrderDetail(order: ModelContainer<Order>) {
+        mView.stopProgress()
+        val orderId = mView.getString(R.string.order_prefix)+" №"+order.mData!!.orderId
+        mView.setTitle(orderId)
         mView.loadData(mFactory.getAllItems(mView.getOrderId(), mView))
         mView.loadOrder(order.mData!!)
     }
