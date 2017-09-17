@@ -4,6 +4,13 @@ import retrofit2.http.*
 import rx.Observable
 import v_aniskin.com.trucktaxi.data.network_client.requests.*
 import v_aniskin.com.trucktaxi.data.network_client.responses.*
+import okhttp3.RequestBody
+import okhttp3.MultipartBody
+import okhttp3.ResponseBody
+import retrofit2.http.POST
+import retrofit2.http.Multipart
+
+
 
 /**
  * Created by root on 25.06.17.
@@ -44,4 +51,8 @@ interface ApiController {
     @POST(OrderRequest.URI)
     fun getOrder(@Field (OrderRequest.FIELD_TOKEN) token: String,
                   @Field (OrderRequest.FIELD_ORDER_ID) orderId: String): Observable<OrderResponse>
+
+    @Multipart
+    @POST("/")
+    fun postImage(@Part image: MultipartBody.Part, @Part("name") name: RequestBody): Observable<BaseResponse>
 }

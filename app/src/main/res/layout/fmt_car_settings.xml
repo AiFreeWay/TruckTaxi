@@ -62,6 +62,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/fmt_car_settings_tv_car_model"
                 style="@style/Text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -70,6 +71,7 @@
                 android:text="Hundai Solaris" />
 
             <TextView
+                android:id="@+id/fmt_car_settings_tv_car_type"
                 style="@style/Text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -78,6 +80,7 @@
                 android:text="Sedan" />
 
             <TextView
+                android:id="@+id/fmt_car_settings_tv_car_number"
                 style="@style/Text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -107,6 +110,7 @@
             android:text="Фото 1" />
 
         <ImageView
+            android:id="@+id/fmt_home_iv_photo1"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_marginTop="@dimen/internal_padding"
@@ -114,6 +118,7 @@
             android:src="@drawable/car_1" />
 
         <TextView
+            android:id="@+id/fmt_home_tv_photo1_edit"
             style="@style/BoldText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -145,6 +150,7 @@
             android:text="Фото 2" />
 
         <ImageView
+            android:id="@+id/fmt_home_iv_photo2"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_marginTop="@dimen/internal_padding"
@@ -152,6 +158,7 @@
             android:src="@drawable/car_1" />
 
         <TextView
+            android:id="@+id/fmt_home_tv_photo2_edit"
             style="@style/BoldText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -183,6 +190,7 @@
             android:text="Фото 3" />
 
         <ImageView
+            android:id="@+id/fmt_home_iv_photo3"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_marginTop="@dimen/internal_padding"
@@ -190,6 +198,7 @@
             android:visibility="gone" />
 
         <TextView
+            android:id="@+id/fmt_home_tv_photo3_edit"
             style="@style/BoldText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -221,6 +230,7 @@
             android:text="Интерьер" />
 
         <ImageView
+            android:id="@+id/fmt_home_iv_interier"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_marginTop="@dimen/internal_padding"
@@ -228,6 +238,7 @@
             android:visibility="gone" />
 
         <TextView
+            android:id="@+id/fmt_home_tv_interier_edit"
             style="@style/BoldText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -91,6 +91,16 @@ class PaymentFragment : BaseParentFragment<FmtPaymentVC>() {
         mPaymentId = arguments.getString(PAYMENT_ID)
     }
 
+    override fun onStart() {
+        super.onStart()
+        mViewController?.start()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mViewController?.stop()
+    }
+
     fun startProgress() {
         (activity as PaymentDetailActivity).startProgress()
     }

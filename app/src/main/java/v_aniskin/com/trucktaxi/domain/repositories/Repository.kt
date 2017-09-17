@@ -3,6 +3,7 @@ package v_aniskin.com.trucktaxi.domain.repositories
 import rx.Observable
 import v_aniskin.com.trucktaxi.data.network_client.requests.AuthRequest
 import v_aniskin.com.trucktaxi.data.network_client.responses.*
+import java.io.File
 
 /**
  * Created by root on 24.05.17.
@@ -47,4 +48,6 @@ interface Repository {
     fun getOrder(orderId: String): Observable<OrderResponse>
 
     fun getPayment(paymentId: String, paymentType: String): Observable<PaymentResponse>
+
+    fun loadImage(imageType: Int, file: File): Observable<BaseResponse>
 }

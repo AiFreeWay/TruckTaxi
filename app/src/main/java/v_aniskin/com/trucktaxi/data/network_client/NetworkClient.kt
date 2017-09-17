@@ -6,10 +6,14 @@ import retrofit2.Retrofit
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import com.google.gson.GsonBuilder
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import rx.Observable
 import v_aniskin.com.trucktaxi.application.utils.Logger
 import v_aniskin.com.trucktaxi.data.network_client.requests.*
 import v_aniskin.com.trucktaxi.data.network_client.responses.*
+import java.io.File
 
 
 /**
@@ -74,5 +78,12 @@ class NetworkClient {
 
     fun getOrder(request: OrderRequest): Observable<OrderResponse> {
         return mApiController.getOrder(request.token, request.orderId)
+    }
+
+    fun loadImage(imageType: Int, file: File): Observable<BaseResponse> {
+        val reqFile = RequestBody.create(MediaType.parse("image/*"), file)
+        val body = MultipartBody.Part.createFormData("upload", file.getName(), reqFile)
+        val name = RequestBody.create(MediaType.parse("text/plain"), "upload_test")
+        return mApiController.postImage(body, name)
     }
 }

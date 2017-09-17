@@ -114,4 +114,5 @@
     <string name="ruble">руб.</string>
     <string name="hour_suffix">ч+1</string>
     <string name="need_location_enabled">Необходимо включить геоданные</string>
+    <string name="driver_rule">Водительское удостоверение</string>
 </resources>

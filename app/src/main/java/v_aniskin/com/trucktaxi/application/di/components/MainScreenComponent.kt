@@ -19,6 +19,8 @@ interface MainScreenComponent {
     fun inject(viewController: FmtHomeVC)
     fun inject(viewController: FmtOrdersVC)
     fun inject(viewController: FmtPaymentsVC)
+    fun inject(viewController: FmtProfileSettingsVC)
+    fun inject(viewController: FmtCarSettingsVC)
 
     fun provideRepository() : Repository
     fun provideMainFragmentFactory() : MainFragmentFactory

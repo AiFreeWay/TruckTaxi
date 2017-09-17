@@ -10,6 +10,7 @@ import v_aniskin.com.trucktaxi.data.network_client.NetworkClient
 import v_aniskin.com.trucktaxi.data.network_client.requests.*
 import v_aniskin.com.trucktaxi.data.network_client.responses.*
 import v_aniskin.com.trucktaxi.domain.repositories.Repository
+import java.io.File
 import javax.inject.Inject
 
 /**
@@ -99,6 +100,8 @@ class RepositoryImpl @Inject constructor(context: Context) : Repository {
     }
 
     override fun getPayment(paymentId: String, paymentType: String): Observable<PaymentResponse> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return Observable.just(PaymentResponse())
     }
+
+    override fun loadImage(imageType: Int, file: File): Observable<BaseResponse> = mNetworkClinet.loadImage(imageType, file)
 }

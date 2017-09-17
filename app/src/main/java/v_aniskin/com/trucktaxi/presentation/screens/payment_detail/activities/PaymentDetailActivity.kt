@@ -54,7 +54,6 @@ class PaymentDetailActivity : BaseActivity<AcPaymentDetailVC>() {
         mViewController?.start()
     }
 
-
     override fun getToolbar(): Toolbar {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }

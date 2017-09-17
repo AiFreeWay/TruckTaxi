@@ -11,11 +11,12 @@ import v_aniskin.com.trucktaxi.R
 import v_aniskin.com.trucktaxi.domain.models.Payment
 import v_aniskin.com.trucktaxi.presentation.screens.common.BaseParentFragment
 import v_aniskin.com.trucktaxi.presentation.screens.order_detail.activities.OrderDetailActivity
+import v_aniskin.com.trucktaxi.presentation.screens.order_detail.view_controllers.FmtOrderPaymentVC
 
 /**
  * Created by root on 01.06.17.
  */
-class OrderPaymentFragment : BaseParentFragment<Any>() {
+class OrderPaymentFragment : BaseParentFragment<FmtOrderPaymentVC>() {
 
     companion object {
         val ORDER_PAYMENT_RAGMENT_ID: String = "orderdetail.payment_fragment"
@@ -53,8 +54,19 @@ class OrderPaymentFragment : BaseParentFragment<Any>() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        mViewController = FmtOrderPaymentVC(this)
         mPaymentType = arguments.getString(PAYMENT_TYPE)
         mPaymentId = arguments.getString(PAYMENT_ID)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        mViewController?.start()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mViewController?.stop()
     }
 
     fun startProgress() {
