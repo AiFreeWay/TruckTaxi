@@ -13,6 +13,8 @@ class PaymentNetwork {
     var desc: String? = null
     var desc2: String? = null
 
+    constructor()
+
     constructor(order: String?, time: String?, sum: String?, status: String?) {
         this.order = order
         this.time = time

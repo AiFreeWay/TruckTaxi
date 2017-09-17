@@ -46,8 +46,10 @@ class FmtPaymentsVC(fragment: PaymentsFragment): BaseViewController<PaymentsFrag
                 ?.getViewController()
     }
 
-    fun showPaymentDetailScreen() {
-        getAcMainVC()?.showNewActivityScreen(Intent(mView.context, PaymentDetailActivity::class.java));
+    fun showPaymentDetailScreen(paymentId: String) {
+        val intent = Intent(mView.context, PaymentDetailActivity::class.java)
+        intent.putExtra(PaymentDetailActivity.PAYMENT_ID, paymentId)
+        getAcMainVC()?.showNewActivityScreen(intent)
     }
 
     private fun getPayments() {

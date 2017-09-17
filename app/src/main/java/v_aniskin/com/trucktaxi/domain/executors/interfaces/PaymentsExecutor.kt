@@ -11,4 +11,5 @@ import java.util.*
 interface PaymentsExecutor {
 
     fun getPayments(): Observable<ModelContainer<List<Payment>>>
+    fun getPaymentDetail(paymentId: String, paymentType: String): Observable<ModelContainer<Payment>>
 }

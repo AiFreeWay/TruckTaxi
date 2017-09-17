@@ -5,7 +5,9 @@ import dagger.Provides
 import v_aniskin.com.trucktaxi.application.di.scopes.PerOrderDetailScreen
 import v_aniskin.com.trucktaxi.application.utils.Logger
 import v_aniskin.com.trucktaxi.domain.executors.OrdersExecutorImpl
+import v_aniskin.com.trucktaxi.domain.executors.PaymentsExecutorImpl
 import v_aniskin.com.trucktaxi.domain.executors.interfaces.OrdersExecutor
+import v_aniskin.com.trucktaxi.domain.executors.interfaces.PaymentsExecutor
 import v_aniskin.com.trucktaxi.presentation.factories.OrdersPaymentsFragmentFactory
 import v_aniskin.com.trucktaxi.presentation.screens.order_detail.activities.OrderDetailActivity
 
@@ -32,5 +34,11 @@ class OrderDetailScreenModule(private val mActivity: OrderDetailActivity) {
     @PerOrderDetailScreen
     fun provideOrdersExecutor(ordersExecutor: OrdersExecutorImpl) : OrdersExecutor {
         return ordersExecutor
+    }
+
+    @Provides
+    @PerOrderDetailScreen
+    fun providePaymentsExecutor(paymentsExecutor: PaymentsExecutorImpl) : PaymentsExecutor {
+        return paymentsExecutor
     }
 }

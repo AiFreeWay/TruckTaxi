@@ -372,7 +372,7 @@
                 android:layout_marginLeft="@dimen/external_padding"
                 android:layout_marginStart="@dimen/external_padding"
                 android:layout_marginTop="@dimen/internal_padding"
-                android:text="@string/km_count"
+                android:text="@string/km_cost"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"

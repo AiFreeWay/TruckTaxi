@@ -45,4 +45,6 @@ interface Repository {
     fun editProfile(state: String): Observable<EditProfileResponse>
 
     fun getOrder(orderId: String): Observable<OrderResponse>
+
+    fun getPayment(paymentId: String, paymentType: String): Observable<PaymentResponse>
 }

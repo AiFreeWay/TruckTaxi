@@ -30,6 +30,13 @@ class PaymentsExecutorImpl @Inject constructor(var mRepository: Repository) : Pa
                 .observeOn(AndroidSchedulers.mainThread())
     }
 
+    override fun getPaymentDetail(paymentId: String, paymentType: String): Observable<ModelContainer<Payment>> {
+        return mRepository.getPayment(paymentId, paymentType)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .map { ModelContainer(PaymentsMapper.mapPaymentNetwork(it.paymentData), it.error, it.status) }
+    }
+
     private fun zipPayments(futurePayments: PaymentsResponse, completePayments: PaymentsResponse): ModelContainer<List<Payment>> {
         val paymentsContainer: ModelContainer<List<Payment>> = ModelContainer(completePayments.error, completePayments.status)
         val paymentItems = ArrayList<Payment>()

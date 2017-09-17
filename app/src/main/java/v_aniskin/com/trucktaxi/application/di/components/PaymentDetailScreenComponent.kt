@@ -4,6 +4,7 @@ import dagger.Component
 import v_aniskin.com.trucktaxi.application.di.modules.PaymentScreenDetailModule
 import v_aniskin.com.trucktaxi.application.di.scopes.PerPaymentDetailScreen
 import v_aniskin.com.trucktaxi.presentation.screens.payment_detail.view_controllers.AcPaymentDetailVC
+import v_aniskin.com.trucktaxi.presentation.screens.payment_detail.view_controllers.FmtPaymentVC
 
 /**
  * Created by root on 01.06.17.
@@ -13,4 +14,5 @@ import v_aniskin.com.trucktaxi.presentation.screens.payment_detail.view_controll
 interface PaymentDetailScreenComponent {
 
     fun inject(viewController : AcPaymentDetailVC)
+    fun inject(viewController : FmtPaymentVC)
 }

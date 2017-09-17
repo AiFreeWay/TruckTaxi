@@ -6,6 +6,9 @@ import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.TabLayout
 import android.support.v4.view.ViewPager
 import android.support.v7.widget.Toolbar
+import android.view.View
+import android.widget.ProgressBar
+import android.widget.Toast
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.balysv.materialmenu.MaterialMenuDrawable
@@ -23,6 +26,7 @@ class PaymentDetailActivity : BaseActivity<AcPaymentDetailVC>() {
 
     companion object {
         val PAYMENT_DETAIL_ACTIVITY_ID: String = "paymentdetail.paymentdetailactivity"
+        val PAYMENT_ID: String = "payment_id"
     }
 
     @BindView(R.id.ac_payment_detail_toolbar)
@@ -31,6 +35,8 @@ class PaymentDetailActivity : BaseActivity<AcPaymentDetailVC>() {
     lateinit var mTlTabs: TabLayout
     @BindView(R.id.ac_payment_details_vp_payments)
     lateinit var mVpBody: ViewPager
+    @BindView(R.id.ac_payment_details_progress)
+    lateinit var mProgress: ProgressBar
 
     private lateinit var mMenuDrawer: MaterialMenuIconToolbar
     private lateinit var mAdapter: ViewPagerTabsAdapter
@@ -39,7 +45,8 @@ class PaymentDetailActivity : BaseActivity<AcPaymentDetailVC>() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.ac_payment_detail);
         ButterKnife.bind(this)
-        mViewController = AcPaymentDetailVC(this)
+        val paymentId = intent.getStringExtra(PAYMENT_ID)
+        mViewController = AcPaymentDetailVC(paymentId, this)
         mTlTabs.setupWithViewPager(mVpBody)
         mAdapter = ViewPagerTabsAdapter(getSupportFragmentManager())
         mVpBody.setAdapter(mAdapter)
@@ -58,6 +65,18 @@ class PaymentDetailActivity : BaseActivity<AcPaymentDetailVC>() {
 
     fun loadData(data: List<ViewPagerItemContainer>) {
         mAdapter.loadData(data)
+    }
+
+    fun startProgress() {
+        mProgress.visibility = View.VISIBLE
+    }
+
+    fun stopProgress() {
+        mProgress.visibility = View.GONE
+    }
+
+    fun showToast(text: Int) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
     }
 
     private fun initToolbar() {

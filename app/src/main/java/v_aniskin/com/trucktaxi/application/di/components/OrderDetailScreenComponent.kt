@@ -6,6 +6,7 @@ import v_aniskin.com.trucktaxi.application.di.scopes.PerOrderDetailScreen
 import v_aniskin.com.trucktaxi.domain.repositories.Repository
 import v_aniskin.com.trucktaxi.presentation.factories.OrdersPaymentsFragmentFactory
 import v_aniskin.com.trucktaxi.presentation.screens.order_detail.view_controllers.AcOrderDetailVC
+import v_aniskin.com.trucktaxi.presentation.screens.order_detail.view_controllers.FmtOrderPaymentVC
 
 /**
  * Created by root on 01.06.17.
@@ -17,4 +18,5 @@ interface OrderDetailScreenComponent {
     fun provideRepository() : Repository
 
     fun inject(viewController : AcOrderDetailVC)
+    fun inject(viewController : FmtOrderPaymentVC)
 }

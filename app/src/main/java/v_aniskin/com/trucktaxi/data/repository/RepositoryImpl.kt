@@ -97,4 +97,8 @@ class RepositoryImpl @Inject constructor(context: Context) : Repository {
     override fun getOrder(orderId: String): Observable<OrderResponse> {
         return mNetworkClinet.getOrder(OrderRequest(getToken(), orderId))
     }
+
+    override fun getPayment(paymentId: String, paymentType: String): Observable<PaymentResponse> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 }

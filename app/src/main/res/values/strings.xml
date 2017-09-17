@@ -33,7 +33,7 @@
     <string name="body_type">Тип кузова</string>
     <string name="information">Информация</string>
     <string name="routes">Маршруты</string>
-    <string name="test_order_number">Заказ №1</string>
+    <string name="test_order_number">Заказ</string>
     <string name="test_address_from">ул. Профсоюзная, д.2</string>
     <string name="from_address">Адрес вызова:</string>
     <string name="test_address_to">ул. Моховая, д. 21, к.2</string>
