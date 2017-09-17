@@ -151,5 +151,6 @@ class ProfileSettingsFragment: BaseParentFragment<FmtProfileSettingsVC>() {
     private fun loadFileToImage(imageView: ImageView, file: File) {
         val bitmap = BitmapFactory.decodeFile(file.getAbsolutePath())
         imageView.setImageBitmap(bitmap)
+        imageView.visibility = View.VISIBLE
     }
 }

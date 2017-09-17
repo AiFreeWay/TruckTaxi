@@ -66,10 +66,17 @@ class AcMapOrderDetailVC(view: MapOrderDetailActivity) : BaseViewController<MapO
                 .subscribe({ doOnGetOrderDetail(it) }, { doOnError(it) }))
 
         startLocationUpdate()
+        loadRoute()
     }
 
     fun startLocationUpdate() {
         mLocationExecutor.startLocationUpdate().subscribe({ doOnGetLocationLiveData(it) }, { doOnError(it) })
+    }
+
+    private fun loadRoute() {
+        mSubscriptionContainer.addSubscription(mOrdersExecutor
+                .getRoutePoints(mView.getOrderId())
+                .subscribe({  }, { doOnError(it) }))
     }
 
     private fun doOnGetLocationLiveData(location: LocationLiveData) {

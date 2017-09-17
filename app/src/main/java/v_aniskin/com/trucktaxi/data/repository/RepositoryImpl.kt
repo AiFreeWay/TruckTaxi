@@ -104,4 +104,8 @@ class RepositoryImpl @Inject constructor(context: Context) : Repository {
     }
 
     override fun loadImage(imageType: Int, file: File): Observable<BaseResponse> = mNetworkClinet.loadImage(imageType, file)
+
+    override fun getRoutePoints(orderId: String): Observable<LocationResponse> {
+        return mNetworkClinet.getRoutePoints(LocationRequest(getToken(), orderId))
+    }
 }

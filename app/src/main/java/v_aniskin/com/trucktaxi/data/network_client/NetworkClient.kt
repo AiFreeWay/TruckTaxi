@@ -86,4 +86,8 @@ class NetworkClient {
         val name = RequestBody.create(MediaType.parse("text/plain"), "upload_test")
         return mApiController.postImage(body, name)
     }
+
+    fun getRoutePoints(locationRequest: LocationRequest): Observable<LocationResponse> {
+        return mApiController.getRoutePoints(locationRequest.token, locationRequest.orderId)
+    }
 }

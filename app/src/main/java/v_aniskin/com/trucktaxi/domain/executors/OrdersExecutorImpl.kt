@@ -52,6 +52,12 @@ class OrdersExecutorImpl @Inject constructor(var mRepository: Repository) : Orde
                 .map { ModelContainer(OrdersMapper.mapOrder(it.orderData), it.error, it.status) }
     }
 
+    override fun getRoutePoints(orderId: String): Observable<*> {
+        return mRepository.getRoutePoints(orderId)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+    }
+
     private fun zipPreappointedAndAppointedOrders(preappointedOrders: OrdersResponse, appointedOrders: OrdersResponse): ModelContainer<List<Order>> {
         val ordersContainer: ModelContainer<List<Order>> = ModelContainer(preappointedOrders.error, preappointedOrders.status)
         val orderItems = ArrayList<Order>()

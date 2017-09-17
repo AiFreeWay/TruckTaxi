@@ -50,4 +50,6 @@ interface Repository {
     fun getPayment(paymentId: String, paymentType: String): Observable<PaymentResponse>
 
     fun loadImage(imageType: Int, file: File): Observable<BaseResponse>
+
+    fun getRoutePoints(orderId: String): Observable<LocationResponse>
 }

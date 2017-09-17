@@ -13,4 +13,5 @@ interface OrdersExecutor {
     fun getCurrentOrders(): Observable<ModelContainer<List<Order>>>
     fun getHistoryOrders(): Observable<ModelContainer<List<Order>>>
     fun getOrderDetail(orderId: String): Observable<ModelContainer<Order>>
+    fun getRoutePoints(orderId: String): Observable<*>
 }
