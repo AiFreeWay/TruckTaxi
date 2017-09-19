@@ -1,9 +1,11 @@
 package v_aniskin.com.trucktaxi.domain.executors
 
+import com.google.android.gms.maps.model.LatLng
 import rx.Observable
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 import v_aniskin.com.trucktaxi.application.utils.Logger
+import v_aniskin.com.trucktaxi.data.network_client.responses.LocationResponse
 import v_aniskin.com.trucktaxi.data.network_client.responses.OrdersResponse
 import v_aniskin.com.trucktaxi.domain.executors.interfaces.OrdersExecutor
 import v_aniskin.com.trucktaxi.domain.mappers.OrdersMapper
@@ -52,10 +54,11 @@ class OrdersExecutorImpl @Inject constructor(var mRepository: Repository) : Orde
                 .map { ModelContainer(OrdersMapper.mapOrder(it.orderData), it.error, it.status) }
     }
 
-    override fun getRoutePoints(orderId: String): Observable<*> {
+    override fun getRoutePoints(orderId: String): Observable<List<LatLng>> {
         return mRepository.getRoutePoints(orderId)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
+                .map { mapRoute(it) }
     }
 
     private fun zipPreappointedAndAppointedOrders(preappointedOrders: OrdersResponse, appointedOrders: OrdersResponse): ModelContainer<List<Order>> {
@@ -101,5 +104,13 @@ class OrdersExecutorImpl @Inject constructor(var mRepository: Repository) : Orde
         orderItems.addAll(OrdersMapper.mapOrdersNetwork(archiveOrders.ordersList))
         ordersContainer.mData = orderItems
         return ordersContainer
+    }
+
+    private fun mapRoute(response: LocationResponse): List<LatLng> {
+        val mappedList = ArrayList<LatLng>()
+        response.georouteGeoetry.forEach {
+            mappedList.add(LatLng(it.get(0), it.get(1)))
+        }
+        return mappedList
     }
 }

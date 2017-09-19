@@ -1,5 +1,6 @@
 package v_aniskin.com.trucktaxi.domain.executors.interfaces
 
+import com.google.android.gms.maps.model.LatLng
 import rx.Observable
 import v_aniskin.com.trucktaxi.domain.models.Order
 import v_aniskin.com.trucktaxi.presentation.models.ModelContainer
@@ -13,5 +14,5 @@ interface OrdersExecutor {
     fun getCurrentOrders(): Observable<ModelContainer<List<Order>>>
     fun getHistoryOrders(): Observable<ModelContainer<List<Order>>>
     fun getOrderDetail(orderId: String): Observable<ModelContainer<Order>>
-    fun getRoutePoints(orderId: String): Observable<*>
+    fun getRoutePoints(orderId: String): Observable<List<LatLng>>
 }
