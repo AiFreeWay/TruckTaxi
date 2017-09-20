@@ -56,7 +56,6 @@ interface ApiController {
     @POST("/")
     fun postImage(@Part image: MultipartBody.Part, @Part("name") name: RequestBody): Observable<BaseResponse>
 
-    @FormUrlEncoded
     @GET(LocationRequest.URI)
     fun getRoutePoints(@Query (LocationRequest.FIELD_TOKEN) token: String,
                        @Query (LocationRequest.FIELD_ORDER_ID) listType: String): Observable<LocationResponse>

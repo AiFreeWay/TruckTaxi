@@ -108,7 +108,7 @@ class OrdersExecutorImpl @Inject constructor(var mRepository: Repository) : Orde
 
     private fun mapRoute(response: LocationResponse): List<LatLng> {
         val mappedList = ArrayList<LatLng>()
-        response.georouteGeoetry.forEach {
+        response.georouteData.georouteGeoetry.forEach {
             mappedList.add(LatLng(it.get(0), it.get(1)))
         }
         return mappedList

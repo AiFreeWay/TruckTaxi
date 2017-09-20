@@ -7,5 +7,10 @@ import java.util.*
  */
 class LocationResponse {
 
-    var georouteGeoetry: List<Array<Double>> = Collections.emptyList()
+    var georouteData = GeorouteData()
+
+    class GeorouteData {
+
+        var georouteGeoetry: List<Array<Double>> = Collections.emptyList()
+    }
 }
